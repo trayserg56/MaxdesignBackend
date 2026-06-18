@@ -1,0 +1,100 @@
+b, strong {
+    font-weight: 700 !important;
+}
+p {
+    margin: 0 0 15px 0 !important;
+}
+h1 {
+    padding: 0 0 10px 0 !important;
+    line-height: 1.2em;
+}
+a, button, div, h1, h2, h3, h4, h5, h6, li, p, span, ul {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+    font-size: 2.5em;
+}
+.mainer {
+    padding: 110px 0 0 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.3em;
+}
+.views-row {
+    overflow: hidden;
+    padding: 10px 0;
+    border-top: 1px solid #999;
+}
+.views-field-field-fhoto, .views-field-field-gallery {
+    width: 140px;
+    padding: 0 10px 0 0;
+    float: left;
+}
+.views-field-title {
+    text-transform: uppercase;
+}
+.views-field-field-author {
+    margin: 5px 0;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.similar {
+    width: 350px;
+    margin-left: 50px;
+}
+
+.field .field-label {
+    font-weight: 500;
+    display: inline-block;
+}
+.field .field-label~div {
+    display: inline-block;
+}
+.field-label-inline .field-label, .field-label-inline .field-items {
+    float: left;
+}
+
+@media screen and (max-width: 768px) {
+    .similar {
+        display: none;
+    }
+}
+
+.content {
+    width: calc(100% - 400px);
+}
+
+@media screen and (max-width: 768px) {
+    .content {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .into {
+       padding-left: 25%;
+   }
+}
+
+.mainer img {
+    width: auto;
+    max-width: 100%;
+    margin: 0 0 5px 0;
+}
+
+.mainer figure{
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        border: 0;
+        text-align: center;
+        font-style: italic;
+}
+
+h2 {
+    font-weight: 300 !important;
+    padding: 10px 0 !important;
+}

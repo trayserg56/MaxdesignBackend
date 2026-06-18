@@ -1,0 +1,24 @@
+@media (min-width: 1920px){
+    .nl-p,
+    .vakansuu-top p,
+    .portfolio-detail .gallery-col p,
+    .portfolio-detail p,
+    .contact-adres p,
+    .twocols p,
+    .hotute-container > span,
+    .partner-text p,
+    .sotrud-container p,
+    .new-rtcenter,
+    .expert-box p,
+    #blog-viewer .field p,
+    #block-block-17 .content p,
+    .new-feedback .new-feedback__text{
+        font-family: 'Montserrat-Regular' !important;
+        font-size: 16px !important;
+        line-height: 24px !important;
+        color: black !important;
+    }
+}
+#activities .item img{
+    width: 100%;
+}
