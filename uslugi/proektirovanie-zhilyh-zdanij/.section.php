@@ -1,3 +1,0 @@
-<?
-$sSectionName="proektirovanie-zhilyh-zdanij";
-?>

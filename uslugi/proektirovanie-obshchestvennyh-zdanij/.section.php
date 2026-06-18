@@ -1,3 +1,0 @@
-<?
-$sSectionName="proektirovanie-obshchestvennyh-zdanij";
-?>

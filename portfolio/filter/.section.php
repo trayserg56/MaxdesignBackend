@@ -1,6 +1,0 @@
-<?
-$sSectionName = "filter";
-$arDirProperties = Array(
-
-);
-?>

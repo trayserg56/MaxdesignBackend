@@ -1,0 +1,2 @@
+/*! For license information please see index.js.LICENSE.txt */
+(self.webpackChunkwebpack_5_sample=self.webpackChunkwebpack_5_sample||[]).push([["index"],{"./src/js/views/index.js":function(){eval("{//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIiLCJmaWxlIjoiLi9zcmMvanMvdmlld3MvaW5kZXguanMifQ==\n//# sourceURL=webpack-internal:///./src/js/views/index.js\n\n}")}},function(e){e(e.s="./src/js/views/index.js")}]);
