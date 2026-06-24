@@ -21,11 +21,45 @@ $contacts = \Entity\Contacts::getInstance();
         </div>
         <div class="footer__feedback-body">
             <div class="footer__feedback-intro"><h2 class="footer__feedback-title"><span
-                            class="footer__feedback-title-line">Получите наше</span><span
-                            class="footer__feedback-title-line footer__feedback-title--accent">лучшее предложение!</span>
+                            class="footer__feedback-title-line">
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/footer-intro.php",
+                                ]
+                        );
+                        ?>
+                        </span><span
+                            class="footer__feedback-title-line footer__feedback-title--accent">
+
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => SITE_TEMPLATE_PATH . "/include/footer-intro-second-part.php",
+                                ]
+                        );
+                        ?>
+                        </span>
                 </h2>
-                <p class="footer__feedback-text">Заполните форму и&nbsp;оставьте свои контактные данные,
-                    а&nbsp;мы подготовим предложение, которое подходит именно вам</p></div>
+                <p class="footer__feedback-text">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => SITE_TEMPLATE_PATH . "/include/footer-feedback-text.php",
+                            ]
+                    );
+                    ?>
+
+                   </p></div>
             <?php include 'include/feedback_form.php' ?>
         </div>
     </div>
