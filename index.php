@@ -37,8 +37,18 @@ $GLOBALS['APPLICATION']->SetTitle('Главная');
         <div class="first-screen__overlay" aria-hidden="true"></div>
         <div class="first-screen__top"><img class="first-screen__logo" src="images/logo.e6feda50.png"
                                             alt="maxdesign" width="860" height="120">
-            <p class="first-screen__tagline">Интерьеры и архитектура со стильным, лидирующим смыслом,
-                отражающим тенденции времени</p></div>
+            <p class="first-screen__tagline">
+                <?php
+                $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        [
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => "/include/FS-tagline.php",
+                        ]
+                );
+                ?>
+                </p></div>
         <div class="first-screen__actions"><a class="button button--cta-light" href="/contact">Обсудить проект</a><a
                     class="button button--cta-dark" href="#promo"><span class="button__icon" aria-hidden="true"><img
                             src="images/watch.df84ff56.svg" alt="" width="19" height="19"></span>Смотреть промо</a>
@@ -48,14 +58,45 @@ $GLOBALS['APPLICATION']->SetTitle('Главная');
         <div class="about__inner">
             <div class="about__col about__col--text">
                 <div class="about__intro"><h2 class="about__label" id="about-heading">О нас</h2>
-                    <p class="about__lead">maxdesign — архитектурное бюро, специализирующееся на&nbsp;проектировании
-                        зданий и&nbsp;дизайне частных и&nbsp;общественных интерьеров</p></div>
+                    <p class="about__lead">
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                [
+                                        "AREA_FILE_SHOW" => "file",
+                                        "PATH" => "/include/about-lead.php",
+                                ]
+                        );
+                        ?>
+                        </p></div>
                 <div class="about__stats">
                     <div class="about__stat"><p class="about__stat-value">24</p>
-                        <p class="about__stat-caption">Специалистов, объединивших знания, экспертизу и
-                            творчество</p></div>
+                        <p class="about__stat-caption">
+                            <?php
+                            $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    [
+                                            "AREA_FILE_SHOW" => "file",
+                                            "PATH" => "/include/about-stat.php",
+                                    ]
+                            );
+                            ?>
+                            </p></div>
                     <div class="about__stat"><p class="about__stat-value">365</p>
-                        <p class="about__stat-caption">Проектов успешно реализовано по Санкт-Петербургу</p></div>
+                        <p class="about__stat-caption">
+                            <?php
+                            $APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    [
+                                            "AREA_FILE_SHOW" => "file",
+                                            "PATH" => "/include/about-stat-caption.php",
+                                    ]
+                            );
+                            ?>
+                           </p></div>
                 </div>
             </div>
             <div class="about__col about__col--awards">
@@ -507,8 +548,19 @@ $GLOBALS['APPLICATION']->SetTitle('Главная');
     <section class="service" id="service" aria-labelledby="service-heading">
         <div class="service__inner">
             <div class="service__title"><p class="service__label">Услуги</p>
-                <h2 class="service__heading" id="service-heading">Предоставляем полный<br>спектр услуг<br>от
-                    проектирования<br>до&nbsp;разработки рабочих чертежей</h2></div>
+                <h2 class="service__heading" id="service-heading">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/service-heading.php",
+                            ]
+                    );
+                    ?>
+
+                    </h2></div>
             <div class="service__carousel" data-swiper-container>
                 <div class="swiper" data-swiper data-swiper-nav data-swiper-space="16"
                      data-swiper-pagination="fraction" data-swiper-slides="auto"
@@ -608,8 +660,30 @@ $GLOBALS['APPLICATION']->SetTitle('Главная');
     </section>
     <section class="home-why" id="why" aria-labelledby="why-heading">
         <div class="home-why__inner">
-            <div class="home-why__title"><p class="home-why__label">Почему нас выбирают</p>
-                <h2 class="home-why__heading" id="why-heading">Дизайн-студия maxdesign:<br>от&nbsp;проекта до&nbsp;воплощения
+            <div class="home-why__title"><p class="home-why__label">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/why-title.php",
+                            ]
+                    );
+                    ?>
+                    </p>
+                <h2 class="home-why__heading" id="why-heading">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/why-heading.php",
+                            ]
+                    );
+                    ?>
+
                 </h2></div>
             <div class="home-why__list">
                 <article class="home-why__item"><p class="home-why__number">01</p>
@@ -778,9 +852,30 @@ $GLOBALS['APPLICATION']->SetTitle('Главная');
     </section>
     <section class="partners" id="partners" aria-labelledby="partners-heading">
         <div class="partners__inner">
-            <div class="partners__title"><p class="partners__label">Наши партнёры</p>
-                <h2 class="partners__heading" id="partners-heading">Работаем только с&nbsp;прямыми поставщиками и&nbsp;официальными
-                    предствительствами</h2></div>
+            <div class="partners__title"><p class="partners__label">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/partners-lable.php",
+                            ]
+                    );
+                    ?>
+                   </p>
+                <h2 class="partners__heading" id="partners-heading">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/partners-heading.php",
+                            ]
+                    );
+                    ?>
+                    </h2></div>
             <div class="partners__content">
                 <ul class="partners__grid" role="list">
                     <li class="partners__item">
