@@ -1,0 +1,1 @@
+<img alt="approach-work.c46d1ea3.jpg" src="/upload/medialibrary/680/woa4q7ur4vtbo02s8b7iim0q2vdl4vyy.jpg" title="approach-work.c46d1ea3.jpg">
