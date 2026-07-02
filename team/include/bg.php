@@ -1,0 +1,1 @@
+<img alt="Команда - Картинка" src="/upload/medialibrary/38e/aj8stbq9v2b1odzv5obinl2tsz493u0j.jpg" title="Команда - Картинка">
