@@ -1,5 +1,7 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+global $APPLICATION;
+
 $contacts = \Entity\Contacts::getInstance();
 ?>
 
@@ -32,7 +34,9 @@ $contacts = \Entity\Contacts::getInstance();
                             </li>
                         </ul>
                     </div>
-                    <div class="contacts__img"><img src="images/contact.37a9c509.jpg" alt="#"></div>
+                    <div class="contacts__img">
+                        <?php $APPLICATION->IncludeFile('/contacts/include/image.php'); ?>
+                    </div>
                 </div>
             </div>
         </section>
