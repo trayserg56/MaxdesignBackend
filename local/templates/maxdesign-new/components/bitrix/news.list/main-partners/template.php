@@ -16,4 +16,4 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
            </li>
        <?php } ?>
     </ul>
-    <a class="button button--cta-dark partners__btn" href="/partners">Все партнёры</a></div>
+    <a class="button button--cta-dark partners__btn" href="/partnery/">Все партнёры</a></div>

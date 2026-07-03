@@ -12,7 +12,7 @@ global $APPLICATION;
                             "",
                             [
                                     "AREA_FILE_SHOW" => "file",
-                                    "PATH" => "/partners/include/FS-Title.php",
+                                    "PATH" => "/partnery/include/FS-Title.php",
                             ]
                     );
                     ?>
@@ -24,7 +24,7 @@ global $APPLICATION;
                             "",
                             [
                                     "AREA_FILE_SHOW" => "file",
-                                    "PATH" => "/partners/include/FS-descr.php",
+                                    "PATH" => "/partnery/include/FS-descr.php",
                             ]
                     );
                     ?>
@@ -35,7 +35,7 @@ global $APPLICATION;
     </div>
 </section>
 <section class="section-img">
-    <?php $APPLICATION->IncludeFile('/partners/include/pic.php'); ?>
+    <?php $APPLICATION->IncludeFile('/partnery/include/pic.php'); ?>
 </section>
 
 <?php

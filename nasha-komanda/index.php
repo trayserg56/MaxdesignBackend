@@ -8,7 +8,7 @@ $styleAdditionalText = \Bitrix\Main\Context::getCurrent()->getRequest()->get('bi
 ?>
 <section class="first-screen-team">
     <div class="first-screen-<?= $classAdditional ?>">
-        <?php $APPLICATION->IncludeFile('/team/include/bg.php'); ?>
+        <?php $APPLICATION->IncludeFile('/nasha-komanda/include/bg.php'); ?>
     </div>
     <div class="container">
         <div class="first-screen-team__wrap"><h1 class="first-screen-team__title" <?= $styleAdditionalText ?>>
@@ -18,7 +18,7 @@ $styleAdditionalText = \Bitrix\Main\Context::getCurrent()->getRequest()->get('bi
                         "",
                         [
                                 "AREA_FILE_SHOW" => "file",
-                                "PATH" => "/team/include/FST-wrap.php",
+                                "PATH" => "/nasha-komanda/include/FST-wrap.php",
                         ]
                 );
                 ?>
@@ -30,7 +30,7 @@ $styleAdditionalText = \Bitrix\Main\Context::getCurrent()->getRequest()->get('bi
                         "",
                         [
                                 "AREA_FILE_SHOW" => "file",
-                                "PATH" => "/team/include/FST-descr.php",
+                                "PATH" => "/nasha-komanda/include/FST-descr.php",
                         ]
                 );
                 ?>
