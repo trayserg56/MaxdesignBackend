@@ -35,6 +35,7 @@ $contacts = Contacts::getInstance();
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/_dev.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/bundle.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/home.js', true);
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/custom.js', true);
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/_dev.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/bundle.css');
     $GLOBALS['APPLICATION']->ShowHead();
