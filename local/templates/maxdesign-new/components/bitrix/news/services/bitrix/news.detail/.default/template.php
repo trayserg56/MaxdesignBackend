@@ -19,7 +19,11 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 
-$detailPage = Json::decode($arResult['PROPERTIES']['DETAIL_PAGE']['~VALUE'])['blocks'];
+try {
+    $detailPage = Json::decode($arResult['PROPERTIES']['DETAIL_PAGE']['~VALUE'])['blocks'];
+} catch (\Exception $e) {
+    $detailPage = '';
+}
 
 // Первый экран
 if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {

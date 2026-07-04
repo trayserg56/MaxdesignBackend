@@ -22,13 +22,13 @@ unset($arResult["ITEMS"][array_key_first($arResult["ITEMS"])]);
 		})
 	?>
 <?endif?>
-<div class="blog-page__posts" data-filter-content>
+<div class="blog-page__posts" data-filter-container="posts">
     <section class="blog-first-post">
         <div class="container">
             <article class="blog-first-post__card" data-category="<?= $firstItem['IBLOCK_SECTION_ID'] ?>">
                 <a class="blog-first-post__link"
                                                                                    href="<?= $firstItem['DETAIL_PAGE_URL'] ?>"
-                                                                                   aria-label="<?= $firstItem['NAME'] ?> — Читать">
+                                                                                   aria-label="<?= strip_tags($firstItem['~NAME']) ?> — Читать">
                     <div class="blog-first-post__media"><img class="blog-first-post__image"
                                                              src="<?= $firstItem['PREVIEW_PICTURE']['SRC'] ?>" alt=""
                                                              loading="eager" decoding="async" width="860"
@@ -40,7 +40,7 @@ unset($arResult["ITEMS"][array_key_first($arResult["ITEMS"])]);
                                 <span class="blog-first-post__divider" aria-hidden="true"></span><span
                                         class="blog-first-post__category"><?= $firstItem['SECTION_NAME'] ?></span></div>
                             <h2 class="blog-first-post__title">
-                                <span class="blog-first-post__title-line"><?= $firstItem['NAME'] ?></span>
+                                <span class="blog-first-post__title-line"><?= $firstItem['~NAME'] ?></span>
 <!--                                <span class="blog-first-post__title-line">--><?php //= $firstItem['PREVIEW_TEXT'] ?><!--</span>-->
                             </h2><span class="blog-first-post__more">Читать</span></div>
                     </div>
@@ -54,7 +54,7 @@ unset($arResult["ITEMS"][array_key_first($arResult["ITEMS"])]);
                     <?php foreach($arResult['ITEMS'] as $arItem) { ?>
                         <article class="blog-posts-list__card" data-category="<?= $arItem['IBLOCK_SECTION_ID'] ?>"><a
                                     class="blog-posts-list__link" href="<?= $arItem['DETAIL_PAGE_URL'] ?>"
-                                    aria-label="<?= $arItem['NAME'] ?> — Читать">
+                                    aria-label="<?= strip_tags($arItem['~NAME']) ?> — Читать">
                                 <div class="blog-posts-list__content">
                                     <div class="blog-posts-list__body">
                                         <div class="blog-posts-list__meta">
@@ -63,7 +63,7 @@ unset($arResult["ITEMS"][array_key_first($arResult["ITEMS"])]);
                                             <span class="blog-posts-list__divider" aria-hidden="true"></span><span
                                                     class="blog-posts-list__category"><?= $arItem['SECTION_NAME'] ?></span></div>
                                         <div class="blog-posts-list__text"><h2 class="blog-posts-list__title">
-                                                <?= $arItem['NAME'] ?></h2>
+                                                <?= $arItem['~NAME'] ?></h2>
                                             <p class="blog-posts-list__excerpt"><?= $arItem['PREVIEW_TEXT'] ?></p></div>
                                         <span class="blog-posts-list__more">Читать</span></div>
                                 </div>

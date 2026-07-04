@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initPaginationButtons();
+    initFilterButtons();
 
     function replaceWith(response, selectorAttribute = 'data-replace') {
         document.querySelectorAll(`[${selectorAttribute}]`).forEach(element => {
@@ -18,9 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const paginationType = this.dataset.paginationType;
             const navNum = 'PAGEN_' + this.dataset.navNum;
             const page = this.dataset.page;
-            let payload = {};
 
-            payload[navNum] = page;
             this.disabled = true;
             BX.ajax({
                 url: location.pathname + '?' + navNum + '=' + page,
@@ -41,6 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     initPaginationButtons();
                 }
+            });
+        });
+    }
+
+    function initFilterButtons() {
+        document.querySelectorAll('[data-filter-value]')?.forEach(button => {
+            button.addEventListener('click', function () {
+                const parser = new DOMParser();
+                const value = this.dataset.filterValue;
+                const url = location.pathname + (value !== 'all' ? '?section=' + value : '');
+
+                button.disabled = true;
+                BX.ajax({
+                    url: url,
+                    method: 'GET',
+                    onsuccess: function (r) {
+                        r = parser.parseFromString(r, 'text/html');
+                        replaceWith(r, 'data-filter-container');
+                        button.disabled = false;
+                        window.history.pushState({}, '', url);
+                    }
+                });
             });
         });
     }

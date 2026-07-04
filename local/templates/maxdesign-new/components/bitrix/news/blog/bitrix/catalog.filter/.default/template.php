@@ -8,16 +8,15 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
 /** @var $arResult */
 ?>
 <div class="first-screen-flat__btns"
-     data-filter-buttons
      data-filter-name="<?= $arResult["FILTER_NAME"] ?>"
      data-filter-action="<?= $arResult["FORM_ACTION"] ?>"
 >
-    <button class="button button--middle button-tab active" type="button" data-filter="all">Все
+    <button class="button button--middle button-tab" type="button" data-filter-value="all">Все
         публикации
     </button>
     <?php foreach ($arResult['ITEMS'] as $id => $arItem) {
         ?>
-        <button class="button button--middle button-tab" type="button" data-filter="<?= $id ?>">
+        <button class="button button--middle button-tab" type="button" data-filter-value="<?= $id ?>">
             <?= $arItem ?>
         </button>
     <?php } ?>

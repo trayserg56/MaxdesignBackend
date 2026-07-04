@@ -45,7 +45,18 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
     </div>
 </section>
 
-<?$APPLICATION->IncludeComponent(
+<?
+if ($section = \Bitrix\Main\Context::getCurrent()->getRequest()->getQuery('section')) {
+    $GLOBALS[$arParams["FILTER_NAME"]] = [
+        'IBLOCK_SECTION_ID' => $section
+    ];
+}
+
+if (\Bitrix\Main\Context::getCurrent()->getRequest()->isAjaxRequest()) {
+    $APPLICATION->RestartBuffer();
+}
+
+?><?php $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"",
 	Array(
@@ -97,4 +108,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
 		"CHECK_DATES" => $arParams["CHECK_DATES"],
 	),
 	$component
-);?>
+);?><?php
+if (\Bitrix\Main\Context::getCurrent()->getRequest()->isAjaxRequest()) {
+    exit;
+} ?>
