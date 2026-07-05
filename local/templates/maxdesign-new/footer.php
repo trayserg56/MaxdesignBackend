@@ -8,6 +8,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 
 global $APPLICATION;
 $contacts = \Entity\Contacts::getInstance();
+$form = \Entity\Form::getInstance();
 ?>
 
     </main>
@@ -15,8 +16,8 @@ $contacts = \Entity\Contacts::getInstance();
     <div class="footer__feedback">
         <div class="footer__feedback-map">
             <iframe class="footer__feedback-map-frame"
-                    src="<?= SITE_TEMPLATE_PATH ?>/assets/https://yandex.ru/map-widget/v1/?ll=30.268294%2C59.964186&amp;z=17&amp;l=map&amp;pt=30.268294%2C59.964186%2Cpm2rdm"
-                    title="maxdesign на карте — Петрозаводская улица, 13" loading="lazy" allowfullscreen
+                    src="<?= $form->getYandexMapLink('feedback-form') ?>"
+                    title="<?= $form->getYandexMapTitle('feedback-form') ?>" loading="lazy" allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="footer__feedback-body">
