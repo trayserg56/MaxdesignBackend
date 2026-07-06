@@ -34,7 +34,9 @@ $APPLICATION->IncludeComponent(
         "DETAIL_FIELD_CODE" => array(
             0 => "PREVIEW_TEXT",
             1 => "DETAIL_TEXT",
-            2 => "",
+            2 => "PREVIEW_PICTURE",
+            3 => "DETAIL_PICTURE",
+            4 => "",
         ),
         "DETAIL_PAGER_SHOW_ALL" => "Y",
         "DETAIL_PAGER_TEMPLATE" => "",

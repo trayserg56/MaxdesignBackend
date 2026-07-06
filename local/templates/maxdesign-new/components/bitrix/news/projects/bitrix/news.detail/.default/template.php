@@ -1,5 +1,6 @@
 <?php
 
+use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Web\Json;
 
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
@@ -45,6 +46,51 @@ $anchors = [
     'layout',
     'interior',
 ];
+
+if (!$detailPage) {
+    $stylesPath = SITE_TEMPLATE_PATH . '/components/bitrix/news/projects/bitrix/news.detail/.default/old-styles/';
+    Asset::getInstance()->addCss($stylesPath . 'jquery.mmenu.css');
+    Asset::getInstance()->addCss($stylesPath . 'reveal.css');
+    Asset::getInstance()->addCss($stylesPath . 'remodal.css');
+    Asset::getInstance()->addCss($stylesPath . 'lity.css');
+    Asset::getInstance()->addCss($stylesPath . 'owl.carousel.css');
+    Asset::getInstance()->addCss($stylesPath . 'viewer.min.css');
+    Asset::getInstance()->addCss($stylesPath . 'style.css');
+    Asset::getInstance()->addCss($stylesPath . 'responsive.css');
+    Asset::getInstance()->addCss($stylesPath . 'md.css');
+    Asset::getInstance()->addCss($stylesPath . 'portfolio.css');
+    Asset::getInstance()->addCss($stylesPath . 'detail.css');
+    Asset::getInstance()->addCss($stylesPath . 'new-detail.css');
+    ?>
+    <style>.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid #fff;margin-right:-5px;overflow:hidden}.slider .instruction{position:absolute;top:50%;z-index:1000;width:95%}.slider .instruction p{background:#fff;display:inline;padding:1%;font-size:1em;text-transform:uppercase}</style>
+    <div class="portfolio-detail" id="portfoli-viewer">
+        <div class="fluid-header fluid-header-portfolio">
+            <div class="portfolio-slider">
+                <div class="portfolio-item fluid-bg" style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?: $arResult['PREVIEW_PICTURE']['SRC'] ?>')">
+                    <div class="portfolio-detail-container">
+                        <div class="portfolio-detail__head-content">
+                            <div class="portfolio-detal__date"><?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></div>
+                            <h1><?= $arResult['NAME'] ?></h1>
+                            <div class="portfolio-detal__preview"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-detail-container">
+            <div class="descr !descr-milan">
+                <p><b>Место:</b> город Грозный, улица Лермонтова, дом 20</p>
+                <p><b>Площадь:</b> 141 м2</p>
+                <p><b>Стиль:</b> экологичный, модерн</p>
+                <p><b>Тип:</b> кафе </p>
+                <p><b>Автор проекта:</b> Л.П. Макух </p>
+            </div>
+            <?= $arResult['~DETAIL_TEXT']; ?>
+        </div>
+    </div>
+<?php
+    return;
+}
 ?>
 <section class="project-hero">
     <div class="project-hero__main">
