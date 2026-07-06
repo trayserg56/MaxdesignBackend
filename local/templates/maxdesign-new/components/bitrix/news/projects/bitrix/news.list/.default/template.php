@@ -26,7 +26,8 @@ $this->setFrameMode(true);
                         <article class="home-project__card"><a class="home-project__card-link"
                                                                href="<?= $item['DETAIL_PAGE_URL'] ?>"
                                                                aria-label="<?= $item['NAME'] ?>">
-                                <div class="home-project__media" style="--ratio: 74.6%;"><img
+                                <div class="home-project__media"
+                                     style="--ratio: <?= $item['PROPERTIES']['RATIO']['VALUE'] ?: '74.6' ?>%;"><img
                                             class="home-project__image" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                             alt="<?= $item['NAME'] ?>" loading="eager" decoding="async"
                                             width="327" height="327"></div>
