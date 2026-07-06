@@ -79,11 +79,11 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
         </div>
         <div class="portfolio-detail-container">
             <div class="descr !descr-milan">
-                <p><b>Место:</b> город Грозный, улица Лермонтова, дом 20</p>
-                <p><b>Площадь:</b> 141 м2</p>
-                <p><b>Стиль:</b> экологичный, модерн</p>
-                <p><b>Тип:</b> кафе </p>
-                <p><b>Автор проекта:</b> Л.П. Макух </p>
+                <p><b>Место:</b> <?= $arResult['PROPERTIES']['ADDRESS']['VALUE'] ?></p>
+                <p><b>Площадь:</b> <?= $arResult['PROPERTIES']['SQUARE']['VALUE'] ?> м2</p>
+                <p><b>Стиль:</b> <?= $arResult['PROPERTIES']['STYLE']['VALUE'] ?></p>
+                <p><b>Тип:</b> <?= $arResult['PROPERTIES']['TYPE']['VALUE'] ?> </p>
+                <p><b>Автор проекта:</b> <?= $arResult['PROPERTIES']['AUTHOR']['VALUE'] ?> </p>
             </div>
             <?= $arResult['~DETAIL_TEXT']; ?>
         </div>
