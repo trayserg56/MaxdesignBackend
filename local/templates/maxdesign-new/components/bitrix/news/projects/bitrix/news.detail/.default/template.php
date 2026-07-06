@@ -47,8 +47,8 @@ $anchors = [
     'interior',
 ];
 
-if (!$detailPage) {
-    $stylesPath = SITE_TEMPLATE_PATH . '/components/bitrix/news/projects/bitrix/news.detail/.default/old-styles/';
+if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
+    $stylesPath = SITE_TEMPLATE_PATH . '/assets/old-styles/';
     Asset::getInstance()->addCss($stylesPath . 'jquery.mmenu.css');
     Asset::getInstance()->addCss($stylesPath . 'reveal.css');
     Asset::getInstance()->addCss($stylesPath . 'remodal.css');
@@ -59,8 +59,8 @@ if (!$detailPage) {
     Asset::getInstance()->addCss($stylesPath . 'responsive.css');
     Asset::getInstance()->addCss($stylesPath . 'md.css');
     Asset::getInstance()->addCss($stylesPath . 'portfolio.css');
-    Asset::getInstance()->addCss($stylesPath . 'detail.css');
-    Asset::getInstance()->addCss($stylesPath . 'new-detail.css');
+    Asset::getInstance()->addCss($stylesPath . 'projects-detail.css');
+    Asset::getInstance()->addCss($stylesPath . 'projects-new-detail.css');
     ?>
     <style>.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid #fff;margin-right:-5px;overflow:hidden}.slider .instruction{position:absolute;top:50%;z-index:1000;width:95%}.slider .instruction p{background:#fff;display:inline;padding:1%;font-size:1em;text-transform:uppercase}</style>
     <div class="portfolio-detail" id="portfoli-viewer">
