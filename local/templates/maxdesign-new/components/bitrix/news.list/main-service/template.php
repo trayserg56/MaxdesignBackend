@@ -15,11 +15,20 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <article class="service-card service__card swiper-slide">
                     <a class="service-card__link"
                         href="<?= $item['DETAIL_PAGE_URL'] ?>"
-                        aria-label="<?= $item['NAME'] ?>"
-                        style="--service-image: url(<?= $item['PREVIEW_PICTURE']['SRC'] ?>);">
+                        aria-label="<?= $item['NAME'] ?>">
+                        <img
+                            src="<?= \CFile::ResizeImageGet($item['PREVIEW_PICTURE'], [
+                                'width' => 400,
+                                'height' => 300,
+                            ], BX_RESIZE_IMAGE_EXACT)['src'] ?>"
+                            alt="<?= $item['NAME'] ?>"
+                            class="service-cart__image"
+                            loading="lazy"
+                            decoding="async"
+                        >
                         <div class="service-card__overlay"><p class="service-card__count"><span
                                         class="service-card__count-current"><?= ($key < 10 ? '0' : '') . $key ?>/</span><span
-                                        class="service-card__count-total"><?= (count($arResult['ITEMS']) < 10 ? '0' : '') . $key ?></span></p>
+                                        class="service-card__count-total"><?= (count($arResult['ITEMS']) < 10 ? '0' : '') . count($arResult['ITEMS']) ?></span></p>
                             <h3 class="service-card__name"><?= $item['NAME'] ?></h3></div>
                     </a></article>
             <?php } ?>

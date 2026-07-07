@@ -1,20 +1,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initPaginationButtons();
+    initLazyPagination();
     initFilterButtons();
     initForms();
 
-    function replaceWith(response, selectorAttribute = 'data-replace') {
+    function replaceWith(response, selectorAttribute = 'data-replace', deleteNotFound = false) {
         document.querySelectorAll(`[${selectorAttribute}]`).forEach(element => {
             let replace = response.querySelector(`[${selectorAttribute}=${element.getAttribute(selectorAttribute)}]`);
             if (replace) {
                 element.replaceWith(replace);
+            } else if (deleteNotFound) {
+                element.remove();
             }
         });
     }
 
     function initPaginationButtons() {
-        document.querySelector('[data-pagination-type]')?.addEventListener('click', function () {
+        document.querySelector('[data-pagination-type]:not([data-lazy])')?.addEventListener('click', function () {
             const parser = new DOMParser();
             const paginationContainer = this.dataset.paginationContainerCode;
             const paginationType = this.dataset.paginationType;
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.querySelector(selector)?.append(
                             ...r.querySelector(selector).children
                         );
-                        replaceWith(r, 'data-pagination-container-code');
+                        replaceWith(r, 'data-pagination-container-code', true);
                         document.querySelector(`[data-pagination-container-code=${paginationContainer}]:disabled`)?.remove();
                     } else {
                         replaceWith(r, 'data-pagination-container');
@@ -101,5 +104,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
+    }
+
+    function initLazyPagination() {
+        const targetElement = document.querySelector('[data-pagination-type][data-lazy]');
+        const parser = new DOMParser();
+        const paginationContainer = targetElement.dataset.paginationContainerCode;
+        const navNum = 'PAGEN_' + targetElement.dataset.navNum;
+        const page = targetElement.dataset.page;
+
+        const handleVisibilityChange = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    BX.ajax({
+                        url: location.pathname + '?' + navNum + '=' + page,
+                        method: 'GET',
+                        onsuccess: function (r) {
+                            const selector = `[data-pagination-container=${paginationContainer}]`;
+                            r = parser.parseFromString(r, 'text/html');
+
+                            document.querySelector(selector)?.append(
+                                ...r.querySelector(selector).children
+                            );
+                            replaceWith(r, 'data-pagination-container-code', true);
+                            initLazyPagination();
+                        }
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(handleVisibilityChange, {
+            threshold: 0.1 // Triggers when 10% of the element is visible
+        });
+
+        observer.observe(targetElement);
     }
 });
