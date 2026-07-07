@@ -10,6 +10,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 global $APPLICATION;
 
 $contacts = Contacts::getInstance();
+CUtil::InitJSCore(['ajax']);
 ?>
 
 <!DOCTYPE html>

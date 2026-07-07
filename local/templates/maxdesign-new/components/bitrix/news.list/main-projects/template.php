@@ -12,10 +12,10 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             <span
                     class="home-project__tab-separator" aria-hidden="true"></span>
             <?php foreach ($arResult['CATEGORIES'] as $item) { ?>
-                <button class="home-project__tab" type="button" role="tab" aria-selected="false"><span
+                <a href="/portfolio/?type=<?= $item['NAME'] ?>" class="home-project__tab" type="button" role="tab" aria-selected="false"><span
                             class="home-project__tab-label"><?= $item['NAME'] ?></span>
                     <span class="home-project__tab-count"><?= $item['COUNT'] ?></span>
-                </button>
+                </a>
                 <span class="home-project__tab-separator" aria-hidden="true"></span>
             <?php } ?>
 
@@ -25,7 +25,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <?php foreach ($arResult['ITEMS'] as $item) { ?>
                     <article class="home-project__card"><a class="home-project__card-link" href="<?= $item['DETAIL_PAGE_URL'] ?>"
                                                            aria-label="<?= $item['NAME'] ?>">
-                            <div class="home-project__media" style="--ratio: <?= $item['PROPERTIES']['RATIO']['VALUE'] ?: '74.6%' ?>;">
+                            <div class="home-project__media" style="--ratio: <?= $item['PROPERTIES']['RATIO']['VALUE'] ?: '74.6' ?>%;">
                                 <img
                                     class="home-project__image" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                     alt="<?= $item['NAME'] ?>" loading="eager" decoding="async" width="327"

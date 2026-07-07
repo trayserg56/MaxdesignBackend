@@ -32,7 +32,7 @@ $arResult['SECTION_NAME'] = SectionTable::getById($arResult['IBLOCK_SECTION_ID']
 $serverName = 'https://' . Context::getCurrent()->getServer()->getServerName();
 
 
-if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE'] || true) {
+if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
     $stylesPath = SITE_TEMPLATE_PATH . '/assets/old-styles/';
     Asset::getInstance()->addCss($stylesPath . 'jquery.mmenu.css');
     Asset::getInstance()->addCss($stylesPath . 'reveal.css');

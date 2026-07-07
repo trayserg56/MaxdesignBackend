@@ -11,7 +11,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
          data-swiper-pagination="fraction" data-swiper-slides="auto"
          data-swiper-breakpoints="{&quot;768&quot;: {&quot;spaceBetween&quot;: 20}, &quot;1280&quot;: {&quot;slidesPerView&quot;: 4, &quot;spaceBetween&quot;: 20}}">
         <div class="swiper-wrapper">
-            <?php foreach ($arResult['ITEMS'] as $key => $item) { ?>
+            <?php foreach ($arResult['ITEMS'] as $key => $item) {
+                $key++; ?>
                 <article class="service-card service__card swiper-slide">
                     <a class="service-card__link"
                         href="<?= $item['DETAIL_PAGE_URL'] ?>"

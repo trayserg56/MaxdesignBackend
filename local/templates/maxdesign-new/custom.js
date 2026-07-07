@@ -108,6 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initLazyPagination() {
         const targetElement = document.querySelector('[data-pagination-type][data-lazy]');
+
+        if (!targetElement) {
+            return;
+        }
+
         const parser = new DOMParser();
         const paginationContainer = targetElement.dataset.paginationContainerCode;
         const navNum = 'PAGEN_' + targetElement.dataset.navNum;
@@ -139,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: 0.1 // Triggers when 10% of the element is visible
         });
 
-        observer.observe(targetElement);
+        if (targetElement) {
+            observer.observe(targetElement);
+        }
     }
 });
