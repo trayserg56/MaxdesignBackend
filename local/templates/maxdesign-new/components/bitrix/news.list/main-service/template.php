@@ -20,7 +20,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                         <img
                             src="<?= \CFile::ResizeImageGet($item['PREVIEW_PICTURE'], [
                                 'width' => 400,
-                                'height' => 300,
+                                'height' => 400,
                             ], BX_RESIZE_IMAGE_EXACT)['src'] ?>"
                             alt="<?= $item['NAME'] ?>"
                             class="service-cart__image"
