@@ -62,11 +62,47 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
     Asset::getInstance()->addCss($stylesPath . 'projects-detail.css');
     Asset::getInstance()->addCss($stylesPath . 'projects-new-detail.css');
     ?>
-    <style>.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid #fff;margin-right:-5px;overflow:hidden}.slider .instruction{position:absolute;top:50%;z-index:1000;width:95%}.slider .instruction p{background:#fff;display:inline;padding:1%;font-size:1em;text-transform:uppercase}</style>
+    <style>.slider {
+            width: 100%;
+            height: auto;
+            padding: 0;
+            position: relative
+        }
+
+        .slider .right.image {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0
+        }
+
+        .slider .left.image {
+            position: relative;
+            z-index: 2;
+            border-right: 3px solid #fff;
+            margin-right: -5px;
+            overflow: hidden
+        }
+
+        .slider .instruction {
+            position: absolute;
+            top: 50%;
+            z-index: 1000;
+            width: 95%
+        }
+
+        .slider .instruction p {
+            background: #fff;
+            display: inline;
+            padding: 1%;
+            font-size: 1em;
+            text-transform: uppercase
+        }</style>
     <div class="portfolio-detail" id="portfoli-viewer">
         <div class="fluid-header fluid-header-portfolio">
             <div class="portfolio-slider">
-                <div class="portfolio-item fluid-bg" style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?: $arResult['PREVIEW_PICTURE']['SRC'] ?>')">
+                <div class="portfolio-item fluid-bg"
+                     style="background-image: url('<?= $arResult['DETAIL_PICTURE']['SRC'] ?: $arResult['PREVIEW_PICTURE']['SRC'] ?>')">
                     <div class="portfolio-detail-container">
                         <div class="portfolio-detail__head-content">
                             <div class="portfolio-detal__date"><?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></div>
@@ -88,13 +124,14 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
             <?= $arResult['~DETAIL_TEXT']; ?>
         </div>
     </div>
-<?php
+    <?php
     return;
 }
 ?>
 <section class="project-hero">
     <div class="project-hero__main">
-        <div class="project-hero__media"><img class="project-hero__image" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"
+        <div class="project-hero__media"><img class="project-hero__image"
+                                              src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"
                                               alt="<?= $arResult['NAME'] ?>" width="1920" height="967"
                                               loading="eager" decoding="async"></div>
         <div class="project-hero__overlay">
@@ -108,9 +145,10 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
             <?php if (isset($award)) { ?>
                 <div class="project-hero__award">
                     <img class="project-hero__award-logo"
-                                                      src="<?= $award['image']['file']['ORIGIN_SRC'] ?>" alt="<?= $award['textfield']['value'] ?>"
-                                                      width="85" height="40" loading="lazy" decoding="async">
-                    <div class="project-hero__award-text"><p class="project-hero__award-title"><?= $award['textfield']['value'] ?></p>
+                         src="<?= $award['image']['file']['ORIGIN_SRC'] ?>" alt="<?= $award['textfield']['value'] ?>"
+                         width="85" height="40" loading="lazy" decoding="async">
+                    <div class="project-hero__award-text"><p
+                                class="project-hero__award-title"><?= $award['textfield']['value'] ?></p>
                         <p class="project-hero__award-status"><?= $award['textfield1']['value'] ?></p></div>
                 </div>
             <?php } ?>
@@ -130,7 +168,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
     </div>
     <div class="project-hero__meta">
         <div class="container">
-            <div class="project-hero__meta-grid"><p class="project-hero__meta-year"><?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></p>
+            <div class="project-hero__meta-grid"><p
+                        class="project-hero__meta-year"><?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></p>
                 <div class="project-hero__meta-item"><p>
                         <span class="project-hero__meta-label">Место:</span>
                         <?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></p>
@@ -138,10 +177,13 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                         <?= str_replace('м2', 'м<sup>2</sup>', $arResult['PROPERTIES']['SQUARE']['VALUE']) ?></p></div>
                 <div class="project-hero__meta-item"><p><span class="project-hero__meta-label">Стиль:</span>
                         <?= $arResult['PROPERTIES']['STYLE']['VALUE'] ?></p>
-                    <p><span class="project-hero__meta-label">Тип:</span> <?= $arResult['PROPERTIES']['TYPE']['VALUE'] ?></p></div>
+                    <p>
+                        <span class="project-hero__meta-label">Тип:</span> <?= $arResult['PROPERTIES']['TYPE']['VALUE'] ?>
+                    </p></div>
                 <div class="project-hero__meta-item"><p><span
-                                class="project-hero__meta-label">Авторы проекта:</span> <?= $arResult['PROPERTIES']['AUTHOR']['VALUE'] ?></p>
-                    </div>
+                                class="project-hero__meta-label">Авторы проекта:</span> <?= $arResult['PROPERTIES']['AUTHOR']['VALUE'] ?>
+                    </p>
+                </div>
             </div>
             <div class="project-hero__meta-divider"></div>
         </div>
@@ -161,8 +203,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                     <a class="project-sections__nav-link" href="#<?= current($anchors) ?>">
                         <?= $title ?? $block['htag']['value'] ?>
                     </a>
-                <?php
-                unset ($anchors[key($anchors)], $title);
+                    <?php
+                    unset ($anchors[key($anchors)], $title);
                 } ?>
                 <span class="project-sections__nav-link project-sections__nav-link--disabled">Галерея</span>
             </nav>
@@ -174,7 +216,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                             if ($block['name'] === 'complex_about_project') {
                                 unset($detailPage[$key]);
                                 ?>
-                                <header class="about-project__header"><h2 class="about-project__title"><?= $block['htag']['value'] ?></h2>
+                                <header class="about-project__header"><h2
+                                            class="about-project__title"><?= $block['htag']['value'] ?></h2>
                                     <p class="about-project__text"><?= $block['text']['value'] ?></p></header>
                             <?php }
                         }
@@ -197,17 +240,19 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                                 </svg>
                                             </div>
                                             <img class="about-project__compare-image" slot="first"
-                                                 src="<?= $block['image']['file']['ORIGIN_SRC'] ?>" alt="<?= $block['image']['desc'] ?>"
+                                                 src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
+                                                 alt="<?= $block['image']['desc'] ?>"
                                                  width="1340" height="920" loading="lazy" decoding="async"><img
                                                     class="about-project__compare-image" slot="second"
-                                                    src="<?= $block['image1']['file']['ORIGIN_SRC'] ?>" alt="<?= $block['image1']['desc'] ?>"
+                                                    src="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
+                                                    alt="<?= $block['image1']['desc'] ?>"
                                                     width="1340" height="920" loading="lazy" decoding="async">
                                         </img-comparison-slider>
                                         <div class="about-project__compare-labels"><span>Концепция</span><span>Реализация</span>
                                         </div>
                                     </div>
                                     <p class="about-project__text about-project__text--note"><?= $block['text']['value'] ?></p>
-                                <?php
+                                    <?php
                                 }
 
                                 if ($block['name'] === 'complex_about_images') {
@@ -219,22 +264,25 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                                                                             src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                                                             alt="<?= $image['desc'] ?>"
                                                                                             width="660" height="920"
-                                                                                            loading="lazy" decoding="async">
+                                                                                            loading="lazy"
+                                                                                            decoding="async">
                                                 </div>
                                             <?php } ?>
                                         </div>
-                                    <?php
+                                        <?php
                                     } else { ?>
                                         <div class="about-project__image-wrap about-project__image-wrap--wide">
                                             <img
-                                                    class="about-project__image" src="<?= $block['gallery']['images'][0]['file']['ORIGIN_SRC'] ?>"
-                                                    alt="<?= $block['gallery']['images'][0]['desc'] ?>" width="1340" height="1020" loading="lazy"
+                                                    class="about-project__image"
+                                                    src="<?= $block['gallery']['images'][0]['file']['ORIGIN_SRC'] ?>"
+                                                    alt="<?= $block['gallery']['images'][0]['desc'] ?>" width="1340"
+                                                    height="1020" loading="lazy"
                                                     decoding="async"></div>
-                                    <?php
+                                        <?php
                                     }
                                     ?>
 
-                                <?php
+                                    <?php
                                 }
 
                                 if ($block['name'] === 'complex_life_video') {
@@ -242,18 +290,21 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                     ?>
                                     <div class="about-project__life">
                                         <img class="about-project__life-bg"
-                                             src="<?= $block['image']['file']['ORIGIN_SRC'] ?>" alt="<?= $block['image']['desc'] ?>"
+                                             src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
+                                             alt="<?= $block['image']['desc'] ?>"
                                              width="1340" height="807" loading="lazy"
                                              decoding="async">
                                         <div class="about-project__phone"><img class="about-project__phone-image"
                                                                                src="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
-                                                                               alt="<?= $block['image1']['desc'] ?>" width="299"
+                                                                               alt="<?= $block['image1']['desc'] ?>"
+                                                                               width="299"
                                                                                height="586" loading="lazy"
                                                                                decoding="async">
                                             <div class="about-project__phone-head"><span
                                                         class="about-project__phone-logo"
                                                         aria-hidden="true"></span><span
-                                                        class="about-project__phone-brand"><?= $block['textfield']['value'] ?></span></div>
+                                                        class="about-project__phone-brand"><?= $block['textfield']['value'] ?></span>
+                                            </div>
                                             <div class="about-project__phone-caption"><?= $block['textfield1']['value'] ?>
                                             </div>
                                             <div class="about-project__phone-controls" aria-hidden="true"><span
@@ -267,8 +318,12 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                 if ($block['name'] === 'complex_video_preview') {
                                     unset($detailPage[$key]);
+                                    //todo
                                     ?>
                                     <div class="about-project__video about-project__image-wrap about-project__image-wrap--wide">
+                                        <video class="about-project__video-element"
+                                               src="<?= $block['video']['url'] ?>" muted loop playsinline
+                                               preload="metadata" poster="<?= $block['image']['file']['ORIGIN_SRC'] ?>"></video>
                                         <img class="about-project__image" src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                              alt="<?= $block['image']['desc'] ?>" width="1340" height="704"
                                              loading="lazy" decoding="async">
@@ -292,14 +347,15 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                             if ($block['name'] === 'complex_layout') {
                                 unset($detailPage[$key]);
                                 ?>
-                                <header class="project-layout__header"><h2 class="project-layout__title"><?= $block['htag']['value'] ?></h2>
+                                <header class="project-layout__header"><h2
+                                            class="project-layout__title"><?= $block['htag']['value'] ?></h2>
                                     <p class="project-layout__text"><?= $block['text']['value'] ?></p></header>
                                 <div class="project-layout__image-wrap"><img class="project-layout__image"
                                                                              src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                                                              alt="<?= $block['htag']['value'] ?>"
                                                                              width="1339" height="557" loading="lazy"
                                                                              decoding="async"></div>
-                        <?php
+                                <?php
                             }
 
                             if ($block['name'] === 'complex_quote') {
@@ -317,12 +373,15 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                             <?= $block['text']['value'] ?></p>
                                         <footer class="project-layout__author">
                                             <div class="project-layout__author-photo-wrap"><img
-                                                        class="project-layout__author-photo" src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
-                                                        alt="<?= $block['textfield']['value'] ?>" width="60" height="60" loading="lazy"
+                                                        class="project-layout__author-photo"
+                                                        src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $block['textfield']['value'] ?>" width="60" height="60"
+                                                        loading="lazy"
                                                         decoding="async"></div>
                                             <div class="project-layout__author-meta"><p
                                                         class="project-layout__author-name"><?= $block['textfield']['value'] ?></p>
-                                                <p class="project-layout__author-role"><?= $block['textfield1']['value'] ?></p></div>
+                                                <p class="project-layout__author-role"><?= $block['textfield1']['value'] ?></p>
+                                            </div>
                                         </footer>
                                     </div>
                                 </blockquote>
@@ -358,32 +417,33 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                     };
 
                                     if (count($block['gallery']['images']) > 1) { ?>
-                                        <div class="project-interior__image-row <?= $class ?>">
-                                    <?php
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
                                         $class = '';
-                                    }
-                                    ?>
+                                        }
+                                        ?>
 
-                                    <?php foreach ($block['gallery']['images'] as $image) { ?>
-                                        <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                    class="project-interior__image" src="<?= $image['file']['ORIGIN_SRC'] ?>"
-                                                    alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
-                                        </div>
-                                    <?php
-                                    }
+                                        <?php foreach ($block['gallery']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
 
-                                    if (count($block['gallery']['images']) > 1) { ?>
+                                        if (count($block['gallery']['images']) > 1) { ?>
                                     </div>
-                                    <?php
-                                    }
+                                <?php
+                                }
 
-                                    $class = match (count($block['gallery1']['images'])) {
-                                        1 => 'project-interior__image-wrap--wide',
-                                        2 => 'project-interior__image-row--half',
-                                        default => 'project-interior__image-row--third',
-                                    };
+                                $class = match (count($block['gallery1']['images'])) {
+                                    1 => 'project-interior__image-wrap--wide',
+                                    2 => 'project-interior__image-row--half',
+                                    default => 'project-interior__image-row--third',
+                                };
 
-                                    if (count($block['gallery1']['images']) > 1) { ?>
+                                if (count($block['gallery1']['images']) > 1) { ?>
                                     <div class="project-interior__image-row <?= $class ?>">
                                         <?php
                                         $class = '';
@@ -392,7 +452,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery1']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image" src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        class="project-interior__image"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
                                             <?php
@@ -425,7 +486,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery2']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image" src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        class="project-interior__image"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
                                             <?php
@@ -433,15 +495,15 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         if (count($block['gallery2']['images']) > 1) { ?>
                                     </div>
-                                    <?php
-                                    }
-                                    $class = match (count($block['gallery3']['images'])) {
-                                        1 => 'project-interior__image-wrap--wide',
-                                        2 => 'project-interior__image-row--half',
-                                        default => 'project-interior__image-row--third',
-                                    };
+                                <?php
+                                }
+                                $class = match (count($block['gallery3']['images'])) {
+                                    1 => 'project-interior__image-wrap--wide',
+                                    2 => 'project-interior__image-row--half',
+                                    default => 'project-interior__image-row--third',
+                                };
 
-                                    if (count($block['gallery3']['images']) > 1) { ?>
+                                if (count($block['gallery3']['images']) > 1) { ?>
                                     <div class="project-interior__image-row <?= $class ?>">
                                         <?php
                                         $class = '';
@@ -450,7 +512,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery3']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image" src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        class="project-interior__image"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
                                             <?php
@@ -481,7 +544,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery4']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image" src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        class="project-interior__image"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
                                             <?php
@@ -507,7 +571,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery5']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image" src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        class="project-interior__image"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
                                             <?php

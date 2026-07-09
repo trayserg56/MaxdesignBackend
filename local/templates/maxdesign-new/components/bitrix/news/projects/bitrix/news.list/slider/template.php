@@ -14,10 +14,22 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             <?php foreach ($arResult['ITEMS'] as $item) { ?>
                 <div class="swiper-slide">
                     <article class="projects-page__featured-card">
-                        <div class="projects-page__featured-media"><img class="projects-page__featured-img"
-                                                                        src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
-                                                                        alt="<?= $item['NAME'] ?>"
-                                                                        loading="eager" decoding="async">
+                        <div class="projects-page__featured-media">
+                            <?php if ($item['PROPERTIES']['VIDEO']['VALUE']) { ?>
+                                <video class="projects-page__featured-img" autoplay muted loop playsinline
+                                       preload="auto"
+                                       aria-label="Дизайн офиса студии maxdesign в Санкт-Петербурге"
+                                       data-video-url="<?= \CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) ?>">
+                                    <source type="video/mp4" src="">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            <?php } else { ?>
+                                <img class="projects-page__featured-img"
+                                     src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
+                                     alt="<?= $item['NAME'] ?>"
+                                     loading="eager" decoding="async">
+                            <?php } ?>
+
                             <div class="projects-page__featured-overlay" aria-hidden="true"></div>
                             <div class="projects-page__featured-content"><h2
                                         class="projects-page__featured-title"><?= $item['NAME'] ?></h2>

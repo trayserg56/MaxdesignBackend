@@ -1,10 +1,13 @@
 <?php
 
+use Entity\Contacts;
+
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
-$contacts = \Entity\Contacts::getInstance();
+$promo = \Helpers\TemplateHelper::getPromoVideoSrc();
+$contacts = Contacts::getInstance();
 ?>
 <div class="modal-wrapper modal-wrapper--example" id="modal-example" data-modal>
     <div class="modal">
@@ -18,6 +21,20 @@ $contacts = \Entity\Contacts::getInstance();
             </div>
             <div class="modal__footer"><p class="modal__text">Test modal footer</p></div>
         </div>
+    </div>
+</div>
+<div class="modal-wrapper modal-wrapper--promo" id="promo" data-modal>
+    <div class="modal modal--promo">
+        <button class="modal__close button-close j_closeModal" type="button" aria-label="Закрыть промо">
+            <svg class="modal__close-icon">
+                <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#cross"></use>
+            </svg>
+        </button>
+        <video class="modal__video" controls preload="metadata" playsinline
+               data-video-url="<?= $promo ?>">
+            <source type="video/mp4" src="">
+            Ваш браузер не поддерживает видео.
+        </video>
     </div>
 </div>
 

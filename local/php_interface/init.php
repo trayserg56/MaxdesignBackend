@@ -8,6 +8,7 @@ use Entity\DTO\FormSubmitDTO;
 use Entity\Socials;
 use Entity\Form;
 use Entity\FormSubmits;
+use Helpers\TemplateHelper;
 
 Loader::registerAutoLoadClasses(
     null,
@@ -19,6 +20,7 @@ Loader::registerAutoLoadClasses(
         FormSubmits::class => '/local/php_interface/lib/Entity/FormSubmits.php',
         FormSubmitController::class => '/local/php_interface/lib/Controllers/FormSubmitController.php',
         FormSubmitDTO::class => '/local/php_interface/lib/Entity/DTO/FormSubmitDTO.php',
+        TemplateHelper::class => '/local/php_interface/lib/Helpers/TemplateHelper.php',
     ]
 );
 
