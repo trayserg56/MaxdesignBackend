@@ -294,22 +294,26 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                              alt="<?= $block['image']['desc'] ?>"
                                              width="1340" height="807" loading="lazy"
                                              decoding="async">
-                                        <div class="about-project__phone"><img class="about-project__phone-image"
-                                                                               src="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
-                                                                               alt="<?= $block['image1']['desc'] ?>"
-                                                                               width="299"
-                                                                               height="586" loading="lazy"
-                                                                               decoding="async">
+                                        <div class="about-project__phone">
+                                            <video class="about-project__phone-image" autoplay muted loop playsinline
+                                                   preload="metadata" poster="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
+                                                   aria-label="Life-видео maxdesign" width="299" height="586"
+                                                   data-video-url="<?= $block['video']['url'] ?>">
+                                                <source type="video/mp4">
+                                                Ваш браузер не поддерживает видео.
+                                            </video>
                                             <div class="about-project__phone-head"><span
                                                         class="about-project__phone-logo"
                                                         aria-hidden="true"></span><span
-                                                        class="about-project__phone-brand"><?= $block['textfield']['value'] ?></span>
+                                                        class="about-project__phone-brand"><?= $block['textfield']['value'] ?></span></div>
+                                            <div class="about-project__phone-caption"><?= $block['textfield1']['value'] ?></div>
+                                            <div class="about-project__phone-controls">
+                                                <button class="about-project__phone-toggle" type="button"
+                                                        aria-label="Поставить на паузу" aria-pressed="true"><span
+                                                            class="about-project__phone-pause"></span></button>
+                                                <div class="about-project__phone-track" aria-hidden="true"><span
+                                                            class="about-project__phone-track-line"></span></div>
                                             </div>
-                                            <div class="about-project__phone-caption"><?= $block['textfield1']['value'] ?>
-                                            </div>
-                                            <div class="about-project__phone-controls" aria-hidden="true"><span
-                                                        class="about-project__phone-pause"></span><span
-                                                        class="about-project__phone-track"></span></div>
                                         </div>
                                     </div>
                                     <?php
@@ -318,13 +322,16 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                 if ($block['name'] === 'complex_video_preview') {
                                     unset($detailPage[$key]);
-                                    //todo
                                     ?>
                                     <div class="about-project__video about-project__image-wrap about-project__image-wrap--wide">
-                                        <video class="about-project__video-element"
-                                               src="<?= $block['video']['url'] ?>" muted loop playsinline
-                                               preload="metadata" poster="<?= $block['image']['file']['ORIGIN_SRC'] ?>"></video>
-                                        <img class="about-project__image" src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
+                                        <video class="about-project__video-element" muted loop playsinline
+                                               preload="metadata" poster="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
+                                               data-video-url="<?= $block['video']['url'] ?>">
+                                            <source type="video/mp4">
+                                            Ваш браузер не поддерживает видео.
+                                        </video>
+                                        <img class="about-project__image"
+                                             src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                              alt="<?= $block['image']['desc'] ?>" width="1340" height="704"
                                              loading="lazy" decoding="async">
                                         <button class="about-project__video-play" type="button"
