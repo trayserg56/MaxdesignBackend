@@ -1,5 +1,6 @@
 <?php
 
+use Entity\Contacts;
 use Entity\Socials;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
@@ -7,11 +8,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 }
 
 global $APPLICATION;
-$contacts = \Entity\Contacts::getInstance();
+$contacts = Contacts::getInstance();
 $form = \Entity\Form::getInstance();
 ?>
 
-    </main>
+</main>
 <footer class="footer">
     <div class="footer__feedback">
         <div class="footer__feedback-map">
@@ -25,12 +26,12 @@ $form = \Entity\Form::getInstance();
                             class="footer__feedback-title-line">
                         <?php
                         $APPLICATION->IncludeComponent(
-                                "bitrix:main.include",
-                                "",
-                                [
-                                        "AREA_FILE_SHOW" => "file",
-                                        "PATH" => SITE_TEMPLATE_PATH . "/include/footer-intro.php",
-                                ]
+                            "bitrix:main.include",
+                            "",
+                            [
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => SITE_TEMPLATE_PATH . "/include/footer-intro.php",
+                            ]
                         );
                         ?>
                         </span><span
@@ -38,12 +39,12 @@ $form = \Entity\Form::getInstance();
 
                         <?php
                         $APPLICATION->IncludeComponent(
-                                "bitrix:main.include",
-                                "",
-                                [
-                                        "AREA_FILE_SHOW" => "file",
-                                        "PATH" => SITE_TEMPLATE_PATH . "/include/footer-intro-second-part.php",
-                                ]
+                            "bitrix:main.include",
+                            "",
+                            [
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => SITE_TEMPLATE_PATH . "/include/footer-intro-second-part.php",
+                            ]
                         );
                         ?>
                         </span>
@@ -51,22 +52,23 @@ $form = \Entity\Form::getInstance();
                 <p class="footer__feedback-text">
                     <?php
                     $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            [
-                                    "AREA_FILE_SHOW" => "file",
-                                    "PATH" => SITE_TEMPLATE_PATH . "/include/footer-feedback-text.php",
-                            ]
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => SITE_TEMPLATE_PATH . "/include/footer-feedback-text.php",
+                        ]
                     );
                     ?>
 
-                   </p></div>
+                </p></div>
             <?php include 'include/feedback_form.php' ?>
         </div>
     </div>
     <div class="container footer__inner">
         <div class="footer__top"><a class="footer__logo" href="/" aria-label="maxdesign"><img
-                        class="footer__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/light-logo.cb3f0ad8.png" alt="" width="247"
+                        class="footer__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/light-logo.cb3f0ad8.png"
+                        alt="" width="247"
                         height="48"></a>
             <nav class="footer__nav" aria-label="Навигация в подвале">
                 <?php
@@ -94,9 +96,12 @@ $form = \Entity\Form::getInstance();
                 <div class="footer__contacts">
                     <div class="footer__contact-group">
                         <div class="footer__contact-item"><p class="footer__label">Для вопросов и заявок</p><a
-                                    class="footer__link" href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
+                                    class="footer__link"
+                                    href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                         </div>
-                        <a class="footer__link" href="tel:<?= $contacts->getFormatedPhone('phone') ?>"><?= $contacts->get('phone') ?></a></div>
+                        <a class="footer__link"
+                           href="tel:<?= $contacts->getFormatedPhone('phone') ?>"><?= $contacts->get('phone') ?></a>
+                    </div>
                     <div class="footer__contact-group footer__contact-group--secondary"><p class="footer__label">Для
                             предложений по сотрудничеству</p><a class="footer__link"
                                                                 href="mailto:<?= $contacts->get('email-offer') ?>"><?= $contacts->get('email-offer') ?></a>
@@ -107,7 +112,8 @@ $form = \Entity\Form::getInstance();
             </div>
             <div class="footer__socials">
                 <?php foreach (Socials::getInstance()->get() as $item) { ?>
-                    <a class="footer__social" href="<?= $item['UF_LINK'] ?>" title="<?= $item['UF_TITLE'] ?>" aria-label="<?= $item['UF_ARIA_LABEL'] ?>"
+                    <a class="footer__social" href="<?= $item['UF_LINK'] ?>" title="<?= $item['UF_TITLE'] ?>"
+                       aria-label="<?= $item['UF_ARIA_LABEL'] ?>"
                        target="_blank" rel="noopener noreferrer">
                         <img class="footer__social-icon" src="<?= $item['UF_ICON'] ?>" alt="" width="48" height="48">
                     </a>
@@ -120,10 +126,13 @@ $form = \Entity\Form::getInstance();
                     <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#arrow-down"></use>
                 </svg>
             </a>
-            <div class="footer__bottom-info"><p class="footer__copyright">2015-<?= date('Y') ?> maxdesign. Все права защищены.
+            <div class="footer__bottom-info"><p class="footer__copyright">2015-<?= date('Y') ?> maxdesign. Все права
+                    защищены.
                     Любое использование материалов сайта только с письменного согласия ООО «МД»</p>
-                <div class="footer__links"><a class="footer__bottom-link" href="<?= $contacts->get('policy') ?>">Политика конфиденциальности</a><a
-                            class="footer__bottom-link" href="<?= $contacts->get('cookie') ?>">Настройки cookie</a></div>
+                <div class="footer__links"><a class="footer__bottom-link" href="<?= $contacts->get('policy') ?>">Политика
+                        конфиденциальности</a><a
+                            class="footer__bottom-link" href="<?= $contacts->get('cookie') ?>">Настройки cookie</a>
+                </div>
             </div>
         </div>
     </div>

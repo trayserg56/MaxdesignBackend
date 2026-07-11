@@ -57,6 +57,9 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
                 'GROUP_PERMISSIONS' => $arParams['GROUP_PERMISSIONS'],
                 'FILTER_NAME' => $arParams['FILTER_NAME_SLIDER'],
+                'PROPERTY_CODE' => [
+                    'VIDEO'
+                ],
             ],
             $component
         ); ?><?php if ($arParams['USE_FILTER'] == 'Y') {

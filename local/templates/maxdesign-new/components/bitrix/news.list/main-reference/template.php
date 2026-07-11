@@ -31,8 +31,10 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     <div class="reference-list__row" role="row">
                         <div class="reference-list__cell reference-list__cell--index" role="cell"><span
                                     class="reference-list__index"><?= $key < 10 ? '0' . $key : $key ?></span></div>
-                        <div class="reference-list__cell reference-list__cell--name" role="cell"><?= $item['NAME'] ?></div>
-                        <div class="reference-list__cell reference-list__cell--type" role="cell"><?= $item['SECTION_NAME'] ?></div>
+                        <div class="reference-list__cell reference-list__cell--name"
+                             role="cell"><?= $item['NAME'] ?></div>
+                        <div class="reference-list__cell reference-list__cell--type"
+                             role="cell"><?= $item['SECTION_NAME'] ?></div>
                         <div class="reference-list__cell reference-list__cell--area" role="cell">
                             <?= $item['SQUARE'] ?>
                         </div>
@@ -49,21 +51,6 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <?php foreach ($arResult['ITEMS'] as $key => $item) {
                     $key++;
                     ?>
-                    <div class="reference-list__row" role="row">
-                        <div class="reference-list__cell reference-list__cell--index" role="cell"><span
-                                    class="reference-list__index"></span></div>
-                        <div class="reference-list__cell reference-list__cell--name" role="cell"><?= $item['NAME'] ?></div>
-                        <div class="reference-list__cell reference-list__cell--type" role="cell"><?= $item['SECTION_NAME'] ?></div>
-                        <div class="reference-list__cell reference-list__cell--area" role="cell">
-                            <?= $item['SQUARE'] ?>
-                        </div>
-                        <div class="reference-list__cell reference-list__cell--place" role="cell">
-                            <?= $item['ADDRESS'] ?>
-                        </div>
-                        <div class="reference-list__cell reference-list__cell--year" role="cell">
-                            <?= $item['YEAR'] ?>
-                        </div>
-                    </div>
                     <article class="reference-list__item" data-accordion="reference-<?= $key ?>">
                         <button class="reference-list__trigger" type="button" data-accordion-button
                                 aria-expanded="false"><span class="reference-list__index"><?= $key < 10 ? '0' . $key : $key ?></span><span
@@ -75,22 +62,34 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                         <div class="reference-list__details" data-accordion-content>
                             <div class="reference-list__details-inner">
                                 <dl class="reference-list__meta">
-                                    <div class="reference-list__meta-row">
-                                        <dt class="reference-list__meta-label">Тип:</dt>
-                                        <dd class="reference-list__meta-value"><?= $item['SECTION_NAME'] ?></dd>
-                                    </div>
-                                    <div class="reference-list__meta-row">
-                                        <dt class="reference-list__meta-label">Площадь, м<sup>2</sup>:</dt>
-                                        <dd class="reference-list__meta-value"><?= $item['SQUARE'] ?></dd>
-                                    </div>
-                                    <div class="reference-list__meta-row">
-                                        <dt class="reference-list__meta-label">Место:</dt>
-                                        <dd class="reference-list__meta-value"><?= $item['ADDRESS'] ?></dd>
-                                    </div>
-                                    <div class="reference-list__meta-row">
-                                        <dt class="reference-list__meta-label">Год:</dt>
-                                        <dd class="reference-list__meta-value"><?= $item['YEAR'] ?></dd>
-                                    </div>
+
+                                    <?php if ($item['SECTION_NAME']) { ?>
+                                        <div class="reference-list__meta-row">
+                                            <dt class="reference-list__meta-label">Тип:</dt>
+                                            <dd class="reference-list__meta-value"><?= $item['SECTION_NAME'] ?></dd>
+                                        </div>
+                                    <?php } ?>
+
+                                    <?php if ($item['SQUARE']) { ?>
+                                        <div class="reference-list__meta-row">
+                                            <dt class="reference-list__meta-label">Площадь, м<sup>2</sup>:</dt>
+                                            <dd class="reference-list__meta-value"><?= $item['SQUARE'] ?></dd>
+                                        </div>
+                                    <?php } ?>
+
+                                    <?php if ($item['ADDRESS']) { ?>
+                                        <div class="reference-list__meta-row">
+                                            <dt class="reference-list__meta-label">Место:</dt>
+                                            <dd class="reference-list__meta-value"><?= $item['ADDRESS'] ?></dd>
+                                        </div>
+                                    <?php } ?>
+
+                                    <?php if ($item['YEAR']) { ?>
+                                        <div class="reference-list__meta-row">
+                                            <dt class="reference-list__meta-label">Год:</dt>
+                                            <dd class="reference-list__meta-value"><?= $item['YEAR'] ?></dd>
+                                        </div>
+                                    <?php } ?>
                                 </dl>
                             </div>
                         </div>

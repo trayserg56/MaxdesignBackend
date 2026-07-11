@@ -18,7 +18,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                             <?php if ($item['PROPERTIES']['VIDEO']['VALUE']) { ?>
                                 <video class="projects-page__featured-img" autoplay muted loop playsinline
                                        preload="auto"
-                                       aria-label="Дизайн офиса студии maxdesign в Санкт-Петербурге"
+                                       aria-label="<?= $item['NAME'] ?>"
                                        data-video-url="<?= \CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) ?>">
                                     <source type="video/mp4" src="">
                                     Ваш браузер не поддерживает видео.
