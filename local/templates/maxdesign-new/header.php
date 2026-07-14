@@ -49,7 +49,8 @@ CUtil::InitJSCore(['ajax']);
         <div class="container">
             <div class="header__wrap">
                 <a class="header__logo" href="/" aria-label="На главную"><img
-                            class="header__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo.svg" alt="maxdesign" width="156"
+                            class="header__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo.svg"
+                            alt="maxdesign" width="156"
                             height="24" loading="eager" decoding="async"></a>
                 <nav class="header__nav" aria-label="Основная навигация">
                     <?php
@@ -69,10 +70,12 @@ CUtil::InitJSCore(['ajax']);
                 </nav>
                 <div class="header__info">
                     <div class="header__contacts">
-                        <a class="header__contact" href="tel:<?= $contacts->getFormatedPhone('phone') ?>"><?= $contacts->get('phone') ?></a>
-                        <a class="header__contact" href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
+                        <a class="header__contact"
+                           href="tel:<?= $contacts->getFormatedPhone('phone') ?>"><?= $contacts->get('phone') ?></a>
+                        <a class="header__contact"
+                           href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <a class="button header__button" href="/kontakty/">Обсудить проект</a>
+                    <button class="button header__button" type="button" data-modal-target="#discuss-project">Обсудить проект</button>
                     <button class="header__menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"
                             aria-controls="header-menu">
                         <svg class="header__menu-icon header__menu-icon--open">
@@ -103,11 +106,12 @@ CUtil::InitJSCore(['ajax']);
                     );
                     ?>
                 </nav>
-                <div class="header__menu-contacts"><a class="header__menu-contact" href="tel:<?= $contacts->getFormatedPhone('phone') ?>">
-                        <?= $contacts->get('phone') ?></a><a class="header__menu-contact" href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
+                <div class="header__menu-contacts"><a class="header__menu-contact"
+                                                      href="tel:<?= $contacts->getFormatedPhone('phone') ?>">
+                        <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
+                                                             href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                 </div>
                 <a class="button button--cta-dark header__menu-button" href="/contact">Обсудить проект</a></div>
         </div>
     </header>
     <main>
-

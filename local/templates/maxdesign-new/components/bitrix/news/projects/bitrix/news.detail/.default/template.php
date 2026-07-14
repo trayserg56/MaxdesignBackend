@@ -295,8 +295,9 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                              width="1340" height="807" loading="lazy"
                                              decoding="async">
                                         <div class="about-project__phone">
-                                            <video class="about-project__phone-image" autoplay muted loop playsinline
-                                                   preload="metadata" poster="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
+                                            <video class="about-project__phone-image" autoplay controls muted
+                                                   playsinline preload="metadata"
+                                                   poster="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
                                                    aria-label="Life-видео maxdesign" width="299" height="586"
                                                    data-video-url="<?= $block['video']['url'] ?>">
                                                 <source type="video/mp4">
@@ -306,13 +307,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                                         class="about-project__phone-logo"
                                                         aria-hidden="true"></span><span
                                                         class="about-project__phone-brand"><?= $block['textfield']['value'] ?></span></div>
-                                            <div class="about-project__phone-caption"><?= $block['textfield1']['value'] ?></div>
-                                            <div class="about-project__phone-controls">
-                                                <button class="about-project__phone-toggle" type="button"
-                                                        aria-label="Поставить на паузу" aria-pressed="true"><span
-                                                            class="about-project__phone-pause"></span></button>
-                                                <div class="about-project__phone-track" aria-hidden="true"><span
-                                                            class="about-project__phone-track-line"></span></div>
+                                            <div class="about-project__phone-caption"><?= $block['textfield1']['value'] ?>
                                             </div>
                                         </div>
                                     </div>
@@ -324,21 +319,12 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                     unset($detailPage[$key]);
                                     ?>
                                     <div class="about-project__video about-project__image-wrap about-project__image-wrap--wide">
-                                        <video class="about-project__video-element" muted loop playsinline
+                                        <video class="about-project__video-element" autoplay controls muted playsinline
                                                preload="metadata" poster="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                                data-video-url="<?= $block['video']['url'] ?>">
                                             <source type="video/mp4">
                                             Ваш браузер не поддерживает видео.
                                         </video>
-                                        <img class="about-project__image"
-                                             src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
-                                             alt="<?= $block['image']['desc'] ?>" width="1340" height="704"
-                                             loading="lazy" decoding="async">
-                                        <button class="about-project__video-play" type="button"
-                                                aria-label="Смотреть видео"><span
-                                                    class="about-project__video-play-icon"></span></button>
-                                        <div class="about-project__video-progress" aria-hidden="true"><span
-                                                    class="about-project__video-progress-line"></span></div>
                                     </div>
                                     <?php
                                 }
