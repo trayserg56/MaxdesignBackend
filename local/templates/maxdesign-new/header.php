@@ -49,7 +49,7 @@ CUtil::InitJSCore(['ajax']);
         <div class="container">
             <div class="header__wrap">
                 <a class="header__logo" href="/" aria-label="На главную"><img
-                            class="header__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/dark-logo.6d0ec762.png" alt="maxdesign" width="156"
+                            class="header__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo.svg" alt="maxdesign" width="156"
                             height="24" loading="eager" decoding="async"></a>
                 <nav class="header__nav" aria-label="Основная навигация">
                     <?php
@@ -72,7 +72,7 @@ CUtil::InitJSCore(['ajax']);
                         <a class="header__contact" href="tel:<?= $contacts->getFormatedPhone('phone') ?>"><?= $contacts->get('phone') ?></a>
                         <a class="header__contact" href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <a class="button button--middle header__button" href="/contact">Обсудить проект</a>
+                    <a class="button header__button" href="/kontakty/">Обсудить проект</a>
                     <button class="header__menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"
                             aria-controls="header-menu">
                         <svg class="header__menu-icon header__menu-icon--open">
