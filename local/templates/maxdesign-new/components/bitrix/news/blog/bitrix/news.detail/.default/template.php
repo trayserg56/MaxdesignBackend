@@ -138,7 +138,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 ?>
 
 <section class="post-hero">
-    <div class="post-hero__media"><img class="post-hero__image" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"
+    <div class="post-hero__media"><img class="post-hero__image glightbox" src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"
+                                       data-gallery="projectGallery"
                                        alt="<?= strip_tags($arResult['~NAME']) ?>" width="1920"
                                        height="640" loading="eager" decoding="async"></div>
     <div class="container">
@@ -195,7 +196,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                             <div class="post-article__lead">
                                 <?= $block['text']['value'] ?>
                             </div>
-                            <figure class="post-article__figure"><img class="post-article__image"
+                            <figure class="post-article__figure"><img class="post-article__image glightbox"
+                                                                      data-gallery="projectGallery"
                                                                       src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                                                       alt="<?= $block['image']['desc'] ?>"
                                                                       width="1120" height="917" loading="lazy"
@@ -212,7 +214,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                  height="40" loading="lazy" decoding="async"
                                  aria-hidden="true">
                             <div class="post-article__quote-content"><p class="post-article__quote-text"><?= $block['text']['value'] ?></p>
-                                <div class="post-article__quote-author"><img class="post-article__quote-avatar"
+                                <div class="post-article__quote-author"><img class="post-article__quote-avatar glightbox" data-gallery="projectGallery"
                                                                              src="<?= $block['image']['file']['SRC'] ?>"
                                                                              alt="<?= $block['image']['desc'] ?>"
                                                                              width="60" height="60" loading="lazy"
@@ -283,7 +285,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                          data-swiper-config="{&quot;watchOverflow&quot;: false}">
                         <div class="swiper-wrapper">
                             <?php foreach ($block['images'] as $image) { ?>
-                                <div class="swiper-slide post-gallery__slide--wide"><img class="post-gallery__image"
+                                <div class="swiper-slide post-gallery__slide--wide"><img class="post-gallery__image glightbox"
+                                     data-gallery="projectGallery"
                                      src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                      alt="<?= $image['desc'] ?>"
                                      loading="lazy"

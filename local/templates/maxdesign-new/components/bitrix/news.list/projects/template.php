@@ -4,6 +4,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
+/** @var array $arParams */
 /** @var array $arResult */
 ?>
 <section class="completed-projects">
@@ -26,14 +27,25 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                 <img class="swiper-slide__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                      alt="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                      loading="lazy" decoding="async">
-                                <h3 class="swiper-slide__title"><?= $item['NAME'] ?></h3>
+                                <h3 class="swiper-slide__title">
+                                    <?= mb_substr($item['NAME'], 0, 45) . (mb_strlen($item['NAME']) > 45 ? '...' : '') ?>
+                                </h3>
                                 <div class="swiper-slide__footer">
-                                    <?php if ($item['PROPERTIES']['ADDRESS']['VALUE']) { ?>
+                                    <?php if ($arParams['SHOW_YEAR_AND_SECTION'] && $item['PROPERTIES']['YEAR']['VALUE']) { ?>
+                                        <div class="swiper-slide__year"><?= $item['PROPERTIES']['YEAR']['VALUE'] ?></div>
+                                    <?php } ?>
+
+                                    <?php if ($arParams['SHOW_YEAR_AND_SECTION'] && $item['SECTION_NAME']) { ?>
+                                        <div class="swiper-slide__category"><?= $item['SECTION_NAME'] ?></div>
+                                    <?php } ?>
+
+                                    <?php if (!$arParams['SHOW_YEAR_AND_SECTION'] && $item['PROPERTIES']['ADDRESS']['VALUE']) { ?>
                                         <div class="swiper-slide__city"><?= $item['PROPERTIES']['ADDRESS']['VALUE'] ?></div>
                                     <?php } ?>
-                                    <?php if ($item['PROPERTIES']['SQUARE']['VALUE']) { ?>
+
+                                    <?php if (!$arParams['SHOW_YEAR_AND_SECTION'] && $item['PROPERTIES']['SQUARE']['VALUE']) { ?>
                                         <div class="swiper-slide__square"><?= $item['PROPERTIES']['SQUARE']['VALUE'] ?> м2</div>
-                                    <?php } elseif ($item['PROPERTIES']['SQUARE_OBJECT']['VALUE']) { ?>
+                                    <?php } elseif (!$arParams['SHOW_YEAR_AND_SECTION'] && $item['PROPERTIES']['SQUARE_OBJECT']['VALUE']) { ?>
                                         <div class="swiper-slide__square"><?= $item['PROPERTIES']['SQUARE_OBJECT']['VALUE'] ?> м2</div>
                                     <?php } ?>
                                 </div>

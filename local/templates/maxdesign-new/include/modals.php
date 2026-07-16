@@ -128,3 +128,18 @@ $form = \Entity\Form::getInstance();
             </label></form>
     </div>
 </div>
+
+<div class="modal-wrapper modal-wrapper--promo" id="promo" data-modal="">
+    <div class="modal modal--promo">
+        <button class="modal__close button-close j_closeModal" type="button" aria-label="Закрыть промо">
+            <svg class="modal__close-icon">
+                <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#cross"></use>
+            </svg>
+        </button>
+        <video class="modal__video" controls="" preload="metadata" playsinline=""
+               data-video-url="video/reportaj-compressed.bd2fad68.mp4">
+            <source type="video/mp4" src="">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </div>
+</div>

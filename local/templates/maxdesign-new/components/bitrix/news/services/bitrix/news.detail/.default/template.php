@@ -39,7 +39,12 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
         </div>
     </section>
     <section class="section-img">
-        <img src="<?= \CFile::GetPath($arResult['PROPERTIES']['FS_BG_PICTURE']['VALUE']) ?>" alt="<?= $arResult['NAME'] ?>">
+        <img
+            data-gallery="projectGallery"
+            src="<?= \CFile::GetPath($arResult['PROPERTIES']['FS_BG_PICTURE']['VALUE']) ?>"
+            alt="<?= $arResult['NAME'] ?>"
+            class="glightbox"
+        >
     </section>
 <?php } else { ?>
     <section class="architectural-screen-first" style="background-image: url(<?= \CFile::GetPath($arResult['PROPERTIES']['FS_BG_PICTURE']['VALUE']) ?>)">
@@ -120,8 +125,11 @@ foreach ($detailPage as $block) {
                             </div>
                         </div>
                         <div class="service-technologies__img">
-                            <img src="<?= $block['image']['file']['SRC'] ?>"
-                                 alt="<?= $block['image']['file']['DESCRIPTION'] ?: $block['textfield1']['value'] ?>">
+                            <img
+                                class="glightbox"
+                                data-gallery="projectGallery"
+                                src="<?= $block['image']['file']['SRC'] ?>"
+                                alt="<?= $block['image']['file']['DESCRIPTION'] ?: $block['textfield1']['value'] ?>">
                         </div>
                     </div>
                 </div>

@@ -82,10 +82,9 @@ $APPLICATION->IncludeComponent(
         'SORT_BY2' => 'SORT',
         'SORT_ORDER2' => 'ASC',
         'PROPERTY_CODE' => [
-            'SQUARE',
-            'SQUARE_OBJECT',
-            'ADDRESS',
+            'YEAR',
         ],
+        'SHOW_YEAR_AND_SECTION' => 'Y',
         'ACTIVE_DATE_FORMAT' => 'd.m.Y',
         'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
         'ADD_SECTIONS_CHAIN' => 'N',

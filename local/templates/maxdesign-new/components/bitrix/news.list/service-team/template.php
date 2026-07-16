@@ -15,8 +15,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
         <div class="swiper-wrapper">
             <?php foreach ($arResult['ITEMS'] as $item) { ?>
                 <div class="swiper-slide" style="width: 339px; margin-right: 20px;">
-                    <img class="swiper-slide__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['NAME'] ?>"
-                         loading="lazy" decoding="async">
+                    <img class="swiper-slide__img glightbox" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="<?= $item['NAME'] ?>"
+                         loading="lazy" decoding="async" data-gallery="projectGallery">
                     <h3 class="swiper-slide__title"><?= $item['NAME'] ?></h3>
                     <div class="swiper-slide__descr"><?= $item['PREVIEW_TEXT'] ?></div>
                 </div>

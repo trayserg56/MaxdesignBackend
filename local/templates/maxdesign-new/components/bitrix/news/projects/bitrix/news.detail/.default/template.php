@@ -130,7 +130,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 ?>
 <section class="project-hero">
     <div class="project-hero__main">
-        <div class="project-hero__media"><img class="project-hero__image"
+        <div class="project-hero__media"><img class="project-hero__image glightbox" data-gallery="projectGallery"
                                               src="<?= $arResult['DETAIL_PICTURE']['SRC'] ?>"
                                               alt="<?= $arResult['NAME'] ?>" width="1920" height="967"
                                               loading="eager" decoding="async"></div>
@@ -239,11 +239,13 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                                     <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#arrowFeatured"></use>
                                                 </svg>
                                             </div>
-                                            <img class="about-project__compare-image" slot="first"
+                                            <img class="about-project__compare-image glightbox" slot="first"
+                                                 data-gallery="projectGallery"
                                                  src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                                  alt="<?= $block['image']['desc'] ?>"
                                                  width="1340" height="920" loading="lazy" decoding="async"><img
-                                                    class="about-project__compare-image" slot="second"
+                                                    class="about-project__compare-image glightbox" slot="second"
+                                                    data-gallery="projectGallery"
                                                     src="<?= $block['image1']['file']['ORIGIN_SRC'] ?>"
                                                     alt="<?= $block['image1']['desc'] ?>"
                                                     width="1340" height="920" loading="lazy" decoding="async">
@@ -260,7 +262,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                     if (count($block['gallery']['images']) > 1) { ?>
                                         <div class="about-project__image-row">
                                             <?php foreach ($block['gallery']['images'] as $image) { ?>
-                                                <div class="about-project__image-wrap"><img class="about-project__image"
+                                                <div class="about-project__image-wrap"><img class="about-project__image glightbox"
+                                                                                            data-gallery="projectGallery"
                                                                                             src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                                                             alt="<?= $image['desc'] ?>"
                                                                                             width="660" height="920"
@@ -273,7 +276,8 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                     } else { ?>
                                         <div class="about-project__image-wrap about-project__image-wrap--wide">
                                             <img
-                                                    class="about-project__image"
+                                                    class="about-project__image glightbox"
+                                                    data-gallery="projectGallery"
                                                     src="<?= $block['gallery']['images'][0]['file']['ORIGIN_SRC'] ?>"
                                                     alt="<?= $block['gallery']['images'][0]['desc'] ?>" width="1340"
                                                     height="1020" loading="lazy"
@@ -343,7 +347,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                 <header class="project-layout__header"><h2
                                             class="project-layout__title"><?= $block['htag']['value'] ?></h2>
                                     <p class="project-layout__text"><?= $block['text']['value'] ?></p></header>
-                                <div class="project-layout__image-wrap"><img class="project-layout__image"
+                                <div class="project-layout__image-wrap"><img class="project-layout__image glightbox" data-gallery="projectGallery"
                                                                              src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                                                              alt="<?= $block['htag']['value'] ?>"
                                                                              width="1339" height="557" loading="lazy"
@@ -366,7 +370,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                             <?= $block['text']['value'] ?></p>
                                         <footer class="project-layout__author">
                                             <div class="project-layout__author-photo-wrap"><img
-                                                        class="project-layout__author-photo"
+                                                        class="project-layout__author-photo glightbox" data-gallery="projectGallery"
                                                         src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $block['textfield']['value'] ?>" width="60" height="60"
                                                         loading="lazy"
@@ -418,7 +422,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image"
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
                                                         src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
@@ -445,7 +449,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery1']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image"
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
                                                         src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
@@ -479,7 +483,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery2']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image"
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
                                                         src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
@@ -505,7 +509,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery3']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image"
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
                                                         src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
@@ -537,7 +541,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery4']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image"
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
                                                         src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
@@ -564,7 +568,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
 
                                         <?php foreach ($block['gallery5']['images'] as $image) { ?>
                                             <div class="project-interior__image-wrap <?= $class ?>"><img
-                                                        class="project-interior__image"
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
                                                         src="<?= $image['file']['ORIGIN_SRC'] ?>"
                                                         alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
                                             </div>
