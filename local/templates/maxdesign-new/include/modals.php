@@ -26,22 +26,7 @@ $form = \Entity\Form::getInstance();
     </div>
 </div>
 
-<div class="modal-wrapper modal-wrapper--example" id="form-submit-success" data-modal>
-    <div class="modal">
-        <div class="modal__wrap">
-            <div class="modal__header">Ваша заявка успешно отправлена</div>
-            <div class="modal__body">
-                <div class="modal__content"><p class="modal__text">
-                        Менеджер свяжется с вами в ближайшее время
-                    </p>
-                </div>
-            </div>
-            <div class="modal__footer">
-                <button class="button" onclick="Modal.close('form-submit-success');">Хорошо</button>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="modal-wrapper modal-wrapper--discuss-success" id="form-submit-success" data-modal="" style=""><div class="modal modal--discuss-success"><button class="modal__close button button-close j_closeModal" type="button" aria-label="Закрыть"><svg class="modal__close-icon"><use xlink:href="/svg/sprite.svg#cross"></use></svg></button><h2 class="modal__title">Заявка отправлена!</h2><p class="modal__text">В&nbsp;течение дня менеджер с&nbsp;вами свяжется</p><button class="button button--cta-dark modal__action j_closeModal" type="button">Хорошо</button></div></div>
 
 <div class="modal-wrapper modal-wrapper--example" id="form-submit-error" data-modal>
     <div class="modal">
@@ -68,7 +53,7 @@ $form = \Entity\Form::getInstance();
         <div class="modal__header modal__header--discuss"><h2 class="modal__title">Обсудить проект</h2>
             <button class="modal__close button button-close j_closeModal" type="button" aria-label="Закрыть">
                 <svg class="modal__close-icon">
-                    <use xlink:href="/svg/sprite.svg#cross"></use>
+                    <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#cross"></use>
                 </svg>
             </button>
         </div>
@@ -100,10 +85,12 @@ $form = \Entity\Form::getInstance();
                             break;
                         default: ?>
                             <div class="discuss-form__field">
-                                <input class="discuss-form__input" type="<?= $field['type'] ?>"
+                                <input class="discuss-form__input <?= in_array($field['type'], ['tel', 'email']) ? 'j_mask' : '' ?>" type="<?= $field['type'] ?>"
                                        id="discuss-<?= $field['name'] ?>" name="<?= $field['name'] ?>"
                                        placeholder="<?= $field['placeholder'] ?>"
-                                    <?= $field['type'] === 'tel' ? 'data-inputmask="\'mask\': \'+ 7(999) 999-99-99\'"' : '' ?>/>
+                                    <?= $field['type'] === 'tel' ? 'data-inputmask="\'mask\': \'+ 7(999) 999-99-99\'"' : '' ?>
+                                    <?= $field['type'] === 'email' ? 'data-inputmask="\'alias\': \'email\'"' : '' ?>
+                                />
                             </div>
                             <?php break;
                     }

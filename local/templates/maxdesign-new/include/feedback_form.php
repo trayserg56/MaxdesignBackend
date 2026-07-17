@@ -34,9 +34,12 @@ $form = \Entity\Form::getInstance();
                         break;
                     default: ?>
                         <div class="feedback-form__field">
-                            <input class="feedback-form__input" type="<?= $field['type'] ?>"
+                            <input class="feedback-form__input <?= in_array($field['type'], ['tel', 'email']) ? 'j_mask' : '' ?>" type="<?= $field['type'] ?>"
                                    id="feedback-<?= $field['name'] ?>" name="<?= $field['name'] ?>"
-                                   placeholder="<?= $field['placeholder'] ?>" />
+                                   placeholder="<?= $field['placeholder'] ?>"
+                                   <?= $field['type'] === 'tel' ? 'data-inputmask="\'mask\': \'+ 7(999) 999-99-99\'" inputmode="text"' : '' ?>
+                                   <?= $field['type'] === 'email' ? 'data-inputmask="\'alias\': \'email\'"' : '' ?>
+                            />
                         </div>
                 <?php break;
                 }

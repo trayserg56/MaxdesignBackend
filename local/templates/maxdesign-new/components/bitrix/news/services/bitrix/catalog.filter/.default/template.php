@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
@@ -15,10 +15,19 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
     <button class="button button--middle button-tab active" type="button" data-filter="all">
         Все
     </button>
-    <?php foreach ($arResult['ITEMS'] as $id => $arItem) { ?>
-        <button class="button button--middle button-tab" type="button" data-filter="<?= $id ?>">
+    <?php
+    $i = 0;
+    foreach ($arResult['ITEMS'] as $id => $arItem) {
+        $i++;
+        ?>
+        <button class="button button--middle button-tab <?= $i > 3 ? 'button-tab--hidden' : '' ?>" type="button" data-filter="<?= $id ?>">
             <?= $arItem ?>
         </button>
     <?php } ?>
+    <button class="button button--middle button-tab button-tab__toggle" type="button"><span
+                class="button-tab__toggle-text">Показать еще</span>
+        <svg>
+            <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#arrow-down"></use>
+        </svg>
+    </button>
 </div>
-

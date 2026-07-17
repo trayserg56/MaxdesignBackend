@@ -23,7 +23,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                      data-swiper-slides="auto">
                     <div class="swiper-wrapper">
                         <?php foreach ($arResult['ITEMS'] as $key => $item) { ?>
-                            <div class="swiper-slide" style="width: 267.2px; margin-right: 20px;">
+                            <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="swiper-slide" style="width: 267.2px; margin-right: 20px;">
                                 <img class="swiper-slide__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                      alt="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                      loading="lazy" decoding="async">
@@ -49,7 +49,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                         <div class="swiper-slide__square"><?= $item['PROPERTIES']['SQUARE_OBJECT']['VALUE'] ?> м2</div>
                                     <?php } ?>
                                 </div>
-                            </div>
+                            </a>
                         <?php } ?>
                     </div>
                     <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal"></div>
