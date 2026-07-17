@@ -80,7 +80,7 @@ $form = \Entity\Form::getInstance();
                             <div class="discuss-form__field"><label class="discuss-form__label"
                                                                     for="discuss-<?= $field['name'] ?>">
                                     <?= $field['placeholder'] ?></label><select class="discuss-form__select"
-                                                                                id="discuss-type" name="type">
+                                                                                id="discuss-<?= $field['name'] ?>" name="<?= $field['name'] ?>">
                                     <option value="" disabled="" selected="">Выберите из списка</option>
                                     <?php foreach ($field['values'] as $value) { ?>
                                         <option value="<?= $value ?>"><?= $value ?></option>
@@ -91,8 +91,8 @@ $form = \Entity\Form::getInstance();
                         case 'range':
                             ?>
                             <div class="discuss-form__field">
-                                <input class="discuss-form__input" type="text" id="discuss-area"
-                                       name="area"
+                                <input class="discuss-form__input" type="text" id="discuss-<?= $field['name'] ?>"
+                                       name="<?= $field['name'] ?>"
                                        placeholder="<?= str_replace('<sup>2</sup>', '²', $field['placeholder']) ?>"
                                        inputmode="numeric">
                             </div>
@@ -137,7 +137,7 @@ $form = \Entity\Form::getInstance();
             </svg>
         </button>
         <video class="modal__video" controls="" preload="metadata" playsinline=""
-               data-video-url="video/reportaj-compressed.bd2fad68.mp4">
+               data-video-url="">
             <source type="video/mp4" src="">
             Ваш браузер не поддерживает видео.
         </video>

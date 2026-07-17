@@ -1,6 +1,7 @@
 <?php
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 global $APPLICATION;
+$APPLICATION->SetPageProperty('HTML_CLASSES', 'page--contacts');
 
 $contacts = \Entity\Contacts::getInstance();
 ?>

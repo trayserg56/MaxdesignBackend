@@ -28,7 +28,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 <?php foreach ($arResult['ITEMS'] as $key => $item) {
                     $key++;
                     ?>
-                    <div class="reference-list__row" role="row">
+                    <div class="reference-list__row <?= $key > 7 ? 'reference-list__row--hidden' : '' ?>" role="row">
                         <div class="reference-list__cell reference-list__cell--index" role="cell"><span
                                     class="reference-list__index"><?= $key < 10 ? '0' . $key : $key ?></span></div>
                         <div class="reference-list__cell reference-list__cell--name"
@@ -96,9 +96,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     </article>
                 <?php } ?>
             </div>
-            <a href="/portfolio/" class="button button--cta-dark reference-list__more js-reference-list-more" type="button">
-                Показать еще
-            </a>
+            <button class="button button--cta-dark reference-list__more js-reference-list-more" type="button">Показать еще</button>
         </div>
     </div>
 </section>

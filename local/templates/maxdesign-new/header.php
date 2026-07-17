@@ -14,7 +14,7 @@ CUtil::InitJSCore(['ajax']);
 ?>
 
 <!DOCTYPE html>
-<html class="page page--home" lang="ru" data-theme="light">
+<html class="page <?php $APPLICATION->ShowProperty('HTML_CLASSES'); ?>" lang="ru" data-theme="light">
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

@@ -27,10 +27,9 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                             loading="lazy"
                             decoding="async"
                         >
-                        <div class="service-card__overlay"><p class="service-card__count"><span
-                                        class="service-card__count-current"><?= ($key < 10 ? '0' : '') . $key ?>/</span><span
-                                        class="service-card__count-total"><?= (count($arResult['ITEMS']) < 10 ? '0' : '') . count($arResult['ITEMS']) ?></span></p>
-                            <h3 class="service-card__name"><?= $item['NAME'] ?></h3></div>
+                        <div class="service-card__overlay">
+                            <h3 class="service-card__name"><?= $item['NAME'] ?></h3>
+                        </div>
                     </a></article>
             <?php } ?>
         </div>
