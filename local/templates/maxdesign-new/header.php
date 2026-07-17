@@ -48,10 +48,10 @@ CUtil::InitJSCore(['ajax']);
     <header class="header">
         <div class="container">
             <div class="header__wrap">
-                <a class="header__logo" href="/" aria-label="На главную"><img
-                            class="header__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo.svg"
-                            alt="maxdesign" width="156"
-                            height="24" loading="eager" decoding="async"></a>
+                <a class="header__logo" href="/" aria-label="На главную">
+                    <img class="header__logo-img header__logo-img--dark" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo_maxdesign_dark.25c6f38f.svg" alt="maxdesign" width="173" height="32" loading="eager" decoding="async">
+                    <img class="header__logo-img header__logo-img--light" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/logo_maxdesign_white.d6351cf9.svg" alt="maxdesign" width="174" height="32" loading="eager" decoding="async" aria-hidden="true">
+                </a>
                 <nav class="header__nav" aria-label="Основная навигация">
                     <?php
 
