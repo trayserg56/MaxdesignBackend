@@ -33,7 +33,9 @@ $this->setFrameMode(true);
                                             width="327" height="327"></div>
                                 <div class="home-project__meta"><h3 class="home-project__card-title"><?= $item['NAME'] ?></h3>
                                     <p class="home-project__card-sub">
-                                        <span class="home-project__card-year"><?= $item['PROPERTIES']['YEAR']['VALUE'] ?></span>
+                                        <?php if ($item['PROPERTIES']['YEAR']['VALUE']) { ?>
+                                            <span class="home-project__card-year"><?= $item['PROPERTIES']['YEAR']['VALUE'] ?></span>
+                                        <?php } ?>
                                         <span
                                                 class="home-project__card-sep"
                                                 aria-hidden="true"></span><span

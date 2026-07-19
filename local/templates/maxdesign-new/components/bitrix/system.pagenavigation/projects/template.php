@@ -11,7 +11,7 @@ if ($arResult['NavPageNomer'] >= $arResult['NavPageCount']) {
 }
 ?>
 <div class="home-project__more">
-    <button class="button css-home-project-more button--cta-dark"
+    <button class="button css-home-project-more js-home-project-more button--cta-dark"
             type="button"
             data-pagination-type="show-more"
             data-pagination-container-code="projects"

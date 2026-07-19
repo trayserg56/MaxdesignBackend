@@ -18,7 +18,7 @@ $this->setFrameMode(true);
                      data-swiper-breakpoints="{&quot;1280&quot;: {&quot;slidesPerView&quot;: 5, &quot;spaceBetween&quot;: 20}}">
                     <div class="swiper-wrapper">
                         <?php foreach ($arResult['ITEMS'] as $item) { ?>
-                            <div class="swiper-slide"><img class="swiper-slide__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
+                            <a href="<?= $item['DETAIL_PAGE_URL'] ?>" class="swiper-slide"><img class="swiper-slide__img" src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                                                            alt="<?= strip_tags($item['~NAME']) ?>"
                                                            loading="lazy" decoding="async">
                                 <h3 class="swiper-slide__title"><?= $item['~NAME'] ?></h3>
@@ -26,7 +26,7 @@ $this->setFrameMode(true);
                                     <time class="swiper-slide__city"><?= $item['DISPLAY_ACTIVE_FROM'] ?></time>
                                     <div class="swiper-slide__square"><?= $item['SECTION_NAME'] ?></div>
                                 </div>
-                            </div>
+                            </a>
                         <?php } ?>
                     </div>
                     <div class="swiper-pagination"></div>

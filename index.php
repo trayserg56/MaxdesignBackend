@@ -196,7 +196,7 @@ $APPLICATION->IncludeComponent(
     [
         'IBLOCK_TYPE' => 'portfolio',
         'IBLOCK_ID' => '6',
-        'NEWS_COUNT' => '20',
+        'NEWS_COUNT' => '10',
         'SORT_BY2' => 'ACTIVE_FROM',
         'SORT_ORDER2' => 'DESC',
         'SORT_BY1' => 'SORT',
