@@ -21,6 +21,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
                     class="projects-page__filter-label"><?= $item['NAME'] ?></span><select
                     class="projects-page__filter select" id="projects-filter-<?= $item['NAME'] ?>"
                     name="<?= $item['CODE'] ?>" multiple
+                    data-filter
                     data-select="{&quot;placeholder&quot;: &quot;Выбрать&quot;, &quot;svgPath&quot;: &quot;<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg&quot;}">
                 <?php if ($item['PROPERTIES']['FILTER_AUTOCOMPLETE']['VALUE']) { ?>
                     <?php foreach ($arResult['AUTOCOMPLETE'][$item['CODE']]['VALUE'] as $key2 => $value) { ?>
@@ -52,6 +53,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
                         class="projects-page__filter-label"><?= $item['NAME'] ?></span><select
                         class="projects-page__filter select" id="projects-filter-mobile-<?= $key ?>"
                         name="<?= $item['CODE'] ?>" multiple
+                        data-filter
                         data-select="{&quot;placeholder&quot;: &quot;Выбрать&quot;, &quot;svgPath&quot;: &quot;<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg&quot;}">
                     <?php if ($item['PROPERTIES']['FILTER_AUTOCOMPLETE']['VALUE']) { ?>
                         <?php foreach ($arResult['AUTOCOMPLETE'][$item['CODE']]['VALUE'] as $key2 => $value) { ?>
@@ -92,6 +94,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
                 <?php foreach ($arResult['ITEMS'] as $key => $item) { ?>
                     <div class="projects-page__filter-field"><span class="projects-page__filter-label"><?= $item['NAME'] ?></span><select
                                 class="projects-page__filter projects-page__filter--modal select"
+                                data-filter
                                 id="projects-filter-modal-<?= $key ?>" name="<?= $item['CODE'] ?>" multiple
                                 data-select="{&quot;placeholder&quot;: &quot;Выбрать&quot;, &quot;svgPath&quot;: &quot;<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg&quot;}">
                             <?php if ($item['PROPERTIES']['FILTER_AUTOCOMPLETE']['VALUE']) { ?>
