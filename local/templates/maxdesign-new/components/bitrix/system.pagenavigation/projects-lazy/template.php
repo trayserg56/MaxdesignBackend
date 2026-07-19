@@ -17,8 +17,7 @@ if ($arResult['NavPageNomer'] >= $arResult['NavPageCount']) {
             data-pagination-type="show-more"
             data-lazy=""
             data-pagination-container-code="projects"
-            data-nav-num="<?= $arResult['NavNum'] ?>"
-            data-page="<?= $arResult['NavPageNomer'] + 1 ?>"
+            data-url="<?= $arResult['sUrlPathParams'] . 'PAGEN_' . $arResult['NavNum'] . '=' . $arResult['NavPageNomer'] + 1?>"
     >Показать больше
     </button>
 </div>

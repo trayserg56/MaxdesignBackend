@@ -7,7 +7,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
 /** @var $arResult */
 ?>
 
-<div class="projects-page__filters projects-page__filters--desktop">
+<div class="projects-page__filters projects-page__filters--desktop" data-filters-container>
     <?php foreach ($arResult['ITEMS'] as $item) {
         if ($item['PROPERTIES']['FILTER_AUTOCOMPLETE']['VALUE'] && !$arResult['AUTOCOMPLETE'][$item['CODE']]) {
             continue;

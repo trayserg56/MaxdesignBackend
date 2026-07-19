@@ -1,5 +1,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    window.custom = {
+        replaceWith: replaceWith
+    };
+
     initPaginationButtons();
     initLazyPagination();
     initFilterButtons();
@@ -115,14 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const parser = new DOMParser();
         const paginationContainer = targetElement.dataset.paginationContainerCode;
-        const navNum = 'PAGEN_' + targetElement.dataset.navNum;
-        const page = targetElement.dataset.page;
 
         const handleVisibilityChange = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     BX.ajax({
-                        url: location.pathname + '?' + navNum + '=' + page,
+                        url: targetElement.dataset.url,
                         method: 'GET',
                         onsuccess: function (r) {
                             const selector = `[data-pagination-container=${paginationContainer}]`;

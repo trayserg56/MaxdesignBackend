@@ -1,5 +1,7 @@
 <?php
 
+use Bitrix\Main\Context;
+
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
@@ -93,6 +95,64 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 $component
             );
         } ?><?php
+
+
+        $request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
+
+        if ($request['TYPE_OBJECT']) {
+            // на уточнении
+        }
+
+        if ($request['STYLE']) {
+            // на уточнении
+        }
+
+        if ($request['SQUARE']) {
+            $filter = [
+                'LOGIC' => 'OR',
+            ];
+
+            foreach ($request['SQUARE'] as $key => $square) {
+                if (!str_contains($square, 'AND')) {
+                    $char = !is_numeric($square[1]) ? mb_substr($square, 0, 2) : mb_substr($square, 0, 1);
+                    $filter[$key][$char . 'PROPERTY_SQUARE'] = mb_substr($square, strlen($char));
+                    continue;
+                }
+
+                foreach (explode('AND', $square) as $item) {
+                    $item = trim($item);
+                    $char = !is_numeric($item[1]) ? mb_substr($item, 0, 2) : mb_substr($item, 0, 1);
+                    var_dump($char);
+                    $filter[$key][$char . 'PROPERTY_SQUARE'] = mb_substr($item, strlen($char));
+                }
+            }
+
+            $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
+        }
+
+        if ($request['YEAR']) {
+            $filter = [
+                'LOGIC' => 'OR',
+            ];
+
+            foreach ($request['YEAR'] as $key => $item) {
+                $filter[$key]['PROPERTY_YEAR'] = $item;
+            }
+
+            $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
+        }
+
+        if ($request['ADDRESS']) {
+            $filter = [
+                'LOGIC' => 'OR',
+            ];
+
+            foreach ($request['ADDRESS'] as $key => $address) {
+                $filter[$key]['?PROPERTY_ADDRESS'] = $address;
+            }
+
+            $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
+        }
 
         $APPLICATION->IncludeComponent(
             'bitrix:news.list',

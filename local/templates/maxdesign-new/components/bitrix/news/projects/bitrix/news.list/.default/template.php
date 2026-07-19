@@ -18,7 +18,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 $this->setFrameMode(true);
 ?>
 <div class="projects-page__catalog-section">
-    <section class="home-project projects-page__catalog js-home-project">
+    <section class="home-project projects-page__catalog js-home-project" data-filter-container="portfolio">
         <div class="home-project__inner">
             <div class="home-project__grid-viewport">
                 <div class="home-project__grid" data-pagination-container="projects">
