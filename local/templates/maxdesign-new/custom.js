@@ -37,9 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     r = parser.parseFromString(r, 'text/html');
 
                     if (paginationType === 'show-more') {
-                        document.querySelector(selector)?.append(
-                            ...r.querySelector(selector).children
-                        );
+                        if (paginationContainer === 'projects-main') {
+                            document.querySelector(selector)?.after(
+                                r.querySelector(selector)
+                            );
+                        } else {
+                            document.querySelector(selector)?.append(
+                                ...r.querySelector(selector).children
+                            );
+                        }
+
                         replaceWith(r, 'data-pagination-container-code', true);
                         document.querySelector(`[data-pagination-container-code=${paginationContainer}]:disabled`)?.remove();
                     } else {
@@ -90,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     dataType: 'json',
                     onsuccess: function (r) {
                        if (r?.success) {
+                           form.reset();
                            Modal.open('form-submit-success');
                        } else {
                            if (r && r.errors) {

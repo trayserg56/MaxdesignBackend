@@ -22,7 +22,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 
         </div>
         <div class="home-project__grid-viewport">
-            <div class="home-project__grid" data-pagination-container="projects">
+            <div class="home-project__grid" data-pagination-container="projects-main">
                 <?php foreach ($arResult['ITEMS'] as $item) { ?>
                     <article class="home-project__card"><a class="home-project__card-link" href="<?= $item['DETAIL_PAGE_URL'] ?>"
                                                            aria-label="<?= $item['NAME'] ?>">
