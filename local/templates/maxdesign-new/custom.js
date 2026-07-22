@@ -138,9 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             const selector = `[data-pagination-container=${paginationContainer}]`;
                             r = parser.parseFromString(r, 'text/html');
 
-                            document.querySelector(selector)?.append(
-                                ...r.querySelector(selector).children
-                            );
+                            if (paginationContainer === 'projects') {
+                                document.querySelector(selector)?.after(
+                                    r.querySelector(selector)
+                                );
+                            } else {
+                                document.querySelector(selector)?.append(
+                                    ...r.querySelector(selector).children
+                                );
+                            }
+
                             replaceWith(r, 'data-pagination-container-code', true);
                             initLazyPagination();
                         }
