@@ -408,9 +408,17 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                         <?= $block['textfield']['value'] ?>
                                     </h2>
                                 </header>
-                                <div class="project-interior__text-block project-interior__text-block--first">
-                                    <h3 class="project-interior__subtitle"><?= $block['textfield1']['value'] ?></h3>
-                                    <p class="project-interior__text"><?= $block['text']['value'] ?></p></div>
+                                <?php if ($block['textfield1']['value'] || $block['text']['value']) { ?>
+                                    <div class="project-interior__text-block project-interior__text-block--first">
+                                        <?php if ($block['textfield1']['value']) { ?>
+                                            <h3 class="project-interior__subtitle"><?= $block['textfield1']['value'] ?></h3>
+                                        <?php }
+                                        if ($block['text']['value']) {
+                                        ?>
+                                            <p class="project-interior__text"><?= $block['text']['value'] ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
 
                                 <div class="project-interior__gallery">
                                     <?php
@@ -610,9 +618,17 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                                         <?= $block['textfield']['value'] ?>
                                     </h2>
                                 </header>
-                                <div class="project-interior__text-block project-interior__text-block--first">
-                                    <h3 class="project-interior__subtitle"><?= $block['textfield1']['value'] ?></h3>
-                                    <p class="project-interior__text"><?= $block['text']['value'] ?></p></div>
+                                <?php if ($block['textfield1']['value'] || $block['text']['value']) { ?>
+                                    <div class="project-interior__text-block project-interior__text-block--first">
+                                        <?php if ($block['textfield1']['value']) { ?>
+                                            <h3 class="project-interior__subtitle"><?= $block['textfield1']['value'] ?></h3>
+                                        <?php }
+                                        if ($block['text']['value']) {
+                                            ?>
+                                            <p class="project-interior__text"><?= $block['text']['value'] ?></p>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
 
                                 <div class="project-interior__gallery">
                                     <?php

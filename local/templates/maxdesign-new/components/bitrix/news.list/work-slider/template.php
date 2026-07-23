@@ -18,8 +18,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                     <?php foreach ($arResult['ITEMS'] as $key => $item) { ?>
                         <div class="swiper-slide" data-work-slider-image="<?= $item['PREVIEW_PICTURE']['SRC'] ?>"
                              data-work-slider-alt="<?= $item['PREVIEW_PICTURE']['DESCRIPTION'] ?>"><h3
-                                    class="work-slider__title"><span class="work-slider__title-desktop"><?= $item['NAME'] ?></span><span
-                                        class="work-slider__title-mobile"><?= $item['PROPERTIES']['MOBILE_NAME']['VALUE'] ?></span>
+                                    class="work-slider__title"><span class="work-slider__title-desktop"><?= $item['~NAME'] ?></span><span
+                                        class="work-slider__title-mobile"><?= $item['PROPERTIES']['MOBILE_NAME']['~VALUE'] ?></span>
                             </h3>
                             <p class="work-slider__text"><?= $item['PREVIEW_TEXT'] ?></p></div>
                     <?php } ?>
