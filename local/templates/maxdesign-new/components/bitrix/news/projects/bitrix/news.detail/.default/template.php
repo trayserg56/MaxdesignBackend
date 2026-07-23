@@ -41,12 +41,6 @@ if ($detailPage[2]['name'] === 'complex_award') {
     unset($detailPage[2]);
 }
 
-$anchors = [
-    'about-project',
-    'layout',
-    'interior',
-];
-
 if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
     $stylesPath = SITE_TEMPLATE_PATH . '/assets/old-styles/';
     Asset::getInstance()->addCss($stylesPath . 'jquery.mmenu.css');
@@ -195,26 +189,36 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
             <nav class="project-sections__nav" aria-label="Навигация по проекту">
                 <?php foreach ($detailPage as $key => $block) {
                     if ($block['name'] === 'complex_interior') {
+                        if (!$block['textfield']['value']) {
+                            continue;
+                        }
+
                         $title = $block['textfield']['value'];
+                        $anchor = 'interior';
                     } elseif (!$block['htag'] || $block['htag']['type'] !== 'h2') {
                         continue;
                     }
+
+                    if ((!$block['htag']['value'] || !$block['htag']['anchor']) && $block['name'] !== 'complex_interior') {
+                        continue;
+                    }
                     ?>
-                    <a class="project-sections__nav-link" href="#<?= current($anchors) ?>">
+                    <a class="project-sections__nav-link" href="#<?= $anchor ?? $block['htag']['anchor'] ?>">
                         <?= $title ?? $block['htag']['value'] ?>
                     </a>
                     <?php
-                    unset ($anchors[key($anchors)], $title);
+                    unset($title, $anchor);
                 } ?>
                 <span class="project-sections__nav-link project-sections__nav-link--disabled">Галерея</span>
             </nav>
             <div class="project-sections__content">
-                <section class="about-project" id="about-project">
+                <section class="about-project" id="<?php $APPLICATION->ShowProperty('portfolio--detail_project__anchor') ?>">
                     <div class="about-project__content">
                         <?php
                         foreach ($detailPage as $key => $block) {
                             if ($block['name'] === 'complex_about_project') {
                                 unset($detailPage[$key]);
+                                $APPLICATION->SetPageProperty('portfolio--detail_project__anchor', $block['htag']['anchor']);
                                 ?>
                                 <header class="about-project__header"><h2
                                             class="about-project__title"><?= $block['htag']['value'] ?></h2>
@@ -338,11 +342,12 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                     </div>
                 </section>
 
-                <section class="project-layout" id="layout">
+                <section class="project-layout" id="<?php $APPLICATION->ShowProperty('portfolio--detail_layout__anchor') ?>">
                     <div class="project-layout__content">
                         <?php foreach ($detailPage as $key => $block) {
                             if ($block['name'] === 'complex_layout') {
                                 unset($detailPage[$key]);
+                                $APPLICATION->SetPageProperty('portfolio--detail_layout__anchor', $block['htag']['anchor']);
                                 ?>
                                 <header class="project-layout__header"><h2
                                             class="project-layout__title"><?= $block['htag']['value'] ?></h2>
@@ -390,11 +395,13 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                 </section>
                 <?php
 
+                $interiorId = false;
                 foreach ($detailPage as $key => $block) {
                     if ($block['name'] === 'complex_interior') {
+
                         unset($detailPage[$key]);
                         ?>
-                        <section class="project-interior" id="interior">
+                        <section class="project-interior" <?= !$interiorId ? 'id="interior"' : '' ?>>
                             <div class="project-interior__content">
                                 <header class="project-interior__header">
                                     <h2 class="project-interior__title">
@@ -584,6 +591,209 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                             </div>
                         </section>
                         <?php
+                        $interiorId = true;
+                    }
+                }
+                ?>
+                <?php
+
+                $interiorId = false;
+                foreach ($detailPage as $key => $block) {
+                    if ($block['name'] === 'complex_interior') {
+
+                        unset($detailPage[$key]);
+                        ?>
+                        <section class="project-interior" <?= !$interiorId ? 'id="interior"' : '' ?>>
+                            <div class="project-interior__content">
+                                <header class="project-interior__header">
+                                    <h2 class="project-interior__title">
+                                        <?= $block['textfield']['value'] ?>
+                                    </h2>
+                                </header>
+                                <div class="project-interior__text-block project-interior__text-block--first">
+                                    <h3 class="project-interior__subtitle"><?= $block['textfield1']['value'] ?></h3>
+                                    <p class="project-interior__text"><?= $block['text']['value'] ?></p></div>
+
+                                <div class="project-interior__gallery">
+                                    <?php
+                                    $class = match (count($block['gallery']['images'])) {
+                                        1 => 'project-interior__image-wrap--wide',
+                                        2 => 'project-interior__image-row--half',
+                                        default => 'project-interior__image-row--third',
+                                    };
+
+                                    if (count($block['gallery']['images']) > 1) { ?>
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
+                                        $class = '';
+                                        }
+                                        ?>
+
+                                        <?php foreach ($block['gallery']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
+
+                                        if (count($block['gallery']['images']) > 1) { ?>
+                                    </div>
+                                <?php
+                                }
+
+                                $class = match (count($block['gallery1']['images'])) {
+                                    1 => 'project-interior__image-wrap--wide',
+                                    2 => 'project-interior__image-row--half',
+                                    default => 'project-interior__image-row--third',
+                                };
+
+                                if (count($block['gallery1']['images']) > 1) { ?>
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
+                                        $class = '';
+                                        }
+                                        ?>
+
+                                        <?php foreach ($block['gallery1']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
+
+                                        if (count($block['gallery1']['images']) > 1) { ?>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+
+                                    <div class="project-interior__text-block">
+                                        <h3 class="project-interior__subtitle">
+                                            <?= $block['textfield2']['value'] ?></h3>
+                                        <p class="project-interior__text"><?= $block['text1']['value'] ?></p></div>
+
+                                    <?php
+                                    $class = match (count($block['gallery2']['images'])) {
+                                        1 => 'project-interior__image-wrap--wide',
+                                        2 => 'project-interior__image-row--half',
+                                        default => 'project-interior__image-row--third',
+                                    };
+
+                                    if (count($block['gallery2']['images']) > 1) { ?>
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
+                                        $class = '';
+                                        }
+                                        ?>
+
+                                        <?php foreach ($block['gallery2']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
+
+                                        if (count($block['gallery2']['images']) > 1) { ?>
+                                    </div>
+                                <?php
+                                }
+                                $class = match (count($block['gallery3']['images'])) {
+                                    1 => 'project-interior__image-wrap--wide',
+                                    2 => 'project-interior__image-row--half',
+                                    default => 'project-interior__image-row--third',
+                                };
+
+                                if (count($block['gallery3']['images']) > 1) { ?>
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
+                                        $class = '';
+                                        }
+                                        ?>
+
+                                        <?php foreach ($block['gallery3']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
+
+                                        if (count($block['gallery3']['images']) > 1) { ?>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                    <div class="project-interior__text-block"><h3 class="project-interior__subtitle">
+                                            <?= $block['textfield3']['value'] ?></h3>
+                                        <p class="project-interior__text"><?= $block['text2']['value'] ?></p></div>
+
+                                    <?php
+                                    $class = match (count($block['gallery4']['images'])) {
+                                        1 => 'project-interior__image-wrap--wide',
+                                        2 => 'project-interior__image-row--half',
+                                        default => 'project-interior__image-row--third',
+                                    };
+
+                                    if (count($block['gallery4']['images']) > 1) { ?>
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
+                                        $class = '';
+                                        }
+                                        ?>
+
+                                        <?php foreach ($block['gallery4']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
+
+                                        if (count($block['gallery4']['images']) > 1) { ?>
+                                    </div>
+                                <?php
+                                }
+
+                                $class = match (count($block['gallery5']['images'])) {
+                                    1 => 'project-interior__image-wrap--wide',
+                                    2 => 'project-interior__image-row--half',
+                                    default => 'project-interior__image-row--third',
+                                };
+
+                                if (count($block['gallery5']['images']) > 1) { ?>
+                                    <div class="project-interior__image-row <?= $class ?>">
+                                        <?php
+                                        $class = '';
+                                        }
+                                        ?>
+
+                                        <?php foreach ($block['gallery5']['images'] as $image) { ?>
+                                            <div class="project-interior__image-wrap <?= $class ?>"><img
+                                                        class="project-interior__image glightbox" data-gallery="projectGallery"
+                                                        src="<?= $image['file']['ORIGIN_SRC'] ?>"
+                                                        alt="<?= $image['desc'] ?>" loading="lazy" decoding="async">
+                                            </div>
+                                            <?php
+                                        }
+
+                                        if (count($block['gallery5']['images']) > 1) { ?>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                                </div>
+                            </div>
+                        </section>
+                        <?php
+                        $interiorId = true;
                     }
                 }
                 ?>
