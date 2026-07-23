@@ -75,7 +75,7 @@ final class Form extends BaseEntity
         return $this->items[$key]['UF_SUBMIT_TEXT'];
     }
 
-    public function getYandexMapLink(string $key): string
+    public function getYandexMapCoords(string $key): string
     {
         if (!isset($this->items)) {
             $this->items = $this->getItems();
