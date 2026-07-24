@@ -1,7 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     window.custom = {
-        replaceWith: replaceWith
+        replaceWith: replaceWith,
+        replaceWithDeletedNotFound: false
     };
 
     initPaginationButtons();
@@ -14,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let replace = response.querySelector(`[${selectorAttribute}=${element.getAttribute(selectorAttribute)}]`);
             if (replace) {
                 element.replaceWith(replace);
+                window.custom.replaceWithDeletedNotFound = false;
             } else if (deleteNotFound) {
                 element.remove();
+                window.custom.replaceWithDeletedNotFound = true;
             }
         });
     }
@@ -49,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         replaceWith(r, 'data-pagination-container-code', true);
                         document.querySelector(`[data-pagination-container-code=${paginationContainer}]:disabled`)?.remove();
+
+                        if (window.custom.replaceWithDeletedNotFound) {
+                            document.querySelector('.home-project__more')?.remove();
+                        }
                     } else {
                         replaceWith(r, 'data-pagination-container');
                         //scroll up?
@@ -150,6 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             replaceWith(r, 'data-pagination-container-code', true);
                             initLazyPagination();
+
+                            if (window.custom.replaceWithDeletedNotFound) {
+                                document.querySelector('.home-project__more')?.remove();
+                            }
                         }
                     });
                     observer.unobserve(entry.target);

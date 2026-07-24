@@ -110,7 +110,7 @@ $form = \Entity\Form::getInstance();
                     <p class="checkbox__text">Я&nbsp;согласен на&nbsp;обработку персональных данных, в&nbsp;соответствии
                         с&nbsp;Федеральным законом от&nbsp;27.07.2006 года №152-ФЗ «О&nbsp;персональных
                         данных», на&nbsp;условиях и&nbsp;для целей, определённых в&nbsp;<a
-                                class="discuss-form__consent-link" href="#">Согласии на&nbsp;обработку персональных
+                                class="discuss-form__consent-link" href="<?= $contacts->get('policy') ?>">Согласии на&nbsp;обработку персональных
                             данных</a></p></div>
             </label></form>
     </div>

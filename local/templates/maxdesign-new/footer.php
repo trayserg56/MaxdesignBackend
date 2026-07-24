@@ -17,7 +17,7 @@ $form = \Entity\Form::getInstance();
     <div class="footer__feedback">
         <div class="footer__feedback-map">
             <iframe class="footer__feedback-map-frame"
-                    src="<?= $form->getYandexMapLink('feedback-form') ?>"
+                    src="https://yandex.ru/map-widget/v1/?ll=<?= $form->getYandexMapCoords('feedback-form') ?>&z=17&l=map&pt=<?= $form->getYandexMapCoords('feedback-form') ?>,pm2rdm"
                     title="<?= $form->getYandexMapTitle('feedback-form') ?>" loading="lazy" allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>

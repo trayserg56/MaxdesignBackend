@@ -1,3 +1,15 @@
-
+/_old_pages
+/site_xf
+/upload
 /bitrix
-.idea
+/.idea
+.access.php
+.bottom.menu.php
+.htaccess
+.htaccess.restore
+.htpasswd
+.top.menu.php
+robots.txt
+sitemap*
+urlrewrite.php
+web.config

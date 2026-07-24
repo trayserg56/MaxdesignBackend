@@ -43,9 +43,9 @@ CUtil::InitJSCore(['ajax']);
     ?>
 </head>
 <body>
-<?php $GLOBALS['APPLICATION']->ShowPanel() ?>
 <div class="content">
     <header class="header">
+        <?php $GLOBALS['APPLICATION']->ShowPanel() ?>
         <div class="container">
             <div class="header__wrap">
                 <a class="header__logo" href="/" aria-label="На главную">

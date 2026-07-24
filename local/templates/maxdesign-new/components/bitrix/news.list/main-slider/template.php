@@ -14,6 +14,7 @@ if (!$arResult['ITEMS']) {
     <?php foreach ($arResult['ITEMS'] as $key => $item) { ?>
         <div class="first-screen__slide <?= $key === array_key_first($arResult['ITEMS']) ? 'is-active' : '' ?>"
              data-promo-video="<?= CFile::GetPath($item['PROPERTIES']['VIDEO_DETAIL']['VALUE']) ?: CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) ?>"
+             data-tagline="<?= $item['PREVIEW_TEXT'] ?>"
              aria-hidden="true">
             <video class="first-screen__image" autoplay muted loop playsinline preload="metadata"
                    poster="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" aria-label="<?= $item['NAME'] ?>" width="1920"
