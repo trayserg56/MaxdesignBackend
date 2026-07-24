@@ -13,7 +13,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             <span
                     class="home-project__tab-separator" aria-hidden="true"></span>
             <?php foreach ($arResult['CATEGORIES'] as $item) { ?>
-                <a href="/portfolio/?type=<?= $item['NAME'] ?>" class="home-project__tab" type="button" role="tab" aria-selected="false"><span
+                <a href="/portfolio/?<?= $arResult['FILTER_CODE'] ?>[0]=<?= $item['NAME'] ?>" class="home-project__tab" type="button" role="tab" aria-selected="false"><span
                             class="home-project__tab-label"><?= $item['NAME'] ?></span>
                     <span class="home-project__tab-count"><?= $item['COUNT'] ?></span>
                 </a>
