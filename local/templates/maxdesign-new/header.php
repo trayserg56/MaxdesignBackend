@@ -39,6 +39,7 @@ CUtil::InitJSCore(['ajax']);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/custom.js', true);
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/_dev.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/bundle.css');
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/custom.css');
     $GLOBALS['APPLICATION']->ShowHead();
     ?>
 </head>

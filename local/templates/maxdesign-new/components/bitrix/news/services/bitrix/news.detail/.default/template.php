@@ -48,10 +48,11 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
     </section>
 <?php } else { ?>
     <section class="architectural-screen-first" style="background-image: url(<?= \CFile::GetPath($arResult['PROPERTIES']['FS_BG_PICTURE']['VALUE']) ?>)">
-        <div class="container"><h1 class="architectural-screen-first__title"><?= $arResult['NAME'] ?>
+        <div class="container"><h1 class="architectural-screen-first__title"><?= $arResult['PROPERTIES']['DETAIL_TITLE']['~VALUE'] ?: $arResult['NAME'] ?>
             </h1>
-            <div class="architectural-screen-first__descr"><?= $arResult['DETAIL_TEXT'] ?>
-            </div>
+            <?php if ($arResult['DETAIL_TEXT']) { ?>
+                <div class="architectural-screen-first__descr"><?= $arResult['DETAIL_TEXT'] ?></div>
+            <?php } ?>
             <div class="architectural-screen-first__btns">
                 <button class="button button--middle button--white" type="button">Заказать расчёт</button>
                 <?php if ($arResult['PROPERTIES']['FS_BTN_PROJECTS_LINK']['VALUE']) { ?>
@@ -63,7 +64,7 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
 
                 <?php if ($arResult['PROPERTIES']['FS_FOOTER_ADDITION']['VALUE']) { ?>
                     <div class="architectural-screen-first__addition">
-                        <?php foreach ($arResult['PROPERTIES']['FS_FOOTER_ADDITION']['VALUE'] as $value) { ?>
+                        <?php foreach ($arResult['PROPERTIES']['FS_FOOTER_ADDITION']['~VALUE'] as $value) { ?>
                             <div class="architectural-screen-first__parameters"><?= $value ?></div>
                         <?php } ?>
                     </div>
