@@ -60,6 +60,7 @@ $form = \Entity\Form::getInstance();
         </label>
         <button class="button button--cta-light feedback-form__submit" type="submit"><?= $form->getSubmitText('feedback-form') ?>
         </button>
+        <?= bitrix_sessid_post() ?>
     </div>
 </form>
 

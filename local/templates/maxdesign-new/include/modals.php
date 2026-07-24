@@ -112,7 +112,9 @@ $form = \Entity\Form::getInstance();
                         данных», на&nbsp;условиях и&nbsp;для целей, определённых в&nbsp;<a
                                 class="discuss-form__consent-link" href="<?= $contacts->get('policy') ?>">Согласии на&nbsp;обработку персональных
                             данных</a></p></div>
-            </label></form>
+            </label>
+            <?= bitrix_sessid_post() ?>
+        </form>
     </div>
 </div>
 
