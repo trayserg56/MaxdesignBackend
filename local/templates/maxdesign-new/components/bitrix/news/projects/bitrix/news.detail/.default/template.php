@@ -213,14 +213,20 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                     unset($title, $anchor);
                 } ?>
             </nav>
+            <?php foreach ($detailPage as $key => $block) {
+                if ($block['name'] === 'complex_about_project') {
+                    $anchor = $block['htag']['anchor'];
+                    break;
+                }
+            }
+            ?>
             <div class="project-sections__content">
-                <section class="about-project" id="<?php $APPLICATION->ShowProperty('portfolio--detail_project__anchor') ?>">
+                <section class="about-project" id="<?= $anchor ?? '' ?>">
                     <div class="about-project__content">
                         <?php
                         foreach ($detailPage as $key => $block) {
                             if ($block['name'] === 'complex_about_project') {
-                                unset($detailPage[$key]);
-                                $APPLICATION->SetPageProperty('portfolio--detail_project__anchor', $block['htag']['anchor']);
+                                unset($detailPage[$key], $anchor);
                                 ?>
                                 <header class="about-project__header"><h2
                                             class="about-project__title"><?= $block['htag']['value'] ?></h2>
@@ -344,12 +350,19 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                     </div>
                 </section>
 
-                <section class="project-layout" id="<?php $APPLICATION->ShowProperty('portfolio--detail_layout__anchor') ?>">
+                <?php foreach ($detailPage as $key => $block) {
+                    if ($block['name'] === 'complex_layout') {
+                        $anchor = $block['htag']['anchor'];
+                        break;
+                    }
+                }
+                ?>
+
+                <section class="project-layout" id="<?= $anchor ?? ''?>">
                     <div class="project-layout__content">
                         <?php foreach ($detailPage as $key => $block) {
                             if ($block['name'] === 'complex_layout') {
-                                unset($detailPage[$key]);
-                                $APPLICATION->SetPageProperty('portfolio--detail_layout__anchor', $block['htag']['anchor']);
+                                unset($detailPage[$key], $anchor);
                                 ?>
                                 <header class="project-layout__header"><h2
                                             class="project-layout__title"><?= $block['htag']['value'] ?></h2>
