@@ -11,17 +11,32 @@ if (!$arResult['ITEMS']) {
 }
 ?>
 <div class="first-screen__media">
-    <?php foreach ($arResult['ITEMS'] as $key => $item) { ?>
+    <?php foreach ($arResult['ITEMS'] as $key => $item) {
+        if (
+            !$item['PREVIEW_PICTURE']['SRC'] &&
+            !CFile::GetPath($item['PROPERTIES']['VIDEO_DETAIL']['VALUE']) &&
+            !CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE'])
+        ) {
+            continue;
+        }
+        ?>
         <div class="first-screen__slide <?= $key === array_key_first($arResult['ITEMS']) ? 'is-active' : '' ?>"
              data-promo-video="<?= CFile::GetPath($item['PROPERTIES']['VIDEO_DETAIL']['VALUE']) ?: CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) ?>"
              data-tagline="<?= $item['PREVIEW_TEXT'] ?>"
              aria-hidden="true">
-            <video class="first-screen__image" autoplay muted loop playsinline preload="metadata"
-                   poster="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" aria-label="<?= $item['NAME'] ?>" width="1920"
-                   height="965" data-video-url="<?= CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) ?>">
-                <source type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
+
+            <?php if (CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) || CFile::GetPath($item['PROPERTIES']['VIDEO_DETAIL']['VALUE'])) { ?>
+                <video class="first-screen__image" autoplay muted loop playsinline preload="metadata"
+                       poster="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" aria-label="<?= $item['NAME'] ?>" width="1920"
+                       height="965" data-video-url="<?= CFile::GetPath($item['PROPERTIES']['VIDEO']['VALUE']) ?>">
+                    <source type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            <?php } else { ?>
+                <img alt="<?= $item['NAME'] ?>" class="first-screen__image"
+                       src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" aria-label="<?= $item['NAME'] ?>" width="1920"
+                       height="965" />
+            <?php } ?>
         </div>
     <?php } ?>
     <button class="first-screen__nav first-screen__nav--prev js-first-screen-prev" type="button"

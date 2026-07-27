@@ -26,7 +26,8 @@ $form = \Entity\Form::getInstance();
     </div>
 </div>
 
-<div class="modal-wrapper modal-wrapper--discuss-success" id="form-submit-success" data-modal="" style=""><div class="modal modal--discuss-success"><button class="modal__close button button-close j_closeModal" type="button" aria-label="Закрыть"><svg class="modal__close-icon"><use xlink:href="/svg/sprite.svg#cross"></use></svg></button><h2 class="modal__title">Заявка отправлена!</h2><p class="modal__text">В&nbsp;течение дня менеджер с&nbsp;вами свяжется</p><button class="button button--cta-dark modal__action j_closeModal" type="button">Хорошо</button></div></div>
+<div class="modal-wrapper modal-wrapper--discuss-success" id="form-submit-success" data-modal="" style=""><div class="modal modal--discuss-success"><button class="modal__close button button-close j_closeModal" type="button" aria-label="Закрыть"><svg class="modal__close-icon">
+                <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#cross"></use></svg></button><h2 class="modal__title">Заявка отправлена!</h2><p class="modal__text">В&nbsp;течение дня менеджер с&nbsp;вами свяжется</p><button class="button button--cta-dark modal__action j_closeModal" type="button">Хорошо</button></div></div>
 
 <div class="modal-wrapper modal-wrapper--example" id="form-submit-error" data-modal>
     <div class="modal">
