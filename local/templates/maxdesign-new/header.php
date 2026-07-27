@@ -112,7 +112,7 @@ CUtil::InitJSCore(['ajax']);
                         <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
                                                              href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                 </div>
-                <a class="button button--cta-dark header__menu-button" href="/contact">Обсудить проект</a></div>
+                <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project">Обсудить проект</button></div>
         </div>
     </header>
     <main>

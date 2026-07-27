@@ -33,7 +33,7 @@ global $APPLICATION;
 
                 </div>
             </div>
-            <button class="button button--middle">Рассчитать стоимость</button>
+            <button class="button button--middle" data-modal-target="#discuss-project">Рассчитать стоимость</button>
         </div>
     </div>
 </section>

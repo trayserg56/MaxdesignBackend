@@ -30,7 +30,7 @@ global $APPLICATION;
                     ?>
                 </div>
             </div>
-            <button class="button button--middle">Стать партнером</button>
+            <button class="button button--middle" data-modal-target="#discuss-project">Стать партнером</button>
         </div>
     </div>
 </section>

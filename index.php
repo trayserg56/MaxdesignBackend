@@ -46,7 +46,7 @@ $APPLICATION->SetTitle("Студия элитного дизайна интер�
     <div class="first-screen__bottom">
         <div class="first-screen__logo"></div>
         <div class="first-screen__actions">
-            <a class="button button--cta-light" href="/kontakty/">
+            <button class="button button--cta-light" data-modal-target="#discuss-project">
                 <?php
                 $APPLICATION->IncludeComponent(
                     "bitrix:main.include",
@@ -57,8 +57,8 @@ $APPLICATION->SetTitle("Студия элитного дизайна интер�
                     ]
                 );
                 ?>
-            </a><a
-                    class="button button--cta-dark js-first-screen-promo" href="#promo" data-modal-target="#promo" data-promo-video="">
+            </button><button
+                    class="button button--cta-dark js-first-screen-promo" data-modal-target="#promo" data-promo-video="">
             <span class="button__icon" aria-hidden="true"><img
                         src="<?= SITE_TEMPLATE_PATH ?>/assets/images/watch.df84ff56.svg" alt="" width="19" height="19"></span>
                 <?php
@@ -71,7 +71,7 @@ $APPLICATION->SetTitle("Студия элитного дизайна интер�
                     ]
                 );
                 ?>
-            </a>
+            </button>
         </div>
     </div>
 </section>
