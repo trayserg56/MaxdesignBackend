@@ -16,6 +16,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$i = 0;
 ?>
 <section class="services-list" data-filter-content>
     <div class="container">
@@ -24,15 +25,15 @@ $this->setFrameMode(true);
                 <div class="services-list__category <?= count($section['ITEMS']) === 1 ? 'services-list__category--paired' : '' ?>"
                      data-category="<?= $section['ID'] ?>">
                     <h2 class="services-list__title"><?= $section['NAME'] ?></h2>
-                    <?php foreach ($section['ITEMS'] as $key => $item) {
-                        $key++;
+                    <?php foreach ($section['ITEMS'] as $item) {
+                        $i++;
                         ?>
                         <div class="services-card">
                             <div class="services-card__img">
                                 <img src="<?= $item['PREVIEW_PICTURE']['SRC'] ?>" alt="Картинка: <?= $item['NAME'] ?>">
                             </div>
                             <div>
-                                <div class="services-card__tag"><?= ($key < 10 ? '0' : '') . $key ?></div>
+                                <div class="services-card__tag"><?= ($i < 10 ? '0' : '') . $i ?></div>
                                 <h3 class="services-card__title"><?= $item['NAME'] ?></h3>
                                 <div class="services-card__descr">
                                     <?= $item['PREVIEW_TEXT'] ?>

@@ -22,15 +22,15 @@ $rsData = SectionTable::getList([
     'cache' => [
         'ttl' => 360000
     ],
-    'runtime' => [
-        new ExpressionField(
-            'CUSTOM_SORT',
-            'FIELD(%s, ' . implode(',', $arId) . ')',
-            ['ID']
-        )
-    ],
+//    'runtime' => [
+//        new ExpressionField(
+//            'CUSTOM_SORT',
+//            'FIELD(%s, ' . implode(',', $arId) . ')',
+//            ['ID']
+//        )
+//    ],
     'order' => [
-        'CUSTOM_SORT' => 'ASC'
+        'SORT' => 'ASC'
     ]
 ]);
 
@@ -41,5 +41,5 @@ while ($arData = $rsData->fetch()) {
 }
 
 foreach ($arResult['ITEMS'] as $key => $item) {
-    $arResult['SECTIONS'][(int) $item['IBLOCK_SECTION_ID']]['ITEMS'][$key] = $item;
+    $arResult['SECTIONS'][(int) $item['IBLOCK_SECTION_ID']]['ITEMS'][] = $item;
 }
