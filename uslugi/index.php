@@ -100,7 +100,7 @@ $APPLICATION->SetTitle("Услуги дизайнеров интерьера С�
         )
     ),
     false
-);
+);?><?php
 
 $uri = new \Bitrix\Main\Web\Uri(\Bitrix\Main\Context::getCurrent()->getRequest()->getRequestUri());
 $arPath = array_diff(explode('/', $uri->getPath()), ['']);

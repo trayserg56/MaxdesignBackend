@@ -20,10 +20,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
 <section class="first-screen-flat first-screen-flat--services">
 	<div class="container">
 		<div class="first-screen-flat__wrap">
-			<div><h1 class="first-screen-flat__title">Услуги студии maxdesign</h1>
-				<div class="first-screen-flat__descr">Проектируем жилые и коммерческие пространства и
-					сопровождаем реализацию проектов — от идеи до готового объекта
-				</div>
+			<div><h1 class="first-screen-flat__title"><?php $APPLICATION->ShowTitle('h1'); ?></h1>
+				<div class="first-screen-flat__descr"><?php $APPLICATION->ShowProperty('description_page'); ?></div>
 			</div>
 			<?php if ($arParams['USE_FILTER'] == 'Y') {
                 $APPLICATION->IncludeComponent(

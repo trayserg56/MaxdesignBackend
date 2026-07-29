@@ -41,7 +41,7 @@ unset($arResult["ITEMS"][array_key_first($arResult["ITEMS"])]);
                                         class="blog-first-post__category"><?= $firstItem['SECTION_NAME'] ?></span></div>
                             <h2 class="blog-first-post__title">
                                 <span class="blog-first-post__title-line"><?= $firstItem['~NAME'] ?></span>
-<!--                                <span class="blog-first-post__title-line">--><?php //= $firstItem['PREVIEW_TEXT'] ?><!--</span>-->
+                            <?php //= <span class="blog-first-post__title-line"> $firstItem['PREVIEW_TEXT'] </span> ?>
                             </h2><span class="blog-first-post__more">Читать</span></div>
                     </div>
                 </a></article>

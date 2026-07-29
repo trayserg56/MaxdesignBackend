@@ -8,11 +8,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 }
 
 global $APPLICATION;
+$APPLICATION->AddChainItem('Главная', '/');
 
 $contacts = Contacts::getInstance();
 CUtil::InitJSCore(['ajax']);
 ?>
-
 <!DOCTYPE html>
 <html class="page <?php $APPLICATION->ShowProperty('HTML_CLASSES'); ?>" lang="ru" data-theme="light">
 <head>
@@ -22,14 +22,34 @@ CUtil::InitJSCore(['ajax']);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="address=no">
-    <defaults></defaults>
-    <script>
-        window.modalDefaults = {};
-        window.dropdownDefaults = {};
-        window.selectDefaults = {};
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Maxdesign",
+            "url": "https://maxdesign.pro/",
+            "logo": "https://maxdesign.pro/local/templates/maxdesign/images/logo.png",
+            "contactPoint": [{
+                "@type": "ContactPoint",
+                "telephone": "+7(900)650-00-50",
+                "contactType": "sales",
+                "areaServed": "RU",
+                "availableLanguage": "Russian"
+            },{
+                "@type": "ContactPoint",
+                "telephone": "+7(812)786-67-76",
+                "contactType": "customer service",
+                "areaServed": "RU",
+                "availableLanguage": "Russian"
+            }],
+            "sameAs": [
+                "https://vk.com/maxdesignstudio"
+            ]
+        }
     </script>
     <title><?php $GLOBALS['APPLICATION']->ShowTitle(); ?></title>
     <?php
+    $GLOBALS['APPLICATION']->ShowHead();
 
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/runtime.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/_head.js', true);
@@ -40,8 +60,13 @@ CUtil::InitJSCore(['ajax']);
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/_dev.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/bundle.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/custom.css');
-    $GLOBALS['APPLICATION']->ShowHead();
     ?>
+    <script>
+        window.modalDefaults = {};
+        window.dropdownDefaults = {};
+        window.selectDefaults = {};
+    </script>
+    <defaults></defaults>
 </head>
 <body>
 <div class="content">

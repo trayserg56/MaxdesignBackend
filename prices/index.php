@@ -161,6 +161,7 @@ global $APPLICATION;
                             ]
                         );
                         ?>
+                    </div>
 
                         <?php
                         $APPLICATION->IncludeComponent(

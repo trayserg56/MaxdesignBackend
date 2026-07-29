@@ -34,7 +34,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 ]
             );
             ?>
-            <h1 class="projects-page__title">Проекты<span> студии maxdesign</span></h1>
+            <h1 class="projects-page__title"><?php $APPLICATION->ShowProperty('h1');?></h1>
         </div>
         <?php
 

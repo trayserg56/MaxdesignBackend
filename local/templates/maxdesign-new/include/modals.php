@@ -11,20 +11,6 @@ $promo = TemplateHelper::getPromoVideoSrc();
 $contacts = Contacts::getInstance();
 $form = \Entity\Form::getInstance();
 ?>
-<div class="modal-wrapper modal-wrapper--example" id="modal-example" data-modal>
-    <div class="modal">
-        <div class="modal__wrap">
-            <div class="modal__header">Test modal title</div>
-            <div class="modal__body">
-                <div class="modal__content"><p class="modal__text">Lorem ipsum dolor sit amet consectetur.</p>
-                    <p class="modal__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi,
-                        accusamus?</p>
-                    <p class="modal__text">Lorem ipsum dolor sit.</p></div>
-            </div>
-            <div class="modal__footer"><p class="modal__text">Test modal footer</p></div>
-        </div>
-    </div>
-</div>
 
 <div class="modal-wrapper modal-wrapper--discuss-success" id="form-submit-success" data-modal="" style=""><div class="modal modal--discuss-success"><button class="modal__close button button-close j_closeModal" type="button" aria-label="Закрыть"><svg class="modal__close-icon">
                 <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#cross"></use></svg></button><h2 class="modal__title">Заявка отправлена!</h2><p class="modal__text">В&nbsp;течение дня менеджер с&nbsp;вами свяжется</p><button class="button button--cta-dark modal__action j_closeModal" type="button">Хорошо</button></div></div>
