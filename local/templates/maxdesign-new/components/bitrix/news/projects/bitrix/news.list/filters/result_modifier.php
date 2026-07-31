@@ -8,7 +8,12 @@ use Bitrix\Iblock\PropertyEnumerationTable;
 /** @var array $arParams */
 
 $filterCodes = [];
-foreach ($arResult['ITEMS'] as $item) {
+foreach ($arResult['ITEMS'] as $key => $item) {
+    if ($item['PROPERTIES']['FILTER_MAIN_PAGE']['VALUE']) {
+        unset($arResult['ITEMS'][$key]);
+        continue;
+    }
+
     if ($item['PROPERTIES']['FILTER_AUTOCOMPLETE']['VALUE']) {
         $filterCodes[] = $item['CODE'];
     }

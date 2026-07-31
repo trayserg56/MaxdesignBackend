@@ -16,9 +16,11 @@ $rsData = ElementPortfolioFiltersTable::getList([
     'filter' => [
         'ACTIVE' => 'Y',
         'CODE' => $arResult['FILTER_CODE'],
-        'FILTER_AUTOCOMPLETE_VALUE' => false
+        'FILTER_AUTOCOMPLETE_VALUE' => false,
+        '!FILTER_MAIN_PAGE_VALUE' => false,
     ],
     'select' => [
+        'FILTER_MAIN_PAGE_VALUE' => 'FILTER_MAIN_PAGE.VALUE',
         'FILTER_AUTOCOMPLETE_VALUE' => 'FILTER_AUTOCOMPLETE.VALUE',
         'FILTER_VALUE' => 'FILTER_VALUES.VALUE',
     ],
