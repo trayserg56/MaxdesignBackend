@@ -429,7 +429,7 @@ $APPLICATION->IncludeComponent(
     [
         'IBLOCK_TYPE' => 'main',
         'IBLOCK_ID' => '21',
-        'NEWS_COUNT' => '25',
+        'NEWS_COUNT' => '99',
         'SORT_BY2' => 'ACTIVE_FROM',
         'SORT_ORDER2' => 'DESC',
         'SORT_BY1' => 'SORT',
