@@ -18,28 +18,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
 
-try {
-    $detailPage = Json::decode($arResult['PROPERTIES']['DETAIL_PAGE']['~VALUE'])['blocks'];
-} catch (Exception $e) {
-    $detailPage = [];
-}
-
-if ($detailPage[0]['name'] === 'htag' && $detailPage[0]['type'] === 'h1' && $detailPage[0]['value']) {
-    $subtitle = $detailPage[0]['value'];
-    unset($detailPage[0]);
-}
-
-if ($detailPage[1]['name'] === 'complex_subtitle' && $detailPage[1]['textfield']['value']) {
-    $subtitle = $detailPage[1]['textfield']['value'];
-    unset($detailPage[1]);
-}
-
-if ($detailPage[2]['name'] === 'complex_award') {
-    $award = $detailPage[2];
-    unset($detailPage[2]);
-}
+$detailPage = $arResult['DETAIL_PAGE'];
 
 if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
     $stylesPath = SITE_TEMPLATE_PATH . '/assets/old-styles/';
@@ -166,7 +146,7 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                         class="project-hero__meta-year"><?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></p>
                 <div class="project-hero__meta-item"><p>
                         <span class="project-hero__meta-label">Место:</span>
-                        <?= $arResult['PROPERTIES']['YEAR']['VALUE'] ?></p>
+                        <?= $arResult['PROPERTIES']['ADDRESS']['VALUE'] ?></p>
                     <p><span class="project-hero__meta-label">Площадь:</span>
                         <?= str_replace('м2', 'м<sup>2</sup>', $arResult['PROPERTIES']['SQUARE']['VALUE']) ?></p></div>
                 <div class="project-hero__meta-item"><p><span class="project-hero__meta-label">Стиль:</span>
@@ -187,31 +167,15 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
     <div class="container">
         <div class="project-sections__layout">
             <nav class="project-sections__nav" aria-label="Навигация по проекту">
-                <?php foreach ($detailPage as $key => $block) {
-                    if ($block['name'] === 'complex_interior') {
-                        if (!$block['textfield']['value']) {
-                            continue;
-                        }
-
-                        $title = $block['textfield']['value'];
-                        $anchor = 'interior';
-                    } elseif ($block['name'] === 'complex_gallery') {
-                        $title = 'Галерея';
-                        $anchor = 'gallery';
-                    } elseif (!$block['htag'] || $block['htag']['type'] !== 'h2') {
-                        continue;
-                    }
-
-                    if ((!$block['htag']['value'] || !$block['htag']['anchor']) && !in_array($block['name'], ['complex_interior', 'complex_gallery'])) {
+                <?php foreach ($arResult['ANCHORS'] as $anchor => $text) {
+                    if (!$anchor || !$text) {
                         continue;
                     }
                     ?>
-                    <a class="project-sections__nav-link" href="#<?= $anchor ?? $block['htag']['anchor'] ?>">
-                        <?= $title ?? $block['htag']['value'] ?>
+                    <a class="project-sections__nav-link" href="#<?= $anchor ?>">
+                        <?= $text ?>
                     </a>
-                    <?php
-                    unset($title, $anchor);
-                } ?>
+                <?php } ?>
             </nav>
             <?php foreach ($detailPage as $key => $block) {
                 if ($block['name'] === 'complex_about_project') {
