@@ -1,5 +1,6 @@
 <?php
 
+use Bitrix\Main\EventManager;
 use Bitrix\Main\Loader;
 use Controllers\FormSubmitController;
 use Entity\BaseEntity;
@@ -8,6 +9,7 @@ use Entity\DTO\FormSubmitDTO;
 use Entity\Socials;
 use Entity\Form;
 use Entity\FormSubmits;
+use Helpers\IblockHelper;
 use Helpers\TemplateHelper;
 
 Loader::registerAutoLoadClasses(
@@ -21,6 +23,7 @@ Loader::registerAutoLoadClasses(
         FormSubmitController::class => '/local/php_interface/lib/Controllers/FormSubmitController.php',
         FormSubmitDTO::class => '/local/php_interface/lib/Entity/DTO/FormSubmitDTO.php',
         TemplateHelper::class => '/local/php_interface/lib/Helpers/TemplateHelper.php',
+        IblockHelper::class => '/local/php_interface/lib/Helpers/IblockHelper.php',
     ]
 );
 
