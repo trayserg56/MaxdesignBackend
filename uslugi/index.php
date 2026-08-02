@@ -97,6 +97,7 @@ $APPLICATION->SetTitle("Услуги дизайнеров интерьера С�
         'SEF_URL_TEMPLATES' => array(
             'news' => '',
             'detail' => '#SECTION_CODE_PATH#/#ELEMENT_CODE#/',
+            'section' => '#SECTION_CODE_PATH#/'
         )
     ),
     false
