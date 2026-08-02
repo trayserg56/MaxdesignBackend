@@ -8,9 +8,9 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 /** @var $arResult */
 ?>
 <ul class="header__list">
-    <?php foreach ($arResult as $item) {
+    <?php foreach ($arResult['ITEMS'] as $item) {
     $code = str_replace('/', '', $item['LINK']);
-    if (in_array($code, $arParams['HAS_DROPDOWN']) && isset($arResult['DROPDOWN'][$code])) {
+    if (isset($arResult['DROPDOWN'][$code]) && in_array($code, $arParams['HAS_DROPDOWN'])) {
         ?>
         <li class="header__item header__item--has-dropdown">
             <button class="header__link header__dropdown-toggle" type="button" aria-expanded="false"

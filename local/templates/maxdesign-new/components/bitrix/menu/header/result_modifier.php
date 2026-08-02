@@ -13,6 +13,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var $arResult */
 
 $arParams['HAS_DROPDOWN'] = array_unique(explode(',', $arParams['HAS_DROPDOWN']));
+$arResult['ITEMS'] = $arResult;
 $arResult['DROPDOWN'] = [];
 
 foreach ($arParams['HAS_DROPDOWN'] as $code) {
