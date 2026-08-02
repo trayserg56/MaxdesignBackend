@@ -89,7 +89,8 @@ CUtil::InitJSCore(['ajax']);
                             'DELAY' => 'N',
                             'MENU_CACHE_TYPE' => 'A',
                             'MENU_CACHE_TIME' => '36000000',
-                            'ROOT_MENU_TYPE' => 'top'
+                            'ROOT_MENU_TYPE' => 'top',
+                            'HAS_DROPDOWN' => 'portfolio,uslugi',
                         ]
                     );
                     ?>
