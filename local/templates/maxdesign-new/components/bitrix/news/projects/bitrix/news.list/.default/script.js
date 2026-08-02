@@ -58,16 +58,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function sendRequest() {
         const filterData = collectFilters();
+        const params = new URLSearchParams();
+        let pathname = location.pathname;
 
-        BX.ajax.get(
-            location.pathname,
-            filterData,
-            function (r) {
-                const parser = new DOMParser();
-                r = parser.parseFromString(r, 'text/html');
-                window.custom.replaceWith(r, 'data-filter-container');
+        filterData?.SQUARE.forEach((filter, key) => params.append(`SQUARE[${key}]`, filter));
+        filterData?.YEAR.forEach((filter, key) => params.append(`YEAR[${key}]`, filter));
+
+        if (filterData && filterData.TYPE_OBJECT.length > 0) {
+            if (!pathname.includes('filter/')) {
+                pathname += 'filter/';
             }
-        );
+
+            pathname += filterData.TYPE_OBJECT.join('-') + '/';
+        }
+
+        if (filterData && filterData.STYLE.length > 0) {
+            if (!pathname.includes('filter/')) {
+                pathname += 'filter/';
+            }
+
+            pathname += filterData.STYLE.join('-') + '/';
+        }
+
+        console.log(pathname + '?' + params.toString());
+
+        BX.ajax({
+            url: pathname + '?' + params.toString(),
+            method: 'GET',
+            dataType: 'html',
+            onsuccess: function (r) {
+                const parser = new DOMParser();
+                //r = parser.parseFromString(r, 'text/html');
+                //window.custom.replaceWith(r, 'data-filter-container');
+            }
+        });
     }
 
     filterContainer.addEventListener('click', function(e) {
