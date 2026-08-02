@@ -104,4 +104,8 @@ while ($arData = $rsData->fetch()) {
 
 foreach ($arResult['ITEMS'] as $key => $item) {
     $arResult['ITEMS'][$key]['SECTION_NAME'] = $sections[(int) $item['IBLOCK_SECTION_ID']];
+    $arResult['ITEMS'][$key]['PREVIEW_PICTURE']['SRC'] = \CFile::ResizeImageGet($item['PREVIEW_PICTURE'], [
+        'width' => 500,
+        'height' => 500,
+    ])['src'];
 }
