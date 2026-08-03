@@ -2,6 +2,7 @@
 
 use Bitrix\Iblock\Elements\ElementPortfolioTable;
 use Bitrix\Iblock\Elements\ElementPortfolioFiltersTable;
+use Bitrix\Iblock\PropertyEnumerationTable;
 use Bitrix\Iblock\SectionTable;
 
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
@@ -23,55 +24,87 @@ $rsData = ElementPortfolioFiltersTable::getList([
         'FILTER_MAIN_PAGE_VALUE' => 'FILTER_MAIN_PAGE.VALUE',
         'FILTER_AUTOCOMPLETE_VALUE' => 'FILTER_AUTOCOMPLETE.VALUE',
         'FILTER_VALUE' => 'FILTER_VALUES.VALUE',
+        'FILTER_PROGRAMMING_VALUE' => 'FILTER_PROGRAMMING.VALUE',
     ],
 ]);
 
-$arResult['CATEGORIES'] = [];
+$categories = [
+    'VALUE' => [],
+    'XML_ID' => [],
+];
 
 while ($arData = $rsData->fetch()) {
-    $name = trim($arData['FILTER_VALUE']);
-    $arResult['CATEGORIES'][$name]['NAME'] = $name;
-    $arResult['CATEGORIES'][$name]['COUNT'] = 0;
+    if (!in_array($arData['FILTER_VALUE'], $categories['VALUE'])) {
+        $categories['VALUE'][] = $arData['FILTER_VALUE'];
+    }
+
+    if (!in_array($arData['FILTER_PROGRAMMING_VALUE'], $categories['XML_ID'])) {
+        $categories['XML_ID'][] = $arData['FILTER_PROGRAMMING_VALUE'];
+    }
+}
+
+$arResult['CATEGORIES'] = [];
+foreach ($categories['VALUE'] as $key => $value) {
+    $code = $categories['XML_ID'][$key];
+    $arResult['CATEGORIES'][$code] = [
+        'CODE' => $code,
+        'NAME' => $value,
+        'COUNT' => [],
+    ];
 }
 
 $rsData = ElementPortfolioTable::getList([
     'filter' => [
         'ACTIVE' => 'Y',
+        '!TYPE_VALUE' => false,
     ],
     'select' => [
-        'TYPE_VALUE' => 'TYPE.VALUE',
+        'ID',
+        'TYPE_VALUE' => 'TYPE_OBJECT.VALUE',
+        'PROPERTY_LIST_' => 'PE',
     ],
+    'runtime' => [
+        'PE' => [
+            'data_type' => PropertyEnumerationTable::class,
+            'reference' => [
+                '=this.TYPE_VALUE' => 'ref.ID'
+            ],
+        ],
+    ]
 ]);
 
 if (!$arResult['CATEGORIES']) {
     while ($arData = $rsData->fetch()) {
-        if (!$arData['TYPE_VALUE']) {
+        if (!$arData['TYPE_VALUE'] || !$arData['PROPERTY_LIST_VALUE']) {
             continue;
         }
 
-        $name = ucfirst(trim($arData['TYPE_VALUE']));
+        $name = ucfirst(trim($arData['PROPERTY_LIST_VALUE']));
         $arResult['CATEGORIES'][$name]['NAME'] = $name;
-        $arResult['CATEGORIES'][$name]['COUNT']++;
+        if (!in_array($arData['ID'], $arResult['CATEGORIES'][$name]['COUNT'])) {
+            $arResult['CATEGORIES'][$name]['COUNT'][] = $arData['ID'];
+        }
     }
 } else {
     while ($arData = $rsData->fetch()) {
-        if (!$arData['TYPE_VALUE']) {
+        if (!$arData['TYPE_VALUE'] || !$arData['PROPERTY_LIST_XML_ID']) {
             continue;
         }
 
-        $haystack = mb_strtolower(trim($arData['TYPE_VALUE']));
+        $haystack = $arData['PROPERTY_LIST_XML_ID'];
 
         foreach ($arResult['CATEGORIES'] as $name => $data) {
-            $needle = mb_strtolower($name);
+            $needle = $data['XML_ID'];
 
-            if (str_contains($haystack, $needle)) {
-                $arResult['CATEGORIES'][$name]['COUNT']++;
+            if (str_contains($haystack, $needle) && !in_array($arData['ID'], $arResult['CATEGORIES'][$haystack]['COUNT'])) {
+                $arResult['CATEGORIES'][$haystack]['COUNT'][] = $arData['ID'];
             }
         }
     }
 }
 
 foreach ($arResult['CATEGORIES'] as $key => $value) {
+    $value['COUNT'] = count($value['COUNT']);
     if (in_array($value['COUNT'], [11, 12, 13, 14], true)) {
         $arResult['CATEGORIES'][$key]['COUNT'] = $value['COUNT'] . ' проектов';
     } else {

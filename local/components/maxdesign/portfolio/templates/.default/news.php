@@ -17,6 +17,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
+$request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
 ?>
 
 <section class="projects-page">
@@ -64,7 +65,11 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 ],
             ],
             $component
-        ); ?><?php if ($arParams['USE_FILTER'] == 'Y') {
+        ); ?><?php
+        if (Context::getCurrent()->getRequest()->isAjaxRequest()) {
+            $APPLICATION->RestartBuffer();
+        }
+        ?><?php if ($arParams['USE_FILTER'] == 'Y') {
             $APPLICATION->IncludeComponent(
                 'bitrix:news.list',
                 'filters',
@@ -92,41 +97,39 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                         'FILTER_AUTOCOMPLETE',
                         'FILTER_MAIN_PAGE',
                     ],
+                    'ACTIVE_FILTERS_RAW' => array_merge((array) $arResult['VARIABLES']['FILTERS_RAW'], $request) ?? [],
+                    'ACTIVE_FILTERS' => array_merge((array) $arResult['VARIABLES']['FILTERS'], $request) ?? [],
+                    'SEF_FOLDER' => $arParams['SEF_FOLDER'],
                 ],
                 $component
             );
         } ?><?php
 
         // ЧПУ фильтры
-        $pathname = explode('/', Context::getCurrent()->getRequest()->getRequestUri());
-
-        $typeObject = $pathname[3] ?? null;
-        $style = $pathname[4] ?? null;
-
-        $request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
-
-        if ($data = $typeObject) {
+        if ($data = $arResult['VARIABLES']['FILTERS']['TYPE_OBJECT']) {
             $filter = [
-                'PROPERTY_TYPE_OBJECT_XML_ID' => explode('-', $data),
+                'PROPERTY_TYPE_OBJECT' => $data,
+                '!PROPERTY_TYPE_OBJECT' => false,
             ];
 
             $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
         }
 
-        if ($data = $style) {
+        if ($data = $arResult['VARIABLES']['FILTERS']['STYLE']) {
             // todo лучше уточнить, пока взял поле STYLE
             $filter = [
                 'LOGIC' => 'OR',
             ];
 
-            foreach (explode('-', $data) as $key => $item) {
+            foreach ($data as $key => $item) {
                 $filter[$key]['?PROPERTY_STYLE'] = $item;
             }
 
             $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
         }
 
-        if ($data = $request['SQUARE']) {
+        // Обычные фильтры
+        if ($data = $request['SQUARE_OBJECT']) {
             $filter = [
                 'LOGIC' => 'OR',
             ];
@@ -134,15 +137,14 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             foreach ($data as $key => $square) {
                 if (!str_contains($square, 'AND')) {
                     $char = !is_numeric($square[1]) ? mb_substr($square, 0, 2) : mb_substr($square, 0, 1);
-                    $filter[$key][$char . 'PROPERTY_SQUARE'] = mb_substr($square, strlen($char));
+                    $filter[$key][$char . 'PROPERTY_SQUARE_OBJECT'] = mb_substr($square, strlen($char));
                     continue;
                 }
 
                 foreach (explode('AND', $square) as $item) {
                     $item = trim($item);
                     $char = !is_numeric($item[1]) ? mb_substr($item, 0, 2) : mb_substr($item, 0, 1);
-                    var_dump($char);
-                    $filter[$key][$char . 'PROPERTY_SQUARE'] = mb_substr($item, strlen($char));
+                    $filter[$key][$char . 'PROPERTY_SQUARE_OBJECT'] = mb_substr($item, strlen($char));
                 }
             }
 
@@ -173,7 +175,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
         }
 
-
+        ?><?php
 
         $APPLICATION->IncludeComponent(
             'bitrix:news.list',
@@ -226,6 +228,10 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 'CHECK_DATES' => $arParams['CHECK_DATES'],
             ],
             $component
-        ); ?>
+        ); ?><?php
+        if (Context::getCurrent()->getRequest()->isAjaxRequest()) {
+            exit;
+        }
+        ?>
     </div>
 </section>

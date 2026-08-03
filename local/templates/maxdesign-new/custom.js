@@ -2,7 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     window.custom = {
         replaceWith: replaceWith,
-        replaceWithDeletedNotFound: false
+        replaceWithDeletedNotFound: false,
+        initLazyPagination: initLazyPagination,
     };
 
     initPaginationButtons();
@@ -141,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     BX.ajax({
                         url: targetElement.dataset.url,
                         method: 'GET',
+                        dataType: 'html',
                         onsuccess: function (r) {
                             const selector = `[data-pagination-container=${paginationContainer}]`;
                             r = parser.parseFromString(r, 'text/html');

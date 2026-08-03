@@ -10,8 +10,8 @@ $APPLICATION->SetTitle("Портфолио: Элитный дизайн квар
 <?php
 
 $APPLICATION->IncludeComponent(
-    "bitrix:news",
-    "projects",
+    "maxdesign:portfolio",
+    "",
     array(
         "ADD_ELEMENT_CHAIN" => "Y",
         "ADD_SECTIONS_CHAIN" => "Y",
@@ -114,6 +114,7 @@ $APPLICATION->IncludeComponent(
         "USE_SHARE" => "N",
         "SEF_URL_TEMPLATES" => array(
             "news" => "",
+            "filtered" => "#SMART_FILTER_PATH#/",
             "section" => "#SECTION_CODE_PATH#/",
             "detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#",
         ),
@@ -133,6 +134,7 @@ $APPLICATION->IncludeComponent(
         'SORT_BY2_FILTERS' => 'ID',
         'SORT_ORDER2_FILTERS' => 'DESC',
         'FILTER_NAME_FILTERS' => 'arrFilterFilters',
+        'SEF_FILTERS' => ["TYPE_OBJECT", "STYLE"]
     ),
     false
 );?>

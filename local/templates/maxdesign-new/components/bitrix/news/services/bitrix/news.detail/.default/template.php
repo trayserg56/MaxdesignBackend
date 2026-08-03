@@ -54,7 +54,7 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
                 <div class="architectural-screen-first__descr"><?= $arResult['DETAIL_TEXT'] ?></div>
             <?php } ?>
             <div class="architectural-screen-first__btns">
-                <button class="button button--middle button--white" type="button">Заказать расчёт</button>
+                <button class="button button--middle button--white"  type="button">Заказать расчёт</button>
                 <?php if ($arResult['PROPERTIES']['FS_BTN_PROJECTS_LINK']['VALUE']) { ?>
                     <a href="<?= $arResult['PROPERTIES']['FS_BTN_PROJECTS_LINK']['VALUE'] ?>" class="button button--middle" type="button">Примеры проектов</a>
                 <?php } ?>
@@ -129,7 +129,7 @@ foreach ($detailPage as $block) {
                             <img
                                 class="glightbox"
                                 data-gallery="projectGallery"
-                                src="<?= $block['image']['file']['SRC'] ?>"
+                                src="<?= $block['image']['file']['ORIGIN_SRC'] ?>"
                                 alt="<?= $block['image']['file']['DESCRIPTION'] ?: $block['textfield1']['value'] ?>">
                         </div>
                     </div>

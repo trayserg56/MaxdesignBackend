@@ -23,7 +23,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                 'height' => 400,
                             ], BX_RESIZE_IMAGE_EXACT)['src'] ?>"
                             alt="<?= $item['NAME'] ?>"
-                            class="service-cart__image"
+                            class="service-card__image"
                             loading="lazy"
                             decoding="async"
                         >
