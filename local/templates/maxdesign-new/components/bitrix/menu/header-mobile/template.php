@@ -11,10 +11,10 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
         <?php foreach ($arResult['ITEMS'] as $code => $item) { ?>
             <li class="header__menu-item">
                 <?php if (isset($arResult['DROPDOWN'][$code]) && in_array($code, $arParams['HAS_DROPDOWN'])) { ?>
-                    <button class="header__menu-link" type="button" data-header-submenu-open="<?= $code ?>"
+                    <a href="<?= $item['LINK'] ?>" class="header__menu-link" type="button" data-header-submenu-open="<?= $code ?>"
                             aria-controls="mobile-<?= $code ?>-menu" aria-expanded="false">
                         <?= $item['TEXT'] ?>
-                    </button>
+                    </a>
                 <?php } else { ?>
                     <a class="header__menu-link" href="<?= $item['LINK'] ?>">
                         <?= $item['TEXT'] ?>

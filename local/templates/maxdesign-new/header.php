@@ -117,28 +117,33 @@ CUtil::InitJSCore(['ajax']);
         </div>
         <div class="header__menu" id="header-menu" aria-hidden="true">
             <div class="header__menu-inner container">
-                <nav class="header__menu-nav" aria-label="Мобильная навигация">
-                    <?php
+                <div class="header__menu-view is-active" data-header-menu-view="root" aria-hidden="false">
+                    <nav class="header__menu-nav" aria-label="Мобильная навигация">
+                        <?php
 
-                    $APPLICATION->IncludeComponent(
-                        'bitrix:menu',
-                        'header-mobile',
-                        [
-                            'MAX_LEVEL' => '1',
-                            'DELAY' => 'N',
-                            'MENU_CACHE_TYPE' => 'A',
-                            'MENU_CACHE_TIME' => '36000000',
-                            'ROOT_MENU_TYPE' => 'top'
-                        ]
-                    );
-                    ?>
-                </nav>
-                <div class="header__menu-contacts"><a class="header__menu-contact"
-                                                      href="tel:<?= $contacts->getFormatedPhone('phone') ?>">
-                        <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
-                                                             href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
+                        $APPLICATION->IncludeComponent(
+                            'bitrix:menu',
+                            'header-mobile',
+                            [
+                                'MAX_LEVEL' => '1',
+                                'DELAY' => 'N',
+                                'MENU_CACHE_TYPE' => 'A',
+                                'MENU_CACHE_TIME' => '36000000',
+                                'ROOT_MENU_TYPE' => 'top',
+                                'HAS_DROPDOWN' => 'portfolio,uslugi',
+                            ]
+                        );
+                        ?>
+                    </nav>
+                    <div class="header__menu-contacts"><a class="header__menu-contact"
+                                                          href="tel:<?= $contacts->getFormatedPhone('phone') ?>">
+                            <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
+                                                                 href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
+                    </div>
+                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project">Обсудить проект</button>
                 </div>
-                <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project">Обсудить проект</button></div>
+                <?php $APPLICATION->ShowViewContent('menu--header-mobile_menus'); ?>
+            </div>
         </div>
     </header>
     <main>
