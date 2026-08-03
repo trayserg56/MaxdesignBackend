@@ -101,6 +101,12 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
             while ($arData = $rsData->fetch()) {
                 $arResult['DROPDOWN'][$code][(int) $arData['IBLOCK_SECTION_ID']]['ITEMS'][$arData['CODE']] = $arData['NAME'];
             }
+
+            foreach ($arResult['DROPDOWN'][$code] as $key => $dropdown) {
+                if (count($dropdown['ITEMS']) <= 0) {
+                    unset($arResult['DROPDOWN'][$code][$key]);
+                }
+            }
             break;
 
         default: //todo реализовать стандартную логику (пункт О студии)
