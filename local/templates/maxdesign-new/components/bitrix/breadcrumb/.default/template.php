@@ -8,7 +8,7 @@ if (empty($arResult)) {
     return '';
 }
 
-$strReturn = '<nav class="breadcrumbs breadcrumbs--on-dark breadcrumbs--overlay" aria-label="Хлебные крошки">';
+$strReturn = '<nav class="breadcrumbs" aria-label="Хлебные крошки">';
 
 foreach ($arResult as $key => $item) {
     $strReturn .= '<span class="breadcrumbs__item">';
