@@ -8,7 +8,6 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 }
 
 global $APPLICATION;
-$APPLICATION->AddChainItem('Главная', '/');
 
 $contacts = Contacts::getInstance();
 CUtil::InitJSCore(['ajax']);
@@ -102,7 +101,7 @@ CUtil::InitJSCore(['ajax']);
                         <a class="header__contact"
                            href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <button class="button header__button" type="button" data-modal-target="#discuss-project">Обсудить проект</button>
+                    <button class="button header__button" type="button" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Обсудить проект</button>
                     <button class="header__menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"
                             aria-controls="header-menu">
                         <svg class="header__menu-icon header__menu-icon--open">
@@ -140,7 +139,7 @@ CUtil::InitJSCore(['ajax']);
                             <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
                                                                  href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project">Обсудить проект</button>
+                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>'>Обсудить проект</button>
                 </div>
                 <?php $APPLICATION->ShowViewContent('menu--header-mobile_menus'); ?>
             </div>
