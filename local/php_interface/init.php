@@ -6,6 +6,7 @@ use Controllers\FormSubmitController;
 use Entity\BaseEntity;
 use Entity\Contacts;
 use Entity\DTO\FormSubmitDTO;
+use Entity\Redirects;
 use Entity\Socials;
 use Entity\Form;
 use Entity\FormSubmits;
@@ -21,6 +22,7 @@ Loader::registerAutoLoadClasses(
         Socials::class => '/local/php_interface/lib/Entity/Socials.php',
         Form::class => '/local/php_interface/lib/Entity/Form.php',
         FormSubmits::class => '/local/php_interface/lib/Entity/FormSubmits.php',
+        Redirects::class => '/local/php_interface/lib/Entity/Redirects.php',
         FormSubmitController::class => '/local/php_interface/lib/Controllers/FormSubmitController.php',
         FormSubmitDTO::class => '/local/php_interface/lib/Entity/DTO/FormSubmitDTO.php',
         TemplateHelper::class => '/local/php_interface/lib/Helpers/TemplateHelper.php',
@@ -39,4 +41,10 @@ EventManager::getInstance()->addEventHandler(
     'iblock',
     'OnAfterIBlockElementUpdate',
     [PortfolioEventHandler::class, 'portfolioFiltersAfterSaved']
+);
+
+EventManager::getInstance()->addEventHandler(
+    'main',
+    'OnPageStart',
+    [Redirects::class, 'handleRequests']
 );
