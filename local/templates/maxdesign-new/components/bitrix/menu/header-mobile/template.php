@@ -10,11 +10,13 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
     <ul class="header__menu-list">
         <?php foreach ($arResult['ITEMS'] as $code => $item) { ?>
             <li class="header__menu-item">
-                <?php if (isset($arResult['DROPDOWN'][$code]) && in_array($code, $arParams['HAS_DROPDOWN'])) { ?>
-                    <a href="<?= $item['LINK'] ?>" class="header__menu-link" type="button" data-header-submenu-open="<?= $code ?>"
-                            aria-controls="mobile-<?= $code ?>-menu" aria-expanded="false">
-                        <?= $item['TEXT'] ?>
-                    </a>
+                <?php if ((isset($arResult['DROPDOWN'][$code]) && in_array($code, $arParams['HAS_DROPDOWN'])) || isset($arResult['DROPDOWN'][$item['TEXT']])) { ?>
+                    <button class="header__menu-link" type="button"
+                       data-header-submenu-open="<?= isset($arResult['DROPDOWN'][$code]) ? $code : $item['TEXT'] ?>"
+                       aria-controls="mobile-<?=  isset($arResult['DROPDOWN'][$code]) ? $code : $item['TEXT']  ?>-menu"
+                       aria-expanded="false">
+                       <?= $item['TEXT'] ?>
+                    </button>
                 <?php } else { ?>
                     <a class="header__menu-link" href="<?= $item['LINK'] ?>">
                         <?= $item['TEXT'] ?>
@@ -41,7 +43,7 @@ foreach ($arResult['DROPDOWN'] as $code => $columns) {
                 <?php } ?>
                 <ul class="header__submenu-list">
                     <?php foreach ($column['ITEMS'] as $colItemCode => $colItemText) { ?>
-                        <li><a class="header__submenu-link" href="<?= $column['LINK'] . $colItemCode?>"><?= $colItemText ?></a></li>
+                        <li><a class="header__submenu-link" href="<?= str_replace('//', '/', $column['LINK'] . $colItemCode)?>"><?= $colItemText ?></a></li>
                     <?php }?>
                 </ul>
             </div>

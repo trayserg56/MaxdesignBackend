@@ -119,7 +119,8 @@ foreach ($arResult['ITEMS'] as $key => $item) {
     $menuItem = trim($explode[1]);
 
     $item['TEXT'] = $menuItem;
-    $arResult['DROPDOWN'][$category][0]['ITEMS'][] = $item;
+    $arResult['DROPDOWN'][$category][0]['TITLE'] = $category;
+    $arResult['DROPDOWN'][$category][0]['ITEMS'][$item['LINK']] = $item['TEXT'];
 
     if (!in_array($category, $categories)) {
         $arResult['ITEMS'][$key]['TEXT'] = $category;
