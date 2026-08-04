@@ -3,8 +3,15 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("description", "Дизайнерские услуги в Санкт-Петербурге: студия  Maxdesign оказывает услуги по дизайну жилых и общественных интерьеров, делает экспертизу и предпроектный анализ строительных объектов, оформление выставочных стендов. Подробнее по тел.: +7 (900) 650-00-50, +7 (812) 786-67-76.");
 $APPLICATION->SetPageProperty("title", "Услуги частного дизайнера элитного интерьера СПб");
 $APPLICATION->SetTitle("Услуги дизайнеров интерьера Санкт-Петербург");
-?>
-<? $APPLICATION->IncludeComponent(
+?><?php
+$uri = \Bitrix\Main\Context::getCurrent()->getRequest()->getRequestUri();
+$uriArr = explode('/', $uri);
+if ($uriArr[1] !== 'uslugi') {
+    $sefFolder = '/';
+} else {
+    $sefFolder = "/$uriArr[1]/";
+}
+?><? $APPLICATION->IncludeComponent(
     'bitrix:news',
     'services',
     array(
@@ -76,7 +83,7 @@ $APPLICATION->SetTitle("Услуги дизайнеров интерьера С�
         'PAGER_TEMPLATE' => '',
         'PAGER_TITLE' => 'Новости',
         'PREVIEW_TRUNCATE_LEN' => '',
-        'SEF_FOLDER' => '/uslugi/',
+        'SEF_FOLDER' => $sefFolder,
         'SEF_MODE' => 'Y',
         'SET_LAST_MODIFIED' => 'N',
         'SET_STATUS_404' => 'Y',

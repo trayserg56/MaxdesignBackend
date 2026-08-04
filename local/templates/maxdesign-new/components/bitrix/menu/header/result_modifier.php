@@ -66,7 +66,11 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
             break;
 
         case 'uslugi':
-            $rsData = SectionTable::getList([
+            $entity = \Bitrix\Iblock\Model\Section::compileEntityByIblock(
+                IblockHelper::getIblockIdByCode('services')
+            );
+
+            $rsData = $entity::getList([
                 'filter' => [
                     'ACTIVE' => 'Y',
                     'IBLOCK_ID' => IblockHelper::getIblockIdByCode('services'),
@@ -75,13 +79,14 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
                     'ID',
                     'NAME',
                     'CODE',
+                    'UF_REMOVE_PREFIX',
                 ],
             ]);
 
             while ($arData = $rsData->fetch()) {
                 $arResult['DROPDOWN'][$code][(int) $arData['ID']] = [
                     'TITLE' => $arData['NAME'],
-                    'LINK' => "/$code/{$arData['CODE']}/",
+                    'LINK' => (int)$arData['UF_REMOVE_PREFIX'] ? "/{$arData['CODE']}/" : "/$code/{$arData['CODE']}/",
                     'ITEMS' => [],
                 ];
             }
