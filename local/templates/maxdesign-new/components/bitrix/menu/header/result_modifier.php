@@ -109,7 +109,7 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
             }
             break;
 
-        default: //todo реализовать стандартную логику (пункт О студии)
+        default:
             break;
     }
 }

@@ -67,7 +67,7 @@ $form = \Entity\Form::getInstance();
     </div>
     <div class="container footer__inner">
         <div class="footer__top"><a class="footer__logo" href="/" aria-label="maxdesign"><img
-                        class="footer__logo-img" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/light-logo.cb3f0ad8.png"
+                        class="footer__logo-img" src="<?= $contacts->get('logo-footer-src') ?>"
                         alt="" width="247"
                         height="48"></a>
             <nav class="footer__nav" aria-label="Навигация в подвале">

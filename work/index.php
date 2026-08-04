@@ -4,12 +4,9 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 
 global $APPLICATION;
 ?>
-
 <section class="work-hero">
     <div class="work-hero__media">
-        <img class="work-hero__image" src="<?= SITE_TEMPLATE_PATH ?>/assets/images/hero.75c2c04e.jpg"
-           alt="Общественная деятельность студии maxdesign" width="1920"
-           height="965" loading="eager" decoding="async">
+        <?php $APPLICATION->IncludeFile('/work/include/pic.php'); ?>
     </div>
     <div class="work-hero__overlay"></div>
     <?php
