@@ -113,3 +113,33 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
             break;
     }
 }
+
+$k = 0;
+$i = 0;
+$categories = [];
+foreach ($arResult['ITEMS'] as $key => $item) {
+    if ($i === 2) {
+        $k++;
+        $i = 0;
+    }
+
+    $explode = explode('>', $item['TEXT']);
+
+    if (count($explode) <= 1) {
+        continue;
+    }
+
+    $category = trim($explode[0]);
+    $menuItem = trim($explode[1]);
+
+    $item['TEXT'] = $menuItem;
+    $arResult['DROPDOWN'][$category][$i]['ITEMS'][$item['LINK']] = $item['TEXT'];
+
+    if (!in_array($category, $categories)) {
+        $arResult['ITEMS'][$key]['TEXT'] = $category;
+        $categories[] = $category;
+    } else {
+        unset($arResult['ITEMS'][$key]);
+    }
+    $i++;
+}

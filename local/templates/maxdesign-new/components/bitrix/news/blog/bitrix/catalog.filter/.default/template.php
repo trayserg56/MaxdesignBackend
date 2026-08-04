@@ -4,7 +4,6 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
     die();
 }
 
-//todo Вопрос: реализация фильтров через бекенд или фронт? На фронте есть реализация
 /** @var $arResult */
 ?>
 <div class="first-screen-flat__btns"

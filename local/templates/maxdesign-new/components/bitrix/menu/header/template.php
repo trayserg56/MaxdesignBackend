@@ -10,7 +10,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 <ul class="header__list">
     <?php foreach ($arResult['ITEMS'] as $item) {
     $code = str_replace('/', '', $item['LINK']);
-    if (isset($arResult['DROPDOWN'][$code]) && in_array($code, $arParams['HAS_DROPDOWN'])) {
+    if ((isset($arResult['DROPDOWN'][$code]) && in_array($code, $arParams['HAS_DROPDOWN'])) || isset($arResult['DROPDOWN'][$item['TEXT']])) {
         ?>
         <li class="header__item header__item--has-dropdown">
             <a href="<?= $item['LINK'] ?>" class="header__link header__dropdown-toggle" type="button" aria-expanded="false"
@@ -19,7 +19,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
             </a>
             <div class="header__dropdown" id="<?= $code ?>-menu" aria-hidden="true">
                 <div class="header__dropdown-inner container">
-                    <?php foreach ($arResult['DROPDOWN'][$code] as $column) { ?>
+                    <?php foreach ($arResult['DROPDOWN'][$code] ?? $arResult['DROPDOWN'][$item['TEXT']] as $column) { ?>
                         <div class="header__dropdown-column">
                             <?php if ($column['TITLE']) { ?>
                                 <a class="header__dropdown-title" href="<?= $column['LINK'] ?>">
@@ -30,7 +30,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                                 <?php foreach ($column['ITEMS'] as $colItemCode => $colItemText) { ?>
                                     <li>
                                         <a class="header__dropdown-link"
-                                           href="<?= $column['LINK'] . ($colItemCode ? $colItemCode . '/' : $colItemCode) ?>">
+                                           href="<?= str_replace('//', '/', $column['LINK'] . ($colItemCode ? $colItemCode . '/' : $colItemCode)) ?>">
                                             <?= $colItemText ?>
                                         </a>
                                     </li>

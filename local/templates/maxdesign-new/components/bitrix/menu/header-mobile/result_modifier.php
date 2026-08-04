@@ -102,7 +102,29 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
             }
             break;
 
-        default: //todo реализовать стандартную логику (пункт О студии)
+        default:
             break;
+    }
+}
+
+$categories = [];
+foreach ($arResult['ITEMS'] as $key => $item) {
+    $explode = explode('>', $item['TEXT']);
+
+    if (count($explode) <= 1) {
+        continue;
+    }
+
+    $category = trim($explode[0]);
+    $menuItem = trim($explode[1]);
+
+    $item['TEXT'] = $menuItem;
+    $arResult['DROPDOWN'][$category][0]['ITEMS'][] = $item;
+
+    if (!in_array($category, $categories)) {
+        $arResult['ITEMS'][$key]['TEXT'] = $category;
+        $categories[] = $category;
+    } else {
+        unset($arResult['ITEMS'][$key]);
     }
 }
