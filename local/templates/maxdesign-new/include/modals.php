@@ -45,62 +45,12 @@ $form = \Entity\Form::getInstance();
             </button>
         </div>
         <form class="discuss-form" id="discuss-form" action="/local/submit-form.php" method="post" novalidate="">
-            <div class="discuss-form__fields">
-                <?php foreach ($form->getFields('feedback-form') as $field) {
-                    switch ($field['type']) {
-                        case 'select': ?>
-                            <div class="discuss-form__field"><label class="discuss-form__label"
-                                                                    for="discuss-<?= $field['name'] ?>">
-                                    <?= $field['placeholder'] ?></label><select class="discuss-form__select"
-                                                                                id="discuss-<?= $field['name'] ?>" name="<?= $field['name'] ?>">
-                                    <option value="" disabled="" selected="">Выберите из списка</option>
-                                    <?php foreach ($field['values'] as $value) { ?>
-                                        <option value="<?= $value ?>"><?= $value ?></option>
-                                    <?php } ?>
-                                </select></div>
-                            <?php
-                            break;
-                        case 'range':
-                            ?>
-                            <div class="discuss-form__field">
-                                <input class="discuss-form__input" type="text" id="discuss-<?= $field['name'] ?>"
-                                       name="<?= $field['name'] ?>"
-                                       placeholder="<?= str_replace('<sup>2</sup>', '²', $field['placeholder']) ?>"
-                                       inputmode="numeric">
-                            </div>
-                            <?php
-                            break;
-                        default: ?>
-                            <div class="discuss-form__field">
-                                <input class="discuss-form__input <?= in_array($field['type'], ['tel', 'email']) ? 'j_mask' : '' ?>" type="<?= $field['type'] ?>"
-                                       id="discuss-<?= $field['name'] ?>" name="<?= $field['name'] ?>"
-                                       placeholder="<?= $field['placeholder'] ?>"
-                                    <?= $field['type'] === 'tel' ? 'data-inputmask="\'mask\': \'+ 7(999) 999-99-99\'"' : '' ?>
-                                    <?= $field['type'] === 'email' ? 'data-inputmask="\'alias\': \'email\'"' : '' ?>
-                                />
-                            </div>
-                            <?php break;
-                    }
-                    ?>
+            <div class="discuss-form__fields"></div>
 
-                <?php } ?>
-            </div>
             <button class="button button--cta-dark discuss-form__submit" type="submit">Отправить</button>
-            <label class="checkbox discuss-form__consent"><input class="checkbox__input" type="checkbox" name="consent"
-                                                                 checked="" required="">
-                <div class="checkbox__wrap">
-                    <div class="checkbox__custom">
-                        <svg class="checkbox__icon">
-                            <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#done"></use>
-                        </svg>
-                    </div>
-                    <p class="checkbox__text">Я&nbsp;согласен на&nbsp;обработку персональных данных, в&nbsp;соответствии
-                        с&nbsp;Федеральным законом от&nbsp;27.07.2006 года №152-ФЗ «О&nbsp;персональных
-                        данных», на&nbsp;условиях и&nbsp;для целей, определённых в&nbsp;<a
-                                class="discuss-form__consent-link" href="<?= $contacts->get('policy') ?>">Согласии на&nbsp;обработку персональных
-                            данных</a></p></div>
-            </label>
-            <?= bitrix_sessid_post() ?>
+
+            <div class="discuss-form__consent-wrap">
+            </div>
         </form>
     </div>
 </div>
