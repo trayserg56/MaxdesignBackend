@@ -10,6 +10,18 @@ $styleAdditionalText = \Bitrix\Main\Context::getCurrent()->getRequest()->get('bi
     <div class="first-screen-<?= $classAdditional ?>">
         <?php $APPLICATION->IncludeFile('/nasha-komanda/include/bg.php'); ?>
     </div>
+    <?php
+
+    $APPLICATION->IncludeComponent(
+        'bitrix:breadcrumb',
+        'overlay',
+        [
+            'START_FROM' => '0',
+            'PATH' => '',
+            'SITE_ID' => 's1',
+        ]
+    );
+    ?>
     <div class="container">
         <div class="first-screen-team__wrap"><h1 class="first-screen-team__title" <?= $styleAdditionalText ?>>
                 <?php
@@ -40,7 +52,6 @@ $styleAdditionalText = \Bitrix\Main\Context::getCurrent()->getRequest()->get('bi
     </div>
 </section>
 <?php
-
 
 $APPLICATION->IncludeComponent(
     'bitrix:news.list',

@@ -8,7 +8,20 @@ $contacts = \Entity\Contacts::getInstance();
 <section class="contacts">
     <div class="container">
         <div class="contacts__wrap">
-            <div class="contacts__text"><h2 class="contacts__title">Свяжитесь с нами</h2>
+            <div class="contacts__text">
+                <?php
+
+                $APPLICATION->IncludeComponent(
+                    'bitrix:breadcrumb',
+                    '',
+                    [
+                        'START_FROM' => '0',
+                        'PATH' => '',
+                        'SITE_ID' => 's1',
+                    ]
+                );
+                ?>
+                <h2 class="contacts__title">Свяжитесь с нами</h2>
                 <ul class="contacts__list">
                     <li class="contacts__item">
                         <div class="contacts__top"><?= $contacts->getName('address') ?>:</div>

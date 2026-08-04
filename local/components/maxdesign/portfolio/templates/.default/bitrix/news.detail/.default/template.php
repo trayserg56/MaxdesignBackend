@@ -1,7 +1,6 @@
 <?php
 
 use Bitrix\Main\Page\Asset;
-use Bitrix\Main\Web\Json;
 
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
@@ -127,18 +126,6 @@ if ($arResult['PROPERTIES']['OLD_DESIGN']['VALUE']) {
                 </div>
             <?php } ?>
         </div>
-        <?php
-
-        $APPLICATION->IncludeComponent(
-            'bitrix:breadcrumb',
-            'projects-detail',
-            [
-                'START_FROM' => '0',
-                'PATH' => '',
-                'SITE_ID' => 's1',
-            ]
-        );
-        ?>
     </div>
     <div class="project-hero__meta">
         <div class="container">

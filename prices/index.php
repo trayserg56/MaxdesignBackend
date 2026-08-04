@@ -5,6 +5,18 @@ global $APPLICATION;
 ?>
 <section class="first-screen-flat first-screen-flat--prices">
     <div class="container">
+        <?php
+
+        $APPLICATION->IncludeComponent(
+            'bitrix:breadcrumb',
+            '',
+            [
+                'START_FROM' => '0',
+                'PATH' => '',
+                'SITE_ID' => 's1',
+            ]
+        );
+        ?>
         <div class="first-screen-flat__wrap">
             <div><h1 class="first-screen-flat__title">
                     <?php
@@ -33,7 +45,7 @@ global $APPLICATION;
 
                 </div>
             </div>
-            <button class="button button--middle" data-modal-target="#discuss-project">Рассчитать стоимость</button>
+            <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Рассчитать стоимость</button>
         </div>
     </div>
 </section>

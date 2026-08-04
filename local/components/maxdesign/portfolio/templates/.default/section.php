@@ -24,7 +24,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 
             $APPLICATION->IncludeComponent(
                 'bitrix:breadcrumb',
-                'projects',
+                '',
                 [
                     'START_FROM' => '0',
                     'PATH' => '',

@@ -27,7 +27,7 @@ $request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
             
             $APPLICATION->IncludeComponent(
                 'bitrix:breadcrumb',
-                'projects',
+                '',
                 [
                     'START_FROM' => '0',
                     'PATH' => '',

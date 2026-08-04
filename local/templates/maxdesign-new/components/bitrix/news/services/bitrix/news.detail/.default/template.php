@@ -34,7 +34,7 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
                 <div><h1 class="first-screen-flat__title"><?= $arResult['NAME'] ?></h1>
                     <div class="first-screen-flat__descr"><?= $arResult['DETAIL_TEXT'] ?></div>
                 </div>
-                <button class="button button--middle" data-modal-target="#discuss-project">Обсудить проект</button>
+                <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Обсудить проект</button>
             </div>
         </div>
     </section>

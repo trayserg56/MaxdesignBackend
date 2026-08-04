@@ -12,26 +12,38 @@ global $APPLICATION;
            height="965" loading="eager" decoding="async">
     </div>
     <div class="work-hero__overlay"></div>
+    <?php
+
+    $APPLICATION->IncludeComponent(
+        'bitrix:breadcrumb',
+        'overlay',
+        [
+            'START_FROM' => '0',
+            'PATH' => '',
+            'SITE_ID' => 's1',
+        ]
+    );
+    ?>
     <div class="work-hero__content"><h1 class="work-hero__title">
             <?php
             $APPLICATION->IncludeComponent(
-                    "bitrix:main.include",
-                    "",
-                    [
-                            "AREA_FILE_SHOW" => "file",
-                            "PATH" => "/work/include/title.php",
-                    ]
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/work/include/title.php",
+                ]
             );
             ?></h1>
         <p class="work-hero__subtitle">
             <?php
             $APPLICATION->IncludeComponent(
-                    "bitrix:main.include",
-                    "",
-                    [
-                            "AREA_FILE_SHOW" => "file",
-                            "PATH" => "/work/include/subtitle.php",
-                    ]
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/work/include/subtitle.php",
+                ]
             );
             ?></p></div>
 </section>
@@ -39,35 +51,35 @@ global $APPLICATION;
     <div class="work-contribution__inner"><h2 class="work-contribution__label" id="work-contribution-heading">
             <?php
             $APPLICATION->IncludeComponent(
-                    "bitrix:main.include",
-                    "",
-                    [
-                            "AREA_FILE_SHOW" => "file",
-                            "PATH" => "/work/include/label.php",
-                    ]
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/work/include/label.php",
+                ]
             );
             ?></h2>
         <p class="work-contribution__text">
             <?php
             $APPLICATION->IncludeComponent(
-                    "bitrix:main.include",
-                    "",
-                    [
-                            "AREA_FILE_SHOW" => "file",
-                            "PATH" => "/work/include/text.php",
-                    ]
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/work/include/text.php",
+                ]
             );
             ?></p>
         <ul class="work-contribution__list">
             <li class="work-contribution__item"><p class="work-contribution__item-text">
                     <?php
                     $APPLICATION->IncludeComponent(
-                            "bitrix:main.include",
-                            "",
-                            [
-                                    "AREA_FILE_SHOW" => "file",
-                                    "PATH" => "/work/include/item1.php",
-                            ]
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/work/include/item1.php",
+                        ]
                     );
                     ?></p></li>
             <li class="work-contribution__item"><p class="work-contribution__item-text">
