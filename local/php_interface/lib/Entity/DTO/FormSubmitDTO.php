@@ -29,7 +29,6 @@ class FormSubmitDTO
         private ?string $email,
         #[Phone]
         private ?string $phone,
-        #[NotEmpty(errorMessage: 'Значения поля "Местонахождение" не может быть пустым')]
         private ?string $location,
         #[NotEmpty(errorMessage: 'Значения поля "Имя не может" быть пустым')]
         private ?string $name,
