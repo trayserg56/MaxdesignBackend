@@ -11,9 +11,18 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-?>
+?><?php
 
-<? $ElementID = $APPLICATION->IncludeComponent(
+$APPLICATION->IncludeComponent(
+    'bitrix:breadcrumb',
+    'overlay',
+    [
+        'START_FROM' => '0',
+        'PATH' => '',
+        'SITE_ID' => 's1',
+    ]
+);
+?><? $ElementID = $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "",
     array(

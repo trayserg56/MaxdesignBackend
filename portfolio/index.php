@@ -24,7 +24,7 @@ $APPLICATION->IncludeComponent(
         "CACHE_FILTER" => "N",
         "CACHE_GROUPS" => "Y",
         "CACHE_TIME" => "36000000",
-        "CACHE_TYPE" => "N",
+        "CACHE_TYPE" => "A",
         "CHECK_DATES" => "Y",
         "COMPONENT_TEMPLATE" => "projects",
         "DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
