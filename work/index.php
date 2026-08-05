@@ -116,8 +116,17 @@ global $APPLICATION;
     </div>
 </section>
 <section class="work-service" aria-labelledby="work-service-heading">
-    <div class="work-service__inner"><h2 class="work-service__title" id="work-service-heading">Почему это
-            важно</h2>
+    <div class="work-service__inner"><h2 class="work-service__title" id="work-service-heading">
+            <?php
+            $APPLICATION->IncludeComponent(
+                "bitrix:main.include",
+                "",
+                [
+                    "AREA_FILE_SHOW" => "file",
+                    "PATH" => "/work/include/why.php",
+                ]
+            );
+            ?></h2>
         <ul class="work-service__list">
             <li class="work-service__item"><span class="work-service__num">01</span>
                 <p class="work-service__text"><?php
