@@ -98,6 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.append('formCode', form.id);
                 data.append('sessid', BX.bitrix_sessid());
 
+                if (!form.checkValidity()) {
+                    return;
+                }
+
                 BX.ajax({
                     url: form.action,
                     method: 'POST',
