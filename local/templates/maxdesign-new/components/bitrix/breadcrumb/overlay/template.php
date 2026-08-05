@@ -20,7 +20,7 @@ foreach ($arResult as $key => $item) {
     if (array_key_last($arResult) !== $key) {
         $strReturn .= '<a class="breadcrumbs__link" href="' . $item['LINK'] . '">' . $item['TITLE'] . '</a>';
     } else {
-        $strReturn .= '<span class="project-hero__crumb-current">' . $item['TITLE'] . '</span>';
+        $strReturn .= '<span class="breadcrumbs__current">' . $item['TITLE'] . '</span>';
     }
 
     $strReturn .= '</span>';

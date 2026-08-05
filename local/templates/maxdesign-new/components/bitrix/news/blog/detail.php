@@ -11,7 +11,23 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-?><? $ElementID = $APPLICATION->IncludeComponent(
+?>
+<section class="post-hero">
+    <?php
+    $APPLICATION->IncludeComponent(
+        'bitrix:breadcrumb',
+        'overlay',
+        [
+            'START_FROM' => '0',
+            'PATH' => '',
+            'SITE_ID' => 's1',
+        ]
+    );
+    ?>
+    <?php $APPLICATION->ShowViewContent('blog-hero--block'); ?>
+</section>
+
+<? $ElementID = $APPLICATION->IncludeComponent(
     "bitrix:news.detail",
     "",
     array(
