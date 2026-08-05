@@ -19,6 +19,18 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true) {
 
 <section class="first-screen-flat first-screen-flat--services">
 	<div class="container">
+        <?php
+
+        $APPLICATION->IncludeComponent(
+            'bitrix:breadcrumb',
+            '',
+            [
+                'START_FROM' => '0',
+                'PATH' => '',
+                'SITE_ID' => 's1',
+            ]
+        );
+        ?>
 		<div class="first-screen-flat__wrap">
 			<div><h1 class="first-screen-flat__title"><?php $APPLICATION->ShowTitle('h1'); ?></h1>
 				<div class="first-screen-flat__descr"><?php $APPLICATION->ShowProperty('description_page'); ?></div>
