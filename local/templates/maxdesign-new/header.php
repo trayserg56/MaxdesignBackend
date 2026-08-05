@@ -101,7 +101,18 @@ CUtil::InitJSCore(['ajax']);
                         <a class="header__contact"
                            href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <button class="button header__button" type="button" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Обсудить проект</button>
+                    <button class="button header__button" type="button" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => SITE_TEMPLATE_PATH . "/include/discuss-project-btn.php",
+                            ]
+                        );
+                        ?>
+                    </button>
                     <button class="header__menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false"
                             aria-controls="header-menu">
                         <svg class="header__menu-icon header__menu-icon--open">
@@ -139,7 +150,18 @@ CUtil::InitJSCore(['ajax']);
                             <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
                                                                  href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>'>Обсудить проект</button>
+                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>'>
+                        <?php
+                        $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            "",
+                            [
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => SITE_TEMPLATE_PATH . "/include/discuss-project-btn.php",
+                            ]
+                        );
+                        ?>
+                    </button>
                 </div>
                 <?php $APPLICATION->ShowViewContent('menu--header-mobile_menus'); ?>
             </div>

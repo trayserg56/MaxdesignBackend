@@ -95,15 +95,15 @@ $form = \Entity\Form::getInstance();
             <div class="footer__main-content">
                 <div class="footer__contacts">
                     <div class="footer__contact-group">
-                        <div class="footer__contact-item"><p class="footer__label">Для вопросов и заявок</p><a
+                        <div class="footer__contact-item"><p class="footer__label"><?= $contacts->get('email-label') ?></p><a
                                     class="footer__link"
                                     href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                         </div>
                         <a class="footer__link"
                            href="tel:<?= $contacts->getFormatedPhone('phone') ?>"><?= $contacts->get('phone') ?></a>
                     </div>
-                    <div class="footer__contact-group footer__contact-group--secondary"><p class="footer__label">Для
-                            предложений по сотрудничеству</p><a class="footer__link"
+                    <div class="footer__contact-group footer__contact-group--secondary"><p class="footer__label">
+                            <?= $contacts->get('email-offer-label') ?></p><a class="footer__link"
                                                                 href="mailto:<?= $contacts->get('email-offer') ?>"><?= $contacts->get('email-offer') ?></a>
                     </div>
                 </div>
@@ -126,12 +126,25 @@ $form = \Entity\Form::getInstance();
                     <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/assets/svg/sprite.svg#arrow-down"></use>
                 </svg>
             </a>
-            <div class="footer__bottom-info"><p class="footer__copyright">2015-<?= date('Y') ?> maxdesign. Все права
-                    защищены.
-                    Любое использование материалов сайта только с письменного согласия ООО «МД»</p>
-                <div class="footer__links"><a class="footer__bottom-link" href="<?= $contacts->get('policy') ?>">Политика
-                        конфиденциальности</a><a
-                            class="footer__bottom-link" href="<?= $contacts->get('cookie') ?>">Настройки cookie</a>
+            <div class="footer__bottom-info"><p class="footer__copyright">
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => SITE_TEMPLATE_PATH . "/include/copyright.php",
+                        ]
+                    );
+                    ?>
+                </p>
+                <div class="footer__links">
+                    <a class="footer__bottom-link" href="<?= $contacts->get('policy') ?>">
+                        <?= $contacts->get('policy-text') ?>
+                    </a>
+                    <a class="footer__bottom-link" href="<?= $contacts->get('cookie') ?>">
+                        <?= $contacts->get('cookie-text') ?>
+                    </a>
                 </div>
             </div>
         </div>
