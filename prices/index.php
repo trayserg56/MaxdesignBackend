@@ -42,7 +42,6 @@ global $APPLICATION;
                         ]
                     );
                     ?>
-
                 </div>
             </div>
             <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Рассчитать стоимость</button>
@@ -69,7 +68,6 @@ global $APPLICATION;
                         );
                         ?>
                     </div>
-
                     <?php
                     $APPLICATION->IncludeComponent(
                         "bitrix:main.include",
@@ -81,7 +79,6 @@ global $APPLICATION;
                     );
                     ?>
                 </li>
-
                 <li class="prices-conditions__item">
                     <div class="prices-conditions__first-line">
                         <?php
@@ -95,7 +92,6 @@ global $APPLICATION;
                         );
                         ?>
                     </div>
-
                     <?php
                     $APPLICATION->IncludeComponent(
                         "bitrix:main.include",
@@ -109,7 +105,6 @@ global $APPLICATION;
                 </li>
                 <li class="prices-conditions__item">
                     <div class="prices-conditions__first-line">
-
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:main.include",
@@ -159,8 +154,6 @@ global $APPLICATION;
                     );
                     ?>
                 </li>
-
-
                 <li class="prices-conditions__item">
                     <div class="prices-conditions__first-line">
                         <?php
@@ -174,44 +167,41 @@ global $APPLICATION;
                         );
                         ?>
                     </div>
-
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/prices/include/PC-small-square4.php",
+                        ]
+                    );
+                    ?>
+                </li>
+                <li class="prices-conditions__item">
+                    <div class="prices-conditions__first-line">
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:main.include",
                             "",
                             [
                                 "AREA_FILE_SHOW" => "file",
-                                "PATH" => "/prices/include/PC-small-square4.php",
+                                "PATH" => "/prices/include/PC-small-ind.php",
                             ]
                         );
                         ?>
-
-
-
-                        <li class="prices-conditions__item">
-                            <div class="prices-conditions__first-line">
-                                <?php
-                                $APPLICATION->IncludeComponent(
-                                    "bitrix:main.include",
-                                    "",
-                                    [
-                                        "AREA_FILE_SHOW" => "file",
-                                        "PATH" => "/prices/include/PC-small-ind.php",
-                                    ]
-                                );
-                                ?>
-                            </div>
-                            <?php
-                            $APPLICATION->IncludeComponent(
-                                "bitrix:main.include",
-                                "",
-                                [
-                                    "AREA_FILE_SHOW" => "file",
-                                    "PATH" => "/prices/include/PC-small-ind2.php",
-                                ]
-                            );
-                            ?>
-                        </li>
+                    </div>
+                    <?php
+                    $APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/prices/include/PC-small-ind2.php",
+                        ]
+                    );
+                    ?>
+                </li>
             </ul>
         </div>
     </div>
