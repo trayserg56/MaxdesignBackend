@@ -4,13 +4,13 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
+/** @var array $arParams */
 /** @var array $arResult */
 ?>
 <section class="work-slider" aria-labelledby="work-slider-heading" data-work-slider data-swiper-container
          data-swiper-nav-theme="dark">
     <div class="work-slider__layout">
-        <div class="work-slider__content"><p class="work-slider__label" id="work-slider-heading">общественная
-                деятельность</p>
+        <div class="work-slider__content"><p class="work-slider__label" id="work-slider-heading"><?= $arParams['HEADING'] ?></p>
             <div class="swiper" data-swiper data-swiper-nav data-swiper-space="16" data-swiper-slides="auto"
                  data-swiper-grab-cursor="true"
                  data-swiper-breakpoints="{&quot;768&quot;: {&quot;spaceBetween&quot;: 20}, &quot;1024&quot;: {&quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 0}}">

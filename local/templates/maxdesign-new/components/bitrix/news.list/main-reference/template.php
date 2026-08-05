@@ -4,13 +4,14 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
+/** @var array $arParams */
 /** @var array $arResult */
 ?>
 <section class="reference-list js-reference-list" id="reference-list" aria-labelledby="reference-list-heading">
     <div class="reference-list__inner">
         <div class="reference-list__header">
-            <div class="reference-list__title"><p class="reference-list__label">Референс-лист</p>
-                <h2 class="reference-list__heading" id="reference-list-heading">Реализованные объекты</h2></div>
+            <div class="reference-list__title"><p class="reference-list__label"><?= $arParams['TITLE'] ?></p>
+                <h2 class="reference-list__heading" id="reference-list-heading"><?= $arParams['HEADING'] ?></h2></div>
             <a class="reference-list__download" href="<?= $arResult['DOWNLOAD_FILE'] ?>" download>Скачать</a></div>
         <div class="reference-list__body">
             <div class="reference-list__table" role="table" aria-label="Реализованные объекты">

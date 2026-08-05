@@ -4,6 +4,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
+/** @var array $arParams */
 /** @var array $arResult */
 ?>
 <div class="partners__content">
@@ -16,4 +17,6 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
            </li>
        <?php } ?>
     </ul>
-    <a class="button button--cta-dark partners__btn" href="/partnery/">Все партнёры</a></div>
+    <a class="button button--cta-dark partners__btn" href="<?= $arParams['LIST_LINK'] ?>">
+        <?= $arParams['LIST_TEXT'] ?>
+    </a></div>

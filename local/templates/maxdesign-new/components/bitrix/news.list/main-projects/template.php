@@ -4,11 +4,11 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
     die();
 }
 
+/** @var array $arParams */
 /** @var array $arResult */
-
 ?>
 <section class="home-project js-home-project home-project--no-expand is-collapsed" id="projects" aria-labelledby="projects-heading">
-    <div class="home-project__inner"><h2 class="home-project__title" id="projects-heading">Проекты</h2>
+    <div class="home-project__inner"><h2 class="home-project__title" id="projects-heading"><?= $arParams['HEADING'] ?></h2>
         <div class="home-project__tabs" role="tablist" aria-label="Категории проектов">
             <span
                     class="home-project__tab-separator" aria-hidden="true"></span>

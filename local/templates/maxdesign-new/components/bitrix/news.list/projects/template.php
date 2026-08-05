@@ -10,9 +10,8 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
 <section class="completed-projects">
     <div class="container">
         <div class="completed-projects__wrap">
-            <div class="completed-projects__head"><h2 class="completed-projects__title">Реализованные
-                    проекты</h2>
-                <a href="/portfolio/" class="button button--middle">Смотреть все</a>
+            <div class="completed-projects__head"><h2 class="completed-projects__title"><?= $arParams['TITLE'] ?></h2>
+                <a href="<?= $arParams['LIST_LINK'] ?>" class="button button--middle"><?= $arParams['LIST_TEXT'] ?></a>
             </div>
             <div class="completed-projects__slider" data-swiper-container="">
                 <div class="swiper swiper-horizontal swiper-backface-hidden"
@@ -72,7 +71,7 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
                 </div>
             </div>
             <div class="completed-projects__footer">
-                <a href="/portfolio/" class="button button--middle">Смотреть все</a>
+                <a href="<?= $arParams['LIST_LINK'] ?>" class="button button--middle"><?= $arParams['LIST_TEXT'] ?></a>
             </div>
         </div>
     </div>
