@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLazyPagination();
     initFilterButtons();
     initForms();
+    initCookieDialog();
 
     function replaceWith(response, selectorAttribute = 'data-replace', deleteNotFound = false, saveClassList = false) {
         document.querySelectorAll(`[${selectorAttribute}]`).forEach(element => {
@@ -212,6 +213,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (targetElement) {
             observer.observe(targetElement);
+        }
+    }
+
+    function initCookieDialog() {
+        const cookieValue = window.localStorage.getItem('cookies-accepted');
+        if (!cookieValue || cookieValue != 1) {
+            document.querySelector('[data-cookie-dialog]').classList.add('is-visible');
         }
     }
 });
