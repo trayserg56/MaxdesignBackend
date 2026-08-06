@@ -1,14 +1,22 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    let filterContainer = document.querySelector('[data-filters-container]');
+    const isMobile = navigator.userAgentData ? navigator.userAgentData.mobile : /Mobi|Android/i.test(navigator.userAgent);
+
+    const filterContainerSelector = isMobile ? '[data-filters-container=portfolio-mob]' : '[data-filters-container=portfolio]';
+    const filterContainerModalSelector = '[data-filters-container=portfolio-mob-modal]';
+    const filterButtonResetSelector = '[data-filter-reset]';
+
+    let filterContainer = document.querySelector(filterContainerSelector);
+    let filterContainerModal = document.querySelector(filterContainerModalSelector);
+    let filterButtonReset = document.querySelector(filterButtonResetSelector);
 
     if (!filterContainer) {
         return;
     }
 
-    const basePath = filterContainer.dataset.baseUrl || '/';
+    const basePath = filterContainer.dataset.baseUrl || filterContainerModal.dataset.baseUrl || '/';
 
-    function collectFilters() {
+    function collectFilters(filterContainer) {
         const selects = filterContainer.querySelectorAll('select[multiple]');
         const data = {};
 
@@ -33,16 +41,22 @@ document.addEventListener('DOMContentLoaded', function() {
         return path;
     }
 
-    function sendRequest() {
-        const filterData = collectFilters();
-        const pathname = buildPathname(filterData);
-
+    function sendRequest(containerWithFilters, resetFilters = false) {
+        const filterData = !resetFilters ? collectFilters(containerWithFilters) : {};
+        const pathname = !resetFilters ? buildPathname(filterData) : basePath;
         const params = new URLSearchParams();
-        filterData?.SQUARE_OBJECT?.forEach((filter, key) => params.append(`SQUARE_OBJECT[${key}]`, filter));
-        filterData?.YEAR?.forEach((filter, key) => params.append(`YEAR[${key}]`, filter));
+
+        if (!resetFilters) {
+            filterData?.SQUARE_OBJECT?.forEach((filter, key) => params.append(`SQUARE_OBJECT[${key}]`, filter));
+            filterData?.YEAR?.forEach((filter, key) => params.append(`YEAR[${key}]`, filter));
+        }
 
         // Обновляем URL в браузере БЕЗ query-строки
-        history.pushState(null, '', pathname);
+        if (resetFilters) {
+            history.pushState(null, '', basePath);
+        } else {
+            history.pushState(null, '', pathname);
+        }
 
         // Отправляем AJAX с query-параметрами
         BX.ajax({
@@ -52,18 +66,24 @@ document.addEventListener('DOMContentLoaded', function() {
             onsuccess: function (r) {
                 const parser = new DOMParser();
                 r = parser.parseFromString(r, 'text/html');
-                window.custom.replaceWith(r, 'data-filter-container');
-                window.custom.replaceWith(r, 'data-filters-container');
+                window.custom.replaceWith(r, 'data-filter-container', false, true);
+                window.custom.replaceWith(r, 'data-filters-container', false, true);
+                window.custom.replaceWith(r, 'data-replace', false, true);
 
-                filterContainer = document.querySelector('[data-filters-container]');
+                filterContainer = document.querySelector(filterContainerSelector);
+                filterContainerModal = document.querySelector(filterContainerModalSelector);
                 registerEventListenerFilters(filterContainer);
+                registerEventListenerFilters(filterContainerModal);
                 Select.initAll();
+                Modal.load(filterContainerModal.id);
                 window.custom.initLazyPagination();
             }
         });
     }
 
     registerEventListenerFilters(filterContainer);
+    registerEventListenerFilters(filterContainerModal);
+    registerResetFiltersButton(filterButtonReset);
 
     function registerEventListenerFilters(filterContainer) {
         if (!filterContainer) {
@@ -73,14 +93,31 @@ document.addEventListener('DOMContentLoaded', function() {
         filterContainer.addEventListener('click', function(e) {
             const removeBtn = e.target.closest('.button-icon.button--flat');
             if (removeBtn && removeBtn.closest('.select__tag')) {
-                setTimeout(sendRequest, 0);
+                setTimeout(function () {
+                    sendRequest(filterContainer);
+                }, 0);
                 return;
             }
 
             const optionEl = e.target.closest('.select__option');
             if (optionEl) {
-                setTimeout(sendRequest, 0);
+                setTimeout(function () {
+                    sendRequest(filterContainer);
+                }, 0);
             }
         }, true);
+    }
+
+    // Функция сброса фильтров
+    function registerResetFiltersButton(resetButton) {
+        if (!resetButton) {
+            return;
+        }
+
+        resetButton.addEventListener('click', function () {
+            setTimeout(function () {
+                sendRequest(null, true);
+            }, 0);
+        });
     }
 });

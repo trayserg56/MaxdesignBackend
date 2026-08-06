@@ -52,11 +52,11 @@ CUtil::InitJSCore(['ajax']);
 
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/runtime.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/_head.js', true);
-    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/_dev.js', true);
+//    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/_dev.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/bundle.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/assets/js/home.js', true);
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/custom.js', true);
-    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/_dev.css');
+//    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/_dev.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/assets/css/bundle.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/custom.css');
     ?>
@@ -101,7 +101,7 @@ CUtil::InitJSCore(['ajax']);
                         <a class="header__contact"
                            href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <button class="button header__button" type="button" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">
+                    <button class="button header__button" type="button" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>' data-modal-target="#discuss-project">
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:main.include",
@@ -150,7 +150,7 @@ CUtil::InitJSCore(['ajax']);
                             <?= $contacts->get('phone') ?></a><a class="header__menu-contact"
                                                                  href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                     </div>
-                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>'>
+                    <button class="button button--cta-dark header__menu-button" data-modal-target="#discuss-project" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>'>
                         <?php
                         $APPLICATION->IncludeComponent(
                             "bitrix:main.include",

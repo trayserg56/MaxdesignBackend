@@ -42,7 +42,7 @@ global $APPLICATION;
                     ?>
                 </div>
             </div>
-            <button class="button button--middle" data-modal-target="#discuss-project"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-accordion="">Стать партнером</button>
+            <button class="button button--middle" data-modal-target="#discuss-project"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>' data-accordion="">Стать партнером</button>
         </div>
     </div>
 </section>

@@ -95,7 +95,8 @@ $form = \Entity\Form::getInstance();
             <div class="footer__main-content">
                 <div class="footer__contacts">
                     <div class="footer__contact-group">
-                        <div class="footer__contact-item"><p class="footer__label"><?= $contacts->get('email-label') ?></p><a
+                        <div class="footer__contact-item"><p
+                                    class="footer__label"><?= $contacts->get('email-label') ?></p><a
                                     class="footer__link"
                                     href="mailto:<?= $contacts->get('email') ?>"><?= $contacts->get('email') ?></a>
                         </div>
@@ -104,7 +105,7 @@ $form = \Entity\Form::getInstance();
                     </div>
                     <div class="footer__contact-group footer__contact-group--secondary"><p class="footer__label">
                             <?= $contacts->get('email-offer-label') ?></p><a class="footer__link"
-                                                                href="mailto:<?= $contacts->get('email-offer') ?>"><?= $contacts->get('email-offer') ?></a>
+                                                                             href="mailto:<?= $contacts->get('email-offer') ?>"><?= $contacts->get('email-offer') ?></a>
                     </div>
                 </div>
                 <div class="footer__info"><p class="footer__text"><?= $contacts->get('address') ?></p>
@@ -152,5 +153,9 @@ $form = \Entity\Form::getInstance();
 </footer>
 </div>
 <?php include 'include/modals.php' ?>
+<div class="cookies is-visible" role="dialog" aria-live="polite" aria-label="Уведомление об использовании cookie"
+     aria-hidden="false"><p class="cookies__text"><?= $contacts->get('cookie-text') ?></p>
+    <button class="button button--cta-light cookies__button" type="button"><?= $contacts->get('cookie-btn') ?></button>
+</div>
 </body>
 </html>

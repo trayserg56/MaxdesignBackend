@@ -34,7 +34,7 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
                 <div><h1 class="first-screen-flat__title"><?= $arResult['NAME'] ?></h1>
                     <div class="first-screen-flat__descr"><?= $arResult['DETAIL_TEXT'] ?></div>
                 </div>
-                <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Обсудить проект</button>
+                <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>' data-modal-target="#discuss-project">Обсудить проект</button>
             </div>
         </div>
     </section>
@@ -54,7 +54,7 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
                 <div class="architectural-screen-first__descr"><?= $arResult['DETAIL_TEXT'] ?></div>
             <?php } ?>
             <div class="architectural-screen-first__btns">
-                <button class="button button--middle button--white" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' type="button">Заказать расчёт</button>
+                <button class="button button--middle button--white" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>' type="button">Заказать расчёт</button>
                 <?php if ($arResult['PROPERTIES']['FS_BTN_PROJECTS_LINK']['VALUE']) { ?>
                     <a href="<?= $arResult['PROPERTIES']['FS_BTN_PROJECTS_LINK']['VALUE'] ?>" class="button button--middle" type="button">Примеры проектов</a>
                 <?php } ?>
@@ -348,6 +348,9 @@ foreach ($detailPage as $block) {
                     <?php
 
                     if ($block['component']) {
+                        $block['component']['component_params']['INCLUDE_IBLOCK_INTO_CHAIN'] = 'N';
+                        $block['component']['component_params']['ADD_SECTIONS_CHAIN'] = 'N';
+
                         $APPLICATION->IncludeComponent(
                             $block['component']['component_name'],
                             $block['component']['component_template'],
@@ -377,6 +380,9 @@ foreach ($detailPage as $block) {
                     }
 
                     if ($block['component']) {
+                        $block['component']['component_params']['INCLUDE_IBLOCK_INTO_CHAIN'] = 'N';
+                        $block['component']['component_params']['ADD_SECTIONS_CHAIN'] = 'N';
+
                         $APPLICATION->IncludeComponent(
                             $block['component']['component_name'],
                             $block['component']['component_template'],
@@ -394,6 +400,9 @@ foreach ($detailPage as $block) {
                     <?php
 
                     if ($block['component']) {
+                        $block['component']['component_params']['INCLUDE_IBLOCK_INTO_CHAIN'] = 'N';
+                        $block['component']['component_params']['ADD_SECTIONS_CHAIN'] = 'N';
+
                         $APPLICATION->IncludeComponent(
                             $block['component']['component_name'],
                             $block['component']['component_template'],
@@ -434,6 +443,9 @@ foreach ($detailPage as $block) {
                         }
 
                         if ($block['component']) {
+                            $block['component']['component_params']['INCLUDE_IBLOCK_INTO_CHAIN'] = 'N';
+                            $block['component']['component_params']['ADD_SECTIONS_CHAIN'] = 'N';
+
                             $APPLICATION->IncludeComponent(
                                 $block['component']['component_name'],
                                 $block['component']['component_template'],

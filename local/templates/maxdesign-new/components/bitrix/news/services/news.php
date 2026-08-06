@@ -109,4 +109,34 @@ $APPLICATION->IncludeComponent(
         'CHECK_DATES' => $arParams['CHECK_DATES'],
     ],
 	$component
-); ?>
+); ?><?php
+
+$APPLICATION->IncludeComponent(
+    'bitrix:news.list',
+    'projects',
+    [
+        'IBLOCK_TYPE' => 'portfolio',
+        'IBLOCK_ID' => '6',
+        'NEWS_COUNT' => '10',
+        'SORT_BY1' => 'ACTIVE_FROM',
+        'SORT_ORDER1' => 'DESC',
+        'SORT_BY2' => 'SORT',
+        'SORT_ORDER2' => 'ASC',
+        'PROPERTY_CODE' => [
+            'YEAR',
+        ],
+        'SHOW_YEAR_AND_SECTION' => 'Y',
+        'ACTIVE_DATE_FORMAT' => 'd.m.Y',
+        'INCLUDE_IBLOCK_INTO_CHAIN' => 'N',
+        'ADD_SECTIONS_CHAIN' => 'N',
+        'INCLUDE_SUBSECTIONS' => 'Y',
+        'CACHE_TYPE' => 'A',
+        'CACHE_TIME' => 36000000,
+        'CACHE_FILTER' => 'Y',
+        'CACHE_GROUPS' => 'Y',
+        'TITLE' => 'Реализованные проекты',
+        'LIST_TEXT' => 'Смотреть все',
+        'LIST_LINK' => '/portfolio/',
+    ]
+);?>
+

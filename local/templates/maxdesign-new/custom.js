@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFilterButtons();
     initForms();
 
-    function replaceWith(response, selectorAttribute = 'data-replace', deleteNotFound = false) {
+    function replaceWith(response, selectorAttribute = 'data-replace', deleteNotFound = false, saveClassList = false) {
         document.querySelectorAll(`[${selectorAttribute}]`).forEach(element => {
             let replace = response.querySelector(`[${selectorAttribute}=${element.getAttribute(selectorAttribute)}]`);
             if (replace) {
@@ -113,13 +113,45 @@ document.addEventListener('DOMContentLoaded', () => {
                            Modal.open('form-submit-success');
                        } else {
                            if (r && r.errors) {
-                               document.querySelector('[data-error-text]').innerHTML = '';
-                               r.errors.forEach(error => {
-                                   document.querySelector('[data-error-text]').innerHTML += error.message + '<br>';
-                               });
-                           }
+                               form.querySelectorAll('input,select:not([type=hidden])').forEach(input => {
+                                   let next = input.nextElementSibling;
 
-                           Modal.open('form-submit-error');
+                                   while (next && !next.matches('p')) {
+                                       next = next.nextElementSibling;
+                                   }
+
+                                   if (next) {
+                                       if (!r.errors[input.name]) {
+                                           next.innerHTML = '';
+                                           next.setAttribute('hidden', 'hidden');
+                                           input.parentElement.classList.remove('is-invalid');
+                                       } else {
+                                           next.innerHTML = r.errors[input.name].message;
+                                           next.removeAttribute('hidden');
+                                           input.parentElement.classList.add('is-invalid');
+                                           delete r.errors[input.name];
+                                       }
+                                   }
+                               });
+
+                               if (r.errors.form || Object.keys(r.errors).length > 0) {
+                                   const input = form.querySelector('input,select:not([type=hidden])');
+                                   if (input) {
+                                       let next = input.nextElementSibling;
+                                       if (next) {
+                                           const key = r.errors.form ? 'form' : Object.keys(r.errors)[0]
+
+                                           while (next && !next.matches('p')) {
+                                               next = next.nextElementSibling;
+                                           }
+
+                                           next.innerHTML = r.errors[key].message;
+                                           next.removeAttribute('hidden');
+                                           input.parentElement.classList.add('is-invalid');
+                                       }
+                                   }
+                               }
+                           }
                        }
                     },
                     onfailure: function() {

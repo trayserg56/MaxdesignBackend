@@ -30,7 +30,7 @@ class FormSubmitDTO
         #[Phone]
         private ?string $phone,
         private ?string $location,
-        #[NotEmpty(errorMessage: 'Значения поля "Имя не может" быть пустым')]
+        #[NotEmpty(errorMessage: 'Значения поля "Имя" не может быть пустым')]
         private ?string $name,
         #[NotEmpty(errorMessage: 'Значения поля "Тип помещения" не может быть пустым')]
         private ?string $type,

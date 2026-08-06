@@ -20,7 +20,9 @@ class FormSubmitController
             return Json::encode([
                 'success' => false,
                 'errors' => [
-                    ['message' => 'Ошибка при получении данных',]
+                    'form' => [
+                        'message' => 'Ошибка при получении данных',
+                    ]
                 ]
             ]);
         }
@@ -32,9 +34,14 @@ class FormSubmitController
         $result = $validationService->validate($formRequest);
 
         if ($result->getErrors()) {
+            $errors = [];
+            foreach ($result->getErrors() as $error) {
+                $errors[$error->getCode()]['message'] = $error->getMessage();
+            }
+
             return Json::encode([
                 'success' => false,
-                'errors' => $result->getErrors()
+                'errors' => $errors,
             ]);
         }
 
@@ -45,7 +52,9 @@ class FormSubmitController
                 return Json::encode([
                     'success' => false,
                     'errors' => [
-                        ['message' => 'Ошибка при сохранении данных: ' . implode('; ', $result->getErrorMessages())]
+                        'form' => [
+                            'message' => 'Ошибка при сохранении данных: ' . implode('; ', $result->getErrorMessages())
+                        ]
                     ]
                 ]);
             }
@@ -53,7 +62,9 @@ class FormSubmitController
             return Json::encode([
                 'success' => false,
                 'errors' => [
-                    ['message' => 'Ошибка при сохранении данных: ' . $e->getMessage()]
+                    'form' => [
+                        'message' => 'Ошибка при сохранении данных: ' . $e->getMessage()
+                    ]
                 ]
             ]);
         }

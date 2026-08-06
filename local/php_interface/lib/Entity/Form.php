@@ -97,7 +97,7 @@ final class Form extends BaseEntity
                 }
             }
 
-            $this->fieldsJson[$key]['fields'] = $fields;
+            $this->fieldsJson[$key] = $fields;
         }
 
         return json_encode($this->fieldsJson[$key], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_HEX_APOS);

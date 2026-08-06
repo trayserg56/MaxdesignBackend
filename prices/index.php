@@ -44,7 +44,7 @@ global $APPLICATION;
                     ?>
                 </div>
             </div>
-            <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">Рассчитать стоимость</button>
+            <button class="button button--middle"  data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>' data-modal-target="#discuss-project">Рассчитать стоимость</button>
         </div>
     </div>
 </section>

@@ -46,7 +46,7 @@ $APPLICATION->SetTitle("Студия элитного дизайна интер�
     <div class="first-screen__bottom">
         <div class="first-screen__logo"></div>
         <div class="first-screen__actions">
-            <button class="button button--cta-light" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('feedback-form') ?>' data-modal-target="#discuss-project">
+            <button class="button button--cta-light" data-modal-fields='<?= \Entity\Form::getInstance()->getFieldsJson('discuss-form') ?>' data-modal-target="#discuss-project">
                 <?php
                 $APPLICATION->IncludeComponent(
                     "bitrix:main.include",
