@@ -154,7 +154,7 @@ $form = \Entity\Form::getInstance();
 </div>
 <?php include 'include/modals.php' ?>
 <div class="cookies" data-cookie-dialog role="dialog" aria-live="polite" aria-label="Уведомление об использовании cookie"
-     aria-hidden="false"><p class="cookies__text"><?= $contacts->get('cookie-text') ?></p>
+     aria-hidden="false"><p class="cookies__text"><?= $contacts->get('cookie-text-modal') ?></p>
     <button class="button button--cta-light cookies__button" type="button"><?= $contacts->get('cookie-btn') ?></button>
 </div>
 </body>

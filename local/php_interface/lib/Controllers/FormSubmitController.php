@@ -45,6 +45,8 @@ class FormSubmitController
             ]);
         }
 
+        sendTelegram("maxdesign.pro: Новая заявка\nИмя: {$formRequest->getName()}\nЭл.почта: {$formRequest->getEmail()}\nТелефон: {$formRequest->getPhone()}\nУкажите тип помещения: {$formRequest->getType()}\nМестонахождение объекта: {$formRequest->getLocation()}");
+
         try {
             $result = FormSubmits::getInstance()->add($formRequest);
 

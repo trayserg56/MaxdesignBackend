@@ -1,8 +1,8 @@
 <?php
 
 use Bitrix\Iblock\Elements\ElementPortfolioFiltersTable;
+use Bitrix\Iblock\Elements\ElementPortfolioTable;
 use Bitrix\Iblock\Elements\ElementServicesTable;
-use Bitrix\Iblock\SectionTable;
 use Helpers\IblockHelper;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
@@ -19,9 +19,10 @@ $arResult['DROPDOWN'] = [];
 foreach ($arParams['HAS_DROPDOWN'] as $code) {
     switch ($code) {
         case 'portfolio':
+            $propCode = 'TYPE_OBJECT';
             $rsData = ElementPortfolioFiltersTable::getList([
                 'filter' => [
-                    'CODE' => 'TYPE_OBJECT',
+                    'CODE' => $propCode,
                     'FILTER_AUTOCOMPLETE.VALUE' => false,
                     'FILTER_MAIN_PAGE.VALUE' => false,
                     'ACTIVE' => 'Y',
@@ -51,9 +52,31 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
                 }
             }
 
+            $rsData = ElementPortfolioTable::getList([
+                'filter' => [
+                    'ACTIVE' => 'Y',
+                ],
+                'select' => [
+                    $propCode . '_ITEM_XML_ID' => $propCode . '.ITEM.XML_ID',
+                ],
+            ]);
+
+            $allowed = [];
+            while ($arData = $rsData->fetch()) {
+                if (in_array($arData[$propCode . '_ITEM_XML_ID'], $allowed, true)) {
+                    continue;
+                }
+
+                $allowed[] = $arData[$propCode . '_ITEM_XML_ID'];
+            }
+
             $i = 0;
             $k = 0;
             foreach (array_combine($values['XML_ID'], $values['VALUE']) as $xmlId => $text) {
+                if (!in_array($xmlId, $allowed, true)) {
+                    continue;
+                }
+
                 if ($i === 3) {
                     $k++;
                     $i = 0;

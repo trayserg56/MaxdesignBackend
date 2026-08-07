@@ -11,12 +11,24 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-?>
-<?php
+?><?php
+$rsData = \Bitrix\Iblock\Elements\ElementServicesTable::getList([
+    'filter' => [
+        'ID' => $arResult['VARIABLES']['ELEMENT_ID'],
+    ],
+    'select' => [
+        'TEMPLATE_TYPE_VALUE' => 'TEMPLATE_TYPE.VALUE',
+    ],
+    'limit' => 1,
+]);
+
+$templateType = (bool) $rsData->fetch()['TEMPLATE_TYPE_VALUE'];
+
+?><?php
 
 $APPLICATION->IncludeComponent(
     'bitrix:breadcrumb',
-    'overlay',
+    $templateType ? 'overlay' : '',
     [
         'START_FROM' => '0',
         'PATH' => '',

@@ -60,7 +60,11 @@ if ($arResult['PROPERTIES']['TEMPLATE_TYPE']['VALUE_XML_ID'] !== 'fs-bg') {
                 <?php } ?>
             </div>
             <div class="architectural-screen-first__footer">
-                <?= $arResult['PROPERTIES']['FS_FOOTER_DESCRIPTION']['~VALUE']['TEXT'] ?>
+                <?php if (is_array($arResult['PROPERTIES']['FS_FOOTER_DESCRIPTION']['~VALUE']) && isset($arResult['PROPERTIES']['FS_FOOTER_DESCRIPTION']['~VALUE']['TEXT'])) { ?>
+                    <?= $arResult['PROPERTIES']['FS_FOOTER_DESCRIPTION']['~VALUE']['TEXT'] ?>
+                <?php } else { ?>
+                    <?= $arResult['PROPERTIES']['FS_FOOTER_DESCRIPTION']['~VALUE'] ?>
+                <?php } ?>
 
                 <?php if ($arResult['PROPERTIES']['FS_FOOTER_ADDITION']['VALUE']) { ?>
                     <div class="architectural-screen-first__addition">
