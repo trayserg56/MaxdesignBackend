@@ -32,9 +32,18 @@ document.addEventListener('DOMContentLoaded', function() {
         let path = basePath;
 
         if (filterData?.TYPE_OBJECT?.length) {
+            if (!path.includes('filter')) {
+                path += 'filter/';
+            }
+
             path += filterData.TYPE_OBJECT.join('-') + '/';
         }
+
         if (filterData?.STYLE?.length) {
+            if (!path.includes('filter')) {
+                path += 'filter/';
+            }
+
             path += filterData.STYLE.join('-') + '/';
         }
 

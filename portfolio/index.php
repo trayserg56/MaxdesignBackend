@@ -115,7 +115,7 @@ $APPLICATION->IncludeComponent(
         "USE_SHARE" => "N",
         "SEF_URL_TEMPLATES" => array(
             "news" => "",
-            "filtered" => "#SMART_FILTER_PATH#/",
+            "filtered" => "filter/#SMART_FILTER_PATH#/",
             "section" => "#SECTION_CODE_PATH#/",
             "detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#",
         ),

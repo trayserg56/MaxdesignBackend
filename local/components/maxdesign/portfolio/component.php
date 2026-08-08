@@ -218,13 +218,13 @@ if($arParams["SEF_MODE"] == "Y")
     $path = $uri->getPath();
 
     // Разбиваем урл на сегменты
-    $after = explode($arParams['SEF_FOLDER'], $path)[1] ?? '';
+    $after = explode('filter', $path)[1] ?? '';
 
     if ($after) {
         $segments = explode('/', trim($after, '/'));
     }
 
-    $isFilterPage = false;
+    $isFilterPage = str_contains($path, 'filter');
 
     // Если класс апи существует, заданы фильтры, в урле есть данные ($after) и сегментов меньше или равно кол-во заданных фильтров
     if (
@@ -262,9 +262,7 @@ if($arParams["SEF_MODE"] == "Y")
             }
         }
 
-        // Подключаем страницу фильтров, если есть фильтры
         // Если кол-во фильтров различается - 404 ошибка
-        $isFilterPage = (bool) $filters;
         $b404 = count($filters) !== count(explode('/', trim($after, '/')));
         $rawFilters = $filters;
 

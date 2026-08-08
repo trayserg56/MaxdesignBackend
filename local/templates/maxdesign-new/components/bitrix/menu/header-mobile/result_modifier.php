@@ -59,7 +59,7 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
             }
 
             foreach (array_combine($values['XML_ID'], $values['VALUE']) as $xmlId => $text) {
-                $arResult['DROPDOWN'][$code][0]['LINK'] = "/$code/";
+                $arResult['DROPDOWN'][$code][0]['LINK'] = "/filter/$code/";
                 $arResult['DROPDOWN'][$code][0]['ITEMS'][$xmlId] = $text;
             }
             break;

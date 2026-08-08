@@ -82,7 +82,7 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
                     $i = 0;
                 }
 
-                $arResult['DROPDOWN'][$code][$k]['LINK'] = "/$code/";
+                $arResult['DROPDOWN'][$code][$k]['LINK'] = "/filter/$code/";
                 $arResult['DROPDOWN'][$code][$k]['ITEMS'][$xmlId] = $text;
                 $i++;
             }
