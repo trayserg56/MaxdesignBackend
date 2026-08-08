@@ -37,6 +37,9 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
                     'FILTER_PROGRAMMING_VALUE' => 'FILTER_PROGRAMMING.VALUE',
                     'FILTER_VALUES_VALUE' => 'FILTER_VALUES.VALUE',
                 ],
+                'order' => [
+                    'SORT' => 'ASC',
+                ],
             ]);
 
             $values = [
@@ -78,6 +81,9 @@ foreach ($arParams['HAS_DROPDOWN'] as $code) {
                     'ID',
                     'NAME',
                     'CODE',
+                ],
+                'order' => [
+                    'SORT' => 'ASC',
                 ],
             ]);
 
