@@ -8,7 +8,9 @@ if (!check_bitrix_sessid()) {
     echo Json::encode([
         'success' => false,
         'errors' => [
-            ['message' => 'Ошибка безопасности: сессия истекла или токен неверный',]
+            'form' => [
+                'message' => 'Ошибка безопасности: сессия истекла или токен неверный',
+            ]
         ]
     ]);
 } else {
