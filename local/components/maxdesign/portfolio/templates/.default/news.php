@@ -81,7 +81,7 @@ $request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
                     'SORT_ORDER1' => $arParams['SORT_ORDER1_FILTERS'],
                     'SORT_BY2' => $arParams['SORT_BY2_FILTERS'],
                     'SORT_ORDER2' => $arParams['SORT_ORDER2_FILTERS'],
-                    'CACHE_TYPE' => $arParams['CACHE_TYPE'],
+                    'CACHE_TYPE' => 'N', // Фильтры динамически блокируются, как будто будет раздувать кеш $arParams['CACHE_TYPE']
                     'CACHE_TIME' => $arParams['CACHE_TIME'],
                     'CACHE_FILTER' => $arParams['CACHE_FILTER'],
                     'CACHE_GROUPS' => $arParams['CACHE_GROUPS'],
@@ -100,6 +100,7 @@ $request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
                     'ACTIVE_FILTERS_RAW' => array_merge((array) $arResult['VARIABLES']['FILTERS_RAW'], $request) ?? [],
                     'ACTIVE_FILTERS' => array_merge((array) $arResult['VARIABLES']['FILTERS'], $request) ?? [],
                     'SEF_FOLDER' => $arParams['SEF_FOLDER'],
+                    'SEF_FILTERS' => $arParams['SEF_FILTERS'],
                 ],
                 $component
             );
@@ -115,15 +116,11 @@ $request = Context::getCurrent()->getRequest()->getQueryList()->toArray();
             $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
         }
 
-        if ($data = $arResult['VARIABLES']['FILTERS']['STYLE']) {
-            // todo лучше уточнить, пока взял поле STYLE
+        if ($data = $arResult['VARIABLES']['FILTERS']['STYLE_FILTER']) {
             $filter = [
-                'LOGIC' => 'OR',
+                'PROPERTY_STYLE_FILTER' => $data,
+                '!PROPERTY_STYLE_FILTER' => false,
             ];
-
-            foreach ($data as $key => $item) {
-                $filter[$key]['?PROPERTY_STYLE'] = $item;
-            }
 
             $GLOBALS[$arParams['FILTER_NAME']][] = $filter;
         }

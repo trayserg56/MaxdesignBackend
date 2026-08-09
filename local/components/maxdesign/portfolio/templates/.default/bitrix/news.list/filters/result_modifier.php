@@ -128,16 +128,16 @@ $filters = [
 
 if ($arParams['ACTIVE_FILTERS']) {
     foreach ($arParams['ACTIVE_FILTERS'] as $code => $values) {
-        if ($code === 'TYPE_OBJECT') {
+        if (in_array($code, ['TYPE_OBJECT', 'STYLE_FILTER'])) {
             $filter = [
-                '!TYPE_OBJECT.VALUE' => false,
+                "!$code.VALUE" => false,
                 0 => [
                     'LOGIC' => 'OR',
                 ],
             ];
 
             foreach (array_diff($values, [null]) as $value) {
-                $filter[0][]['TYPE_OBJECT.VALUE'] = $value;
+                $filter[0][]["$code.VALUE"] = $value;
             }
         }
 
@@ -161,7 +161,7 @@ if ($arParams['ACTIVE_FILTERS']) {
             }
         }
 
-        if (in_array($code, ['ADDRESS', 'STYLE', 'YEAR'])) {
+        if (in_array($code, ['ADDRESS', 'YEAR'])) {
             $filter = [
                 'LOGIC' => 'OR',
             ];

@@ -135,7 +135,7 @@ $APPLICATION->IncludeComponent(
         'SORT_BY2_FILTERS' => 'ID',
         'SORT_ORDER2_FILTERS' => 'DESC',
         'FILTER_NAME_FILTERS' => 'arrFilterFilters',
-        'SEF_FILTERS' => ["TYPE_OBJECT", "STYLE"]
+        'SEF_FILTERS' => ["TYPE_OBJECT", "STYLE_FILTER"]
     ),
     false
 );?>

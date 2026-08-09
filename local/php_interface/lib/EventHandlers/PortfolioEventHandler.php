@@ -17,15 +17,19 @@ final class PortfolioEventHandler
      */
     public static function portfolioFiltersAfterSaved(array $arFields): void
     {
-        if ($arFields['CODE'] !== 'TYPE_OBJECT' || (int) $arFields['IBLOCK_ID'] !== IblockHelper::getIblockIdByCode('portfolio-filters')) {
+        if (!in_array($arFields['CODE'], ['TYPE_OBJECT', 'STYLE_FILTER'])
+            || (int) $arFields['IBLOCK_ID'] !== IblockHelper::getIblockIdByCode('portfolio-filters')) {
             return;
         }
 
-        $enumToUpdate = 'TYPE_OBJECT';
+        self::updateEnum($arFields['CODE'], $arFields['ID']);
+    }
 
+    private static function updateEnum(string $enumToUpdate, string $updatedEntityId): void
+    {
         $rsData = ElementPortfolioFiltersTable::getList([
             'filter' => [
-                'ID' => $arFields['ID'],
+                'ID' => $updatedEntityId,
             ],
             'select' => [
                 'FILTER_VALUES_VALUE' => 'FILTER_VALUES.VALUE',

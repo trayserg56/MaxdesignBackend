@@ -31,21 +31,32 @@ document.addEventListener('DOMContentLoaded', function() {
     function buildPathname(filterData) {
         let path = basePath;
 
-        if (filterData?.TYPE_OBJECT?.length) {
+        if (!filterData || typeof filterData !== 'object') {
+            return path;
+        }
+
+        // Перебираем все ключи filterData
+        Object.entries(filterData).forEach(([key, value]) => {
+            // Проверяем, что значение - массив и не пустой
+            if (!Array.isArray(value) || !value.length) {
+                return;
+            }
+
+            // Ищем в DOM элемент select с соответствующими атрибутами
+            const selectElement = document.querySelector(`select[name="${key}"][data-sef]`);
+
+            if (!selectElement) {
+                return;
+            }
+
+            // Добавляем "filter/" если ещё не добавлено
             if (!path.includes('filter')) {
                 path += 'filter/';
             }
 
-            path += filterData.TYPE_OBJECT.join('-') + '/';
-        }
-
-        if (filterData?.STYLE?.length) {
-            if (!path.includes('filter')) {
-                path += 'filter/';
-            }
-
-            path += filterData.STYLE.join('-') + '/';
-        }
+            // Добавляем значение в путь
+            path += value.join('-') + '/';
+        });
 
         return path;
     }
@@ -55,9 +66,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const pathname = !resetFilters ? buildPathname(filterData) : basePath;
         const params = new URLSearchParams();
 
-        if (!resetFilters) {
-            filterData?.SQUARE_OBJECT?.forEach((filter, key) => params.append(`SQUARE_OBJECT[${key}]`, filter));
-            filterData?.YEAR?.forEach((filter, key) => params.append(`YEAR[${key}]`, filter));
+        if (!resetFilters && filterData && typeof filterData === 'object') {
+            // Перебираем все ключи filterData
+            Object.entries(filterData).forEach(([key, value]) => {
+                // Проверяем, что значение - массив и не пустой
+                if (!Array.isArray(value) || !value.length) {
+                    return;
+                }
+
+                // Проверяем наличие элемента в DOM с атрибутом data-sef
+                const selectElement = document.querySelector(`select[name="${key}"][data-sef]`);
+
+                // Если элемент с data-sef найден - пропускаем (уже в пути)
+                if (selectElement) {
+                    return;
+                }
+
+                // Добавляем в query-параметры
+                value.forEach((filter, index) => {
+                    params.append(`${key}[${index}]`, filter);
+                });
+            });
         }
 
         // Обновляем URL в браузере БЕЗ query-строки
